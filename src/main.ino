@@ -25,7 +25,7 @@ void setup() {
     for(;;); // Don't proceed, loop forever
   }
   display.clear();
-  gfx.drawLine(0, 20, 0, 0);
+  gfx.drawRect(2, 20, 20);
   display.flush();
 }
 

@@ -48,3 +48,34 @@ void Graphics::drawLine(int x1, int y1, int x2, int y2){
         }
     }
 }
+
+
+void Graphics::drawRect(int start, int l, int b){
+    /*
+    for example
+    if given
+    start: 10
+
+    x_start = 10
+    y_start = 10
+
+    x_end = x_start + l
+    y_end = y_start + b
+
+    draw AB ----------
+    draw BC |         |
+            |_________|
+    */
+
+    int x_end = start + l;
+    int y_end = start + b;
+
+    if(!boundCheck(start, x_end, start, y_end)){
+        return;
+    }
+
+    drawLine(start, start, x_end, start);
+    drawLine(start, start, start, y_end);
+    drawLine(start, y_end, x_end, y_end);
+    drawLine(x_end, start, x_end, y_end);
+}
