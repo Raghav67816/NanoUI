@@ -51,22 +51,6 @@ void Graphics::drawLine(int x1, int y1, int x2, int y2){
 
 
 void Graphics::drawRect(int start, int l, int b){
-    /*
-    for example
-    if given
-    start: 10
-
-    x_start = 10
-    y_start = 10
-
-    x_end = x_start + l
-    y_end = y_start + b
-
-    draw AB ----------
-    draw BC |         |
-            |_________|
-    */
-
     int x_end = start + l;
     int y_end = start + b;
 
@@ -78,4 +62,17 @@ void Graphics::drawRect(int start, int l, int b){
     drawLine(start, start, start, y_end);
     drawLine(start, y_end, x_end, y_end);
     drawLine(x_end, start, x_end, y_end);
+}
+
+void Graphics::fillRect(int x, int y, int w, int h, uint16_t color){
+    drawRect(x, w, h);
+
+    int x_end = x + w;
+    int y_end = y + h;
+
+    for(int i=x; i<x_end; i++){
+        for (int j=y; j<y_end; j++){
+            display->drawPixel(i, j, true);
+        }
+    }
 }
