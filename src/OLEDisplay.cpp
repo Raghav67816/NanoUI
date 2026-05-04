@@ -8,13 +8,13 @@ void OLEDisplay::flush(){
     display->display();
 }
 
-void OLEDisplay::drawPixel(int x, int y, bool color){
+void OLEDisplay::drawPixel(int x, int y, uint16_t color){
     if(x < 0 || y < 0 || x > w || y > h){
         return;
     }
 
     display->drawPixel(
-        x, y, color ? SSD1306_WHITE : SSD1306_BLACK
+        x, y, color
     );
 }
 

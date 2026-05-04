@@ -3,11 +3,10 @@
 #include <Adafruit_SSD1306.h>
 
 #include "OLEDisplay.h"
-#include "Display.h"
-#include "Graphics.h"
+#include "widgets/Screen.h"
 
 #define SCREEN_WIDTH 128
-#define SCREEN_HEIGHT 32
+#define SCREEN_HEIGHT 64
 
 Adafruit_SSD1306 oled(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
@@ -18,6 +17,7 @@ OLEDisplay display(
 );
 
 Graphics gfx(&display);
+Screen home(&display, &gfx);
 
 void setup() {
 
@@ -25,8 +25,8 @@ void setup() {
     for(;;); // Don't proceed, loop forever
   }
   display.clear();
-  // gfx.drawChar(10, 10, 'J');
-  gfx.drawText(10, 10, "Hello");
+  home.draw();
+  home.setTitle("Home", SSD1306_BLACK);
   display.flush();
 }
 

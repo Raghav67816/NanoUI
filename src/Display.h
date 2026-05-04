@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstdint>
+
 class Display{
     public: 
         
@@ -9,7 +11,7 @@ class Display{
     virtual void drawPixel(
         int x,
         int y,
-        bool color
+        uint16_t color
     ) = 0;
 
     virtual int getWidth();

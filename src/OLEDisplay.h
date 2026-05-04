@@ -15,7 +15,7 @@ class OLEDisplay: public Display{
     void clear() override;
     void flush() override;
 
-    void drawPixel(int x, int y, bool color) override;
+    void drawPixel(int x, int y, uint16_t color) override;
 
     int getHeight() override;
     int getWidth() override;

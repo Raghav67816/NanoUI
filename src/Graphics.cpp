@@ -167,8 +167,8 @@ void Graphics::drawLine(int x1, int y1, int x2, int y2){
 
 
 void Graphics::drawRect(int start, int l, int b){
-    int x_end = start + l;
-    int y_end = start + b;
+    int x_end = start + l - 1;
+    int y_end = start + b - 1;
 
     if(!boundCheck(start, x_end, start, y_end)){
         return;
@@ -188,12 +188,12 @@ void Graphics::fillRect(int x, int y, int w, int h, uint16_t color){
 
     for(int i=x; i<x_end; i++){
         for (int j=y; j<y_end; j++){
-            display->drawPixel(i, j, true);
+            display->drawPixel(i, j, color);
         }
     }
 }
 
-void Graphics::drawChar(int x, int y, char c) {
+void Graphics::drawChar(int x, int y, char c, uint16_t color) {
     if (c < 32 || c > 126) return;
 
     int index = c*5;
@@ -202,18 +202,26 @@ void Graphics::drawChar(int x, int y, char c) {
         uint8_t line = font[index + col];
         for(int row=0; row < 7; row++){
             if((line >> row) & 1){
-                display->drawPixel(x + col, y + row, true);
+                display->drawPixel(x + col, y + row, color);
             }
         }
     }
 }
 
-void Graphics::drawText(int x, int y, const char* text){
+void Graphics::drawText(int x, int y, const char* text, uint16_t color){
     int index = 0;
     int cursorx = x;
     while(text[index] != '\0'){
-        drawChar(cursorx, y, text[index]);
+        drawChar(cursorx, y, text[index], color);
         index++;
         cursorx += 6;
     }
+}
+
+int Graphics::getTextWidth(const char *text){
+    int index = 0;
+    while(text[index] != '\0'){
+        index++;
+    }
+    return index*6;
 }

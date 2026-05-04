@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdint>
 #include "Display.h"
 #include <stdio.h>
 
@@ -12,10 +13,10 @@ struct Font{
 class Graphics{
     private:
     Display *display;
-    void drawChar(int x, int y, char c); 
-
+    void drawChar(int x, int y, char c, uint16_t color);
     
-
+    
+    
     public:
     Graphics(Display *display): display(display){}
     
@@ -24,6 +25,7 @@ class Graphics{
     void drawLine(int x1, int x2, int y1, int y2);
     void drawRect(int start, int h, int w);
     void fillRect(int x, int y, int w, int h, uint16_t color);
-
-    void drawText(int x, int y, const char* text);
+    
+    void drawText(int x, int y, const char* text, uint16_t color);
+    int getTextWidth(const char* text);
 };
