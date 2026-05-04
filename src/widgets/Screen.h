@@ -18,5 +18,5 @@ class Screen: public Widget{
     void onEvent(int eventType) override;
     void addChild(Widget *child) override;
 
-    void setTitle(const char* title, uint16_t color);
+    void setTitle(const char* title, Color color);
 };

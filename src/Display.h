@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include "widgets/Color.h"
 
 class Display{
     public: 
@@ -11,7 +12,7 @@ class Display{
     virtual void drawPixel(
         int x,
         int y,
-        uint16_t color
+        Color color
     ) = 0;
 
     virtual int getWidth();

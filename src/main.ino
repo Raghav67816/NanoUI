@@ -26,7 +26,10 @@ void setup() {
   }
   display.clear();
   home.draw();
-  home.setTitle("Home", SSD1306_BLACK);
+
+  Color color = {0, 0, 0};
+
+  home.setTitle("Home", color);
   display.flush();
 }
 

@@ -133,7 +133,7 @@ bool Graphics::boundCheck(int x1, int x2, int y1, int y2){
     return true;
 }
 
-void Graphics::drawLine(int x1, int y1, int x2, int y2){
+void Graphics::drawLine(int x1, int y1, int x2, int y2, Color color){
     if(!boundCheck(x1, x2, y1, y2)){
         return;
     }
@@ -147,7 +147,7 @@ void Graphics::drawLine(int x1, int y1, int x2, int y2){
     int error = dx-dy;
 
     while(true){
-        display->drawPixel(x1, y1, true);
+        display->drawPixel(x1, y1, color);
 
         if(x1 == x2 && y1 == y2){break;}
 
@@ -166,7 +166,7 @@ void Graphics::drawLine(int x1, int y1, int x2, int y2){
 }
 
 
-void Graphics::drawRect(int start, int l, int b){
+void Graphics::drawRect(int start, int l, int b, Color color){
     int x_end = start + l - 1;
     int y_end = start + b - 1;
 
@@ -174,14 +174,14 @@ void Graphics::drawRect(int start, int l, int b){
         return;
     }
 
-    drawLine(start, start, x_end, start);
-    drawLine(start, start, start, y_end);
-    drawLine(start, y_end, x_end, y_end);
-    drawLine(x_end, start, x_end, y_end);
+    drawLine(start, start, x_end, start, color);
+    drawLine(start, start, start, y_end, color);
+    drawLine(start, y_end, x_end, y_end, color);
+    drawLine(x_end, start, x_end, y_end, color);
 }
 
-void Graphics::fillRect(int x, int y, int w, int h, uint16_t color){
-    drawRect(x, w, h);
+void Graphics::fillRect(int x, int y, int w, int h, Color color){
+    drawRect(x, w, h, color);
 
     int x_end = x + w;
     int y_end = y + h;
@@ -193,7 +193,7 @@ void Graphics::fillRect(int x, int y, int w, int h, uint16_t color){
     }
 }
 
-void Graphics::drawChar(int x, int y, char c, uint16_t color) {
+void Graphics::drawChar(int x, int y, char c, Color color) {
     if (c < 32 || c > 126) return;
 
     int index = c*5;
@@ -208,7 +208,7 @@ void Graphics::drawChar(int x, int y, char c, uint16_t color) {
     }
 }
 
-void Graphics::drawText(int x, int y, const char* text, uint16_t color){
+void Graphics::drawText(int x, int y, const char* text, Color color){
     int index = 0;
     int cursorx = x;
     while(text[index] != '\0'){
