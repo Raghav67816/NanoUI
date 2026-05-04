@@ -4,6 +4,9 @@
 
 #include "OLEDisplay.h"
 #include "widgets/Screen.h"
+#include "widgets/Label.h"
+
+#include "widgets/Color.h"
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
@@ -17,7 +20,12 @@ OLEDisplay display(
 );
 
 Graphics gfx(&display);
-Screen home(&display, &gfx);
+
+Screen home(&display);
+Color black = {0, 0, 0};
+Color white = {255, 255, 255};
+Label label(20, 20, "Nano UI", white);
+
 
 void setup() {
 
@@ -25,11 +33,9 @@ void setup() {
     for(;;); // Don't proceed, loop forever
   }
   display.clear();
-  home.draw();
-
-  Color color = {0, 0, 0};
-
-  home.setTitle("Home", color);
+  home.addChild(&label);
+  home.setTitle(&gfx, "Home", black);
+  home.draw(gfx);
   display.flush();
 }
 

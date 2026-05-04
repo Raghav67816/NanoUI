@@ -6,17 +6,16 @@ class Screen: public Widget{
 
     private:
     Display *display;
-    Graphics *gfx;
 
     public:
 
     const char* title;
 
-    Screen(Display *display, Graphics *gfx): display(display), gfx(gfx){}
+    Screen(Display *display): display(display){}
 
-    void draw() override;
+    void draw(Graphics &gfx);
     void onEvent(int eventType) override;
     void addChild(Widget *child) override;
 
-    void setTitle(const char* title, Color color);
+    void setTitle(Graphics *gfx, const char* title, Color color);
 };

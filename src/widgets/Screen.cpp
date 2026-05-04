@@ -5,7 +5,16 @@
 
 #define TITLE_BAR_HEIGHT 10
 
-void Screen::setTitle(const char* title, Color color){
+void Screen::draw(Graphics &gfx){
+    Color color = {255, 255, 255};
+    gfx.drawRect(0, display->getWidth(), display->getHeight(), color);
+
+    for(auto w: children){
+        w->draw(gfx);
+    }
+}
+
+void Screen::setTitle(Graphics *gfx, const char* title, Color color){
 
     Color white = {255, 255, 255};
 
@@ -18,15 +27,10 @@ void Screen::setTitle(const char* title, Color color){
     );
 }
 
-void Screen::draw(){
-    Color color = {255, 255, 255};
-    gfx->drawRect(0, display->getWidth(), display->getHeight(), color);
+void Screen::addChild(Widget *child){
+    children.push_back(child);
 }
 
 void Screen::onEvent(int event){
-
-}
-
-void Screen::addChild(Widget *widget){
-
+    
 }

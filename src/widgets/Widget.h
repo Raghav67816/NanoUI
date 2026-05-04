@@ -1,4 +1,7 @@
+#pragma once
+
 #include <vector>
+#include "Graphics.h"
 
 class Widget{
     public:
@@ -15,7 +18,7 @@ class Widget{
     std::vector<Widget*> children;
     Widget *parent = nullptr;
 
-    virtual void draw() = 0;
+    virtual void draw(Graphics &gfx) = 0;
     virtual void onEvent(int event) = 0;
     virtual void addChild(Widget *child) = 0;
 };
