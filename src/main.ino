@@ -25,7 +25,7 @@ void setup() {
     for(;;); // Don't proceed, loop forever
   }
   display.clear();
-  gfx.fillRect(2, 2, 20, 20, SSD1306_WHITE);
+  gfx.drawChar(10, 10, 'J');
   display.flush();
 }
 

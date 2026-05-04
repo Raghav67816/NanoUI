@@ -16,8 +16,6 @@ void OLEDisplay::drawPixel(int x, int y, bool color){
     display->drawPixel(
         x, y, color ? SSD1306_WHITE : SSD1306_BLACK
     );
-
-    display->display();
 }
 
 int OLEDisplay::getHeight(){
