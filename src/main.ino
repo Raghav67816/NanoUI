@@ -25,7 +25,8 @@ void setup() {
     for(;;); // Don't proceed, loop forever
   }
   display.clear();
-  gfx.drawChar(10, 10, 'J');
+  // gfx.drawChar(10, 10, 'J');
+  gfx.drawText(10, 10, "Hello");
   display.flush();
 }
 

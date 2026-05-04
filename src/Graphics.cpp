@@ -207,3 +207,13 @@ void Graphics::drawChar(int x, int y, char c) {
         }
     }
 }
+
+void Graphics::drawText(int x, int y, const char* text){
+    int index = 0;
+    int cursorx = x;
+    while(text[index] != '\0'){
+        drawChar(cursorx, y, text[index]);
+        index++;
+        cursorx += 6;
+    }
+}
