@@ -17,5 +17,7 @@ char* Label::text(){
     return labelText;
 }
 
-void Label::onEvent(int event){}
+void bindEvent(EventType event, std::function<void()> callback){}
+
+void onEvent(EventType event){}
 void Label::addChild(Widget *child){}

@@ -5,6 +5,7 @@
 #include "OLEDisplay.h"
 #include "widgets/Screen.h"
 #include "widgets/Label.h"
+#include "widgets/Button.h"
 
 #include "widgets/Color.h"
 
@@ -19,24 +20,41 @@ OLEDisplay display(
     &oled
 );
 
+Color black = {0, 0, 0};
+Color white = {255, 255, 255};
+
 Graphics gfx(&display);
 
 Screen home(&display);
-Color black = {0, 0, 0};
-Color white = {255, 255, 255};
-Label label(20, 20, "Nano UI", white);
 
+Button btn(20, 20, 40, 20, "Click", white, black);
+
+void onButtonPressed(){
+  gfx.fillRect(10, 10, 20, 20, white);
+};
+
+bool lastState = HIGH;
 
 void setup() {
+  Serial.begin(115200);
+  pinMode(4, INPUT_PULLUP);
 
   if(!oled.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
-    for(;;); // Don't proceed, loop forever
+    return;
   }
   display.clear();
-  home.addChild(&label);
   home.setTitle(&gfx, "Home", black);
+  btn.bindEvent(BUTTON_PRESSED, onButtonPressed);
+  home.addChild(&btn);
   home.draw(gfx);
   display.flush();
 }
 
-void loop() {}
+void loop() {
+
+  if (digitalRead(4) == LOW) {
+    Serial.println("button pressed");
+  }
+
+  delay(100);
+}

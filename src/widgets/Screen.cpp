@@ -9,8 +9,8 @@ void Screen::draw(Graphics &gfx){
     Color color = {255, 255, 255};
     gfx.drawRect(0, display->getWidth(), display->getHeight(), color);
 
-    for(auto w: children){
-        w->draw(gfx);
+    for(Widget *widget: children){
+        widget->draw(gfx);
     }
 }
 
@@ -31,6 +31,5 @@ void Screen::addChild(Widget *child){
     children.push_back(child);
 }
 
-void Screen::onEvent(int event){
-    
-}
+void Screen::bindEvent(EventType event, std::function<void()> callback){}
+void Screen::onEvent(EventType event){}

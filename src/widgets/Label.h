@@ -17,7 +17,8 @@ class Label: public Widget{
     }
 
     void draw(Graphics &gfx) override;
-    void onEvent(int event) override;
+    void onEvent(EventType event) override;
+    void bindEvent(EventType event, std::function<void()> callback) override;
     void addChild(Widget *widget) override;
 
     void setText(char* text);

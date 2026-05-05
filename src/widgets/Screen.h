@@ -14,7 +14,8 @@ class Screen: public Widget{
     Screen(Display *display): display(display){}
 
     void draw(Graphics &gfx);
-    void onEvent(int eventType) override;
+    void onEvent(EventType event) override;
+    void bindEvent(EventType event, std::function<void()> callback) override;
     void addChild(Widget *child) override;
 
     void setTitle(Graphics *gfx, const char* title, Color color);

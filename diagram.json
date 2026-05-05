@@ -13,18 +13,27 @@
     {
       "type": "board-ssd1306",
       "id": "oled",
-      "top": 0,
+      "top": -100,
       "left": 350,
       "attrs": {
         "i2cAddress": "0x3c"
       }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 100,
+      "left": 200,
+      "attrs": { "color": "green"}
     }
   ],
   "connections": [
-    [ "esp:GND.1", "oled:GND", "black", [ "h40", "v40" ] ],
-    [ "esp:3V3", "oled:VCC", "red", [ "h40", "v20" ] ],
-    [ "esp:D21", "oled:SDA", "blue", [ "h60", "v-20" ] ],
-    [ "esp:D22", "oled:SCL", "yellow", [ "h60", "v-40" ] ]
+    ["esp:GND.1", "oled:GND", "black", ["h40", "v-60"]],
+    ["esp:3V3",   "oled:VCC", "red",   ["h20", "v-80"]],
+    ["esp:D21",   "oled:SDA", "blue",  ["h60", "v-100"]],
+    ["esp:D22",   "oled:SCL", "yellow",["h60", "v-120"]],
+    ["esp:GND.2", "btn1:2.l", "black", ["h76.8", "v201.4"]],
+    ["esp:D4",    "btn1:1.l", "green", ["h19.2", "v96"]]
   ],
   "dependencies": {}
 }
