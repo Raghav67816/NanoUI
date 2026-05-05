@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Color.h"
-#include "Widget.h"
+#include "../core/Widget.h"
+#include "core/Color.h"
 
 class Button: public Widget{
 

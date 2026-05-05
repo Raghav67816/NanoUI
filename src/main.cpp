@@ -2,11 +2,11 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
-#include "Graphics.h"
-#include "OLEDisplay.h"
+#include "core/Graphics.h"
+#include "core/OLEDisplay.h"
 
-#include "widgets/Screen.h"
 #include "widgets/Button.h"
+#include "widgets/Screen.h"
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64

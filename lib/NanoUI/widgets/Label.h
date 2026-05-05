@@ -1,5 +1,6 @@
-#include "Color.h"
-#include "Widget.h"
+#include "../core/Widget.h"
+#include "../core/Graphics.h"
+#include "../core/Display.h"
 
 
 class Label: public Widget{

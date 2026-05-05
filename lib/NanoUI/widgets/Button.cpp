@@ -1,5 +1,4 @@
 #include "Button.h"
-#include "Graphics.h"
 
 #define PADDING 2
 

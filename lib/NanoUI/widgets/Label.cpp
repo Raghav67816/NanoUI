@@ -1,5 +1,4 @@
 #include "Label.h"
-#include "Graphics.h"
 
 void Label::draw(Graphics &gfx){
     gfx.drawText(x, y, labelText, color);

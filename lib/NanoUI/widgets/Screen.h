@@ -1,8 +1,12 @@
-#include "Widget.h"
-#include "Graphics.h"
-#include "Display.h"
+#pragma once
 
-class Screen: public Widget{
+
+#include <functional>
+#include "../core/Widget.h"
+
+
+
+class Screen: public Widget {
 
     private:
     Display *display;
@@ -20,3 +24,4 @@ class Screen: public Widget{
 
     void setTitle(Graphics *gfx, const char* title, Color color);
 };
+

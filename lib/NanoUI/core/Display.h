@@ -1,7 +1,7 @@
-#pragma once
+#ifndef DISPLAY_H
+#define DISPLAY_H
 
-#include <cstdint>
-#include "widgets/Color.h"
+#include "Color.h"
 
 class Display{
     public: 
@@ -18,3 +18,5 @@ class Display{
     virtual int getWidth();
     virtual int getHeight();
 };
+
+#endif

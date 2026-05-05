@@ -1,5 +1,7 @@
-#include "Display.h"
 #include <Adafruit_SSD1306.h>
+
+#include "core/Color.h"
+#include "core/Display.h"
 
 class OLEDisplay: public Display{
 

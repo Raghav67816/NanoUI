@@ -1,7 +1,5 @@
 #include "Screen.h"
-#include "Graphics.h"
 #include "Adafruit_SSD1306.h"
-#include "Color.h"
 
 #define TITLE_BAR_HEIGHT 10
 

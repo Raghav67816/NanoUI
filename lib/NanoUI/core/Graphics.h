@@ -1,12 +1,6 @@
 #pragma once
 
-#include <cstdint>
-#include <stdio.h>
-
 #include "Display.h"
-#include "widgets/Color.h"
-
-
 
 class Graphics{
     private:
