@@ -14,7 +14,7 @@ void Screen::draw(Graphics &gfx){
     }
 }
 
-void Screen::setTitle(Graphics *gfx, const char* title, Color color){
+void Screen::setTitle(Graphics *gfx, const char* title, Color titleColor){
 
     Color white = {255, 255, 255};
 
@@ -23,7 +23,7 @@ void Screen::setTitle(Graphics *gfx, const char* title, Color color){
         (display->getWidth() - gfx->getTextWidth(title)) / 2,
         (TITLE_BAR_HEIGHT - 7)/2,
         title,
-        color
+        titleColor
     );
 }
 

@@ -8,7 +8,7 @@
       "id": "esp",
       "top": 0,
       "left": 0,
-      "attrs": {}
+      "attrs": { "serialMonitor": "terminal" }
     },
     {
       "type": "board-ssd1306",
@@ -32,8 +32,10 @@
     ["esp:3V3",   "oled:VCC", "red",   ["h20", "v-80"]],
     ["esp:D21",   "oled:SDA", "blue",  ["h60", "v-100"]],
     ["esp:D22",   "oled:SCL", "yellow",["h60", "v-120"]],
-    ["esp:GND.2", "btn1:2.l", "black", ["h76.8", "v201.4"]],
-    ["esp:D4",    "btn1:1.l", "green", ["h19.2", "v96"]]
+    ["esp:GND.2", "btn1:1.r", "black", ["h76.8", "v201.4"]],
+    ["esp:D4",    "btn1:2.l", "green", ["h19.2", "v96"]],
+    ["esp:TX0",   "$serialMonitor:RX","",       []],
+    ["esp:RX0",   "$serialMonitor:TX","",       []]
   ],
   "dependencies": {}
 }
