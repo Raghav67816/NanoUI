@@ -2,11 +2,14 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
+#include "core/Stack.h"
 #include "core/Graphics.h"
 #include "core/OLEDisplay.h"
 
 #include "widgets/Button.h"
 #include "widgets/Screen.h"
+
+#include "layouts/Column.h"
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
@@ -26,12 +29,20 @@ Graphics gfx(&display);
 Color white = {255, 255, 255};
 Color black = {0, 0, 0};
 
-// Home Screen
-Screen homeScreen(&display);
-Button click(20, 20, 40, 20, "Click", white, black);
+Stack screenStack(display, gfx);
 
-void onButtonClicked(){
-  Serial.println("Hello from click");
+// Screen 1
+Screen screen_a(&display, "Screen 1");
+Screen screen_b(&display, "Screen 2");
+Screen screen_c(&display, "Screen 3");
+
+Button btn(20, 20, 40, 20, "Button A", white, black);
+Button btn(20, 20, 40, 20, "Button B", white, black);
+
+Column col();
+
+void changeScreen(){
+  screenStack.goTo(display, screen_b, gfx);
 }
 
 void setup() {
@@ -43,19 +54,22 @@ void setup() {
     return;
   }
 
-  click.bindEvent(BUTTON_PRESSED, onButtonClicked);
-
   display.clear();
-  homeScreen.setTitle(&gfx, "Home", black);
-  homeScreen.addChild(&click);
-  homeScreen.draw(gfx);
-  display.flush();
+
+  btn.bindEvent(BUTTON_PRESSED, changeScreen);
+  screen_a.addChild(&btn);
+
+  screenStack.addScreen(screen_a);
+  screenStack.addScreen(screen_b);
+  screenStack.addScreen(screen_c);
+
+  screenStack.goTo(display, screen_a, gfx);
 }
 
 void loop() {
   if(digitalRead(BTN_PIN) == LOW){
+    btn.onEvent(BUTTON_PRESSED);
     Serial.println("Btn Pressed");
-    click.onEvent(BUTTON_PRESSED);
     delay(200);
   }
 }

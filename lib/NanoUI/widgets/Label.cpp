@@ -20,3 +20,4 @@ void bindEvent(EventType event, std::function<void()> callback){}
 
 void onEvent(EventType event){}
 void Label::addChild(Widget *child){}
+void Label::removeChild(Widget *child){}

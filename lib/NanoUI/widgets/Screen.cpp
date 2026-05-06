@@ -4,8 +4,8 @@
 #define TITLE_BAR_HEIGHT 10
 
 void Screen::draw(Graphics &gfx){
-    Color color = {255, 255, 255};
-    gfx.drawRect(0, display->getWidth(), display->getHeight(), color);
+    Color white = {255, 255, 255};
+    gfx.drawRect(0, display->getHeight(), display->getWidth(), white);
 
     for(Widget *widget: children){
         widget->draw(gfx);
@@ -31,3 +31,4 @@ void Screen::addChild(Widget *child){
 
 void Screen::bindEvent(EventType event, std::function<void()> callback){}
 void Screen::onEvent(EventType event){}
+void Screen::removeChild(Widget *child){}

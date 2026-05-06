@@ -29,4 +29,5 @@ class Widget{
     virtual void onEvent(EventType event) = 0;
     virtual void bindEvent(EventType event, std::function<void()> callback) = 0;
     virtual void addChild(Widget *child) = 0;
+    virtual void removeChild(Widget *child) = 0;
 };

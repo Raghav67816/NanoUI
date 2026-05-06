@@ -30,6 +30,7 @@ class Button: public Widget{
     void onEvent(EventType event) override;
     void bindEvent(EventType event, std::function<void()> callback) override;
     void addChild(Widget *widget) override;
+    void removeChild(Widget *widget) override;
 
     void setText(Graphics &gfx, char *text);
     char* text();
