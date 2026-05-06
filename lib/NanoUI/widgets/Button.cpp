@@ -4,16 +4,8 @@
 
 void Button::draw(Graphics &gfx){
     if(!gfx.boundCheck(x, x + w, y, y + h)) return;
-    
+
     int textLen = gfx.getTextWidth(labelText);
-
-    if(w < textLen + (2 * PADDING)){
-        w = textLen + (2 * PADDING);
-    }
-
-    if(h < 7 + (2 * PADDING)){
-        h = 7 + (2 * PADDING);
-    }
 
     int textX = x + (w - textLen) / 2;
     int textY = y + (h - 7) / 2;
@@ -25,6 +17,19 @@ void Button::draw(Graphics &gfx){
         labelText,
         textColor
     );
+}
+
+void Button::measureGeo(Graphics &gfx){
+
+    int textLen = gfx.getTextWidth(labelText);
+
+    if(w < textLen + (2 * PADDING)){
+        w = textLen + (2 * PADDING);
+    }
+
+    if(h < 7 + (2 * PADDING)){
+        h = 7 + (2 * PADDING);
+    }
 }
 
 void Button::setText(Graphics &gfx, char* text){

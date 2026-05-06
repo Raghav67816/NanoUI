@@ -2,7 +2,7 @@
 
 
 #include <functional>
-#include "../core/Widget.h"
+#include "core/Widget.h"
 
 
 
@@ -15,7 +15,10 @@ class Screen: public Widget {
 
     const char* title;
 
-    Screen(Display *display, const char* title): display(display), title(title){}
+    Screen(Display *display, const char* title): Widget(0, 0, display->getWidth(), display->getHeight()){
+        this->display = display;
+        this->title = title;
+    }
 
     void draw(Graphics &gfx);
     void onEvent(EventType event) override;

@@ -8,6 +8,7 @@
 
 #include "widgets/Button.h"
 #include "widgets/Screen.h"
+#include "widgets/Label.h"
 
 #include "layouts/Column.h"
 
@@ -29,20 +30,15 @@ Graphics gfx(&display);
 Color white = {255, 255, 255};
 Color black = {0, 0, 0};
 
-Stack screenStack(display, gfx);
+// Stack screenStack(display, gfx);
 
-// Screen 1
-Screen screen_a(&display, "Screen 1");
-Screen screen_b(&display, "Screen 2");
-Screen screen_c(&display, "Screen 3");
-
-Button btn(20, 20, 40, 20, "Button A", white, black);
-Button btn(20, 20, 40, 20, "Button B", white, black);
-
-Column col();
+Screen screen_a(&display, "Screen A");
+Column col(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 10);
+Button btn(40, 20, "btn", white, black);
+Label label(20, 10, "Label 1", white);
 
 void changeScreen(){
-  screenStack.goTo(display, screen_b, gfx);
+  Serial.println("Hello");
 }
 
 void setup() {
@@ -54,21 +50,21 @@ void setup() {
     return;
   }
 
+
+  col.addChild(&label);
+  col.addChild(&btn);
+  screen_a.addChild(&col);
+
+  // btn.bindEvent(BUTTON_PRESSED, changeScreen);
+
   display.clear();
-
-  btn.bindEvent(BUTTON_PRESSED, changeScreen);
-  screen_a.addChild(&btn);
-
-  screenStack.addScreen(screen_a);
-  screenStack.addScreen(screen_b);
-  screenStack.addScreen(screen_c);
-
-  screenStack.goTo(display, screen_a, gfx);
+  screen_a.draw(gfx);
+  display.flush();
 }
 
 void loop() {
   if(digitalRead(BTN_PIN) == LOW){
-    btn.onEvent(BUTTON_PRESSED);
+    // btn.onEvent(BUTTON_PRESSED);
     Serial.println("Btn Pressed");
     delay(200);
   }

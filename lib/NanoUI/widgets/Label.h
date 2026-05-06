@@ -8,14 +8,10 @@ class Label: public Widget{
 
     public:
     char* labelText;
-    int x, y;
     Color color;
 
 
-    Label(int x, int y, char* text, Color color): x(x), y(y), labelText(text), color(color){
-        this->x = x;
-        this->y = y;
-    }
+    Label(int w, int h, char* text, Color color): Widget(0, 0, w, h), labelText(text), color(color){}
 
     void draw(Graphics &gfx) override;
     void onEvent(EventType event) override;

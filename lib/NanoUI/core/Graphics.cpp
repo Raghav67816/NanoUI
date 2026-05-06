@@ -1,4 +1,5 @@
 #include <math.h>
+#include <Arduino.h>
 
 #include "Graphics.h"
 
@@ -180,8 +181,6 @@ void Graphics::drawRect(int start, int l, int b, Color color){
 }
 
 void Graphics::fillRect(int x, int y, int w, int h, Color color){
-    drawRect(x, w, h, color);
-
     int x_end = x + w;
     int y_end = y + h;
 

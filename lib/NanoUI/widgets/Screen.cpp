@@ -1,11 +1,18 @@
 #include "Screen.h"
 #include "Adafruit_SSD1306.h"
 
+#include "widgets/Button.h"
+
+#include <Arduino.h>
+
 #define TITLE_BAR_HEIGHT 10
 
 void Screen::draw(Graphics &gfx){
     Color white = {255, 255, 255};
     gfx.drawRect(0, display->getHeight(), display->getWidth(), white);
+
+    Color black = Color {0, 0, 0};
+    setTitle(&gfx, this->title, black);
 
     for(Widget *widget: children){
         widget->draw(gfx);

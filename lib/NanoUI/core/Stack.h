@@ -18,7 +18,7 @@ class Stack{
 
     public:
 
-    Stack(Display &display, Graphics &gfx): gfx(gfx), display(display){}
+    Stack(Display &display, Graphics &gfx):display(display), gfx(gfx){}
 
     void addScreen(Screen &screen);
     void removeScreen(Screen &screen);
@@ -27,4 +27,5 @@ class Stack{
     void back();
 
     void goTo(Display &display, Screen &screen, Graphics &gfx);
+    Screen* getActiveScreen();
 };

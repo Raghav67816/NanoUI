@@ -47,12 +47,14 @@ void Stack::back(){
 }
 
 void Stack::onCurrentScreenChanged(Display &display, Graphics &gfx){
-    display.clear();
-
     Color black = {0, 0, 0};
 
+    activeScreen->measureGeo(gfx);
     activeScreen->setTitle(&gfx, activeScreen->title, black);
     activeScreen->draw(gfx);
 
-    display.flush();
+}
+
+Screen* Stack::getActiveScreen(){
+    return activeScreen;
 }

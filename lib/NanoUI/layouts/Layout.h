@@ -1,25 +1,22 @@
 #include "core/Widget.h"
 
-#define LAYOUT_PADDING 2
-#define TITLE_BAR_HEIGHT 10
+#define OUTER_PADDING 2;
+#define INNER_PADDING 2;
 
 class Layout: public Widget{
-    private:
-
-    int spacing = 2;
-
-    int x, y, w, h;
-
-    std::vector<Widget*> children = {};
-
     public:
-    Layout(int x, int y, int w, int h): x(x), y(y), w(w), h(h){}
+    Layout(int x, int y, int w, int h):
+    Widget(x, y, w, h){}
 
-    void draw(Graphics &gfx) override;
+    virtual void layout(Graphics &gfx) = 0;
+
+    void draw(Graphics &gfx);
+
+    void addChild(Widget *widget) override;
+    void removeChild(Widget *widget) override;
+
+    void measureGeo(Graphics &gfx) override;
+
     void onEvent(EventType event) override;
     void bindEvent(EventType event, std::function<void()> callback) override;
-    void addChild(Widget *child) override;
-    void removeChild(Widget *child) override;
-
-    virtual void layout() = 0;
 };

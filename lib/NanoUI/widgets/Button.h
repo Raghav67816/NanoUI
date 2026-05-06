@@ -9,28 +9,25 @@ class Button: public Widget{
     std::function<void()> _onPress;
 
     public:
-    int x, y;
-    int w, h;
     char* labelText;
 
     Color bgColor;
     Color textColor;
-
-    Button(int x, int y, int w, int h, char* labelText, Color bgColor, Color textColor){
-        this->x = x;
-        this->y = y;
+    
+    Button(int w, int h, char* labelText, Color bgColor, Color textColor): Widget(0, 0, w, h){
         this->w = w;
         this->h = h;
         this->labelText = labelText;
         this->bgColor = bgColor;
         this->textColor = textColor;
     }
-
+    
     void draw(Graphics &gfx) override;
     void onEvent(EventType event) override;
     void bindEvent(EventType event, std::function<void()> callback) override;
     void addChild(Widget *widget) override;
     void removeChild(Widget *widget) override;
+    void measureGeo(Graphics &gfx) override;
 
     void setText(Graphics &gfx, char *text);
     char* text();
