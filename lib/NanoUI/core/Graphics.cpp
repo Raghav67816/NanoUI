@@ -166,18 +166,17 @@ void Graphics::drawLine(int x1, int y1, int x2, int y2, Color color){
 }
 
 
-void Graphics::drawRect(int start, int l, int b, Color color){
-    int x_end = start + l - 1;
-    int y_end = start + b - 1;
+void Graphics::drawRect(int x, int y, int w, int h, Color color){
+    int x_end = x + w;
+    int y_end = y + h;
 
-    if(!boundCheck(start, x_end, start, y_end)){
+    if(!boundCheck(x, x_end, y, y_end)){
         return;
     }
 
-    drawLine(start, start, x_end, start, color);
-    drawLine(start, start, start, y_end, color);
-    drawLine(start, y_end, x_end, y_end, color);
-    drawLine(x_end, start, x_end, y_end, color);
+    drawLine(x, y, x_end, y, color);
+    drawLine(x_end, y, x_end, y_end, color);
+    drawLine(x_end, y_end, x, y_end, color);
 }
 
 void Graphics::fillRect(int x, int y, int w, int h, Color color){

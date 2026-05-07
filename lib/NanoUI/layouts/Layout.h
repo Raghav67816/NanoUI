@@ -1,3 +1,5 @@
+#pragma once
+
 #include "core/Widget.h"
 
 #define OUTER_PADDING 2;

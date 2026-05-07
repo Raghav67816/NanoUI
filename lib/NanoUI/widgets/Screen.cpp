@@ -9,7 +9,7 @@
 
 void Screen::draw(Graphics &gfx){
     Color white = {255, 255, 255};
-    gfx.drawRect(0, display->getHeight(), display->getWidth(), white);
+    gfx.drawRect(0, 0, display->getWidth(), display->getHeight(), white);
 
     Color black = Color {0, 0, 0};
     setTitle(&gfx, this->title, black);

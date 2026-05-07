@@ -2,11 +2,12 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
+#include "core/Stack.h"
 #include "core/Graphics.h"
 #include "core/OLEDisplay.h"
 
-#include "widgets/Screen.h"
 #include "widgets/Button.h"
+#include "widgets/Screen.h"
 #include "widgets/Label.h"
 
 #include "layouts/Column.h"
@@ -16,120 +17,51 @@
 
 #define BTN_PIN 4
 
-// ==============================
-// OLED Display Setup
-// ==============================
+Adafruit_SSD1306 oled(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
-Adafruit_SSD1306 oled(
-    SCREEN_WIDTH,
-    SCREEN_HEIGHT,
-    &Wire,
-    -1
-);
-
-// NanoUI display abstraction
 OLEDisplay display(
-    SCREEN_WIDTH,
+    SCREEN_WIDTH, 
     SCREEN_HEIGHT,
     &oled
 );
 
-// Graphics renderer
 Graphics gfx(&display);
-
-// ==============================
-// Colors
-// ==============================
 
 Color white = {255, 255, 255};
 Color black = {0, 0, 0};
 
-// ==============================
-// UI Widgets
-// ==============================
+Screen screen_a(&display, "Screen A");
+Column col(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 10);
+Button btn(40, 20, "Button", white, black);
+Label label(20, 10, "Label 1", white);
 
-// Main screen
-Screen screen(&display, "NanoUI Demo");
-
-// Vertical layout
-Column layout(
-    0,
-    0,
-    SCREEN_WIDTH,
-    SCREEN_HEIGHT - 10
-);
-
-// Widgets
-Label label(
-    20,
-    10,
-    "Label 1",
-    white
-);
-
-Button button(
-    40,
-    20,
-    "Button",
-    white,
-    black
-);
-
-// ==============================
-// Button Callback
-// ==============================
-
-void onButtonPress(){
-    Serial.println("Button Pressed");
+void changeScreen(){
+  Serial.println("Hello");
 }
 
-// ==============================
-// Arduino Setup
-// ==============================
+void setup() {
 
-void setup(){
+  pinMode(BTN_PIN, INPUT_PULLUP);
 
-    pinMode(BTN_PIN, INPUT_PULLUP);
+  Serial.begin(9600);
+  if(!oled.begin(SSD1306_SWITCHCAPVCC, 0x3C)){
+    return;
+  }
 
-    Serial.begin(9600);
 
-    // Initialize OLED
-    if(!oled.begin(SSD1306_SWITCHCAPVCC, 0x3C)){
-        return;
-    }
+  col.addChild(&label);
+  col.addChild(&btn);
+  screen_a.addChild(&col);
 
-    // Bind button event
-    button.bindEvent(
-        BUTTON_PRESSED,
-        onButtonPress
-    );
-
-    // Add widgets to layout
-    layout.addChild(&label);
-    layout.addChild(&button);
-
-    // Add layout to screen
-    screen.addChild(&layout);
-
-    // Render UI
-    display.clear();
-
-    screen.draw(gfx);
-
-    display.flush();
+  display.clear();
+  screen_a.draw(gfx);
+  display.flush();
 }
 
-// ==============================
-// Arduino Loop
-// ==============================
-
-void loop(){
-
-    // Simulate button event
-    if(digitalRead(BTN_PIN) == LOW){
-
-        button.onEvent(BUTTON_PRESSED);
-
-        delay(200);
-    }
+void loop() {
+  if(digitalRead(BTN_PIN) == LOW){
+    // btn.onEvent(BUTTON_PRESSED);
+    Serial.println("Btn Pressed");
+    delay(200);
+  }
 }
