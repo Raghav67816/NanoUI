@@ -6,7 +6,7 @@
 #include "core/Graphics.h"
 #include "core/OLEDisplay.h"
 
-#include "widgets/Button.h"
+#include "widgets/ProgressBar.h"
 #include "widgets/Screen.h"
 #include "widgets/Label.h"
 
@@ -25,14 +25,18 @@ OLEDisplay display(
     &oled
 );
 
+int currentVal = 0;
+
 Graphics gfx(&display);
 
 Color white = {255, 255, 255};
 Color black = {0, 0, 0};
 
+Stack screenStack(display, gfx);
+
 Screen screen_a(&display, "Screen A");
 Column col(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 10);
-Button btn(40, 20, "Button", white, black);
+ProgressBar progBar(100, 10);
 Label label(20, 10, "Label 1", white);
 
 void changeScreen(){
@@ -48,20 +52,32 @@ void setup() {
     return;
   }
 
+  screenStack.addScreen(screen_a);
 
   col.addChild(&label);
-  col.addChild(&btn);
+  col.addChild(&progBar);
   screen_a.addChild(&col);
 
   display.clear();
-  screen_a.draw(gfx);
+  screenStack.goTo(display, screen_a, gfx);
   display.flush();
 }
 
+void updateProg(){
+  currentVal += 1;
+  progBar.setProgress(currentVal);
+  Serial.println("Writing prog....");
+  delay(1000);
+}
+
+
 void loop() {
   if(digitalRead(BTN_PIN) == LOW){
-    // btn.onEvent(BUTTON_PRESSED);
     Serial.println("Btn Pressed");
     delay(200);
   }
+
+  updateProg();
+
+  screenStack.renderApp(gfx);
 }

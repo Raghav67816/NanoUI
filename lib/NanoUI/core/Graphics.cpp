@@ -167,16 +167,20 @@ void Graphics::drawLine(int x1, int y1, int x2, int y2, Color color){
 
 
 void Graphics::drawRect(int x, int y, int w, int h, Color color){
-    int x_end = x + w;
-    int y_end = y + h;
+    int x_end = x + w - 1;
+    int y_end = y + h - 1;
 
     if(!boundCheck(x, x_end, y, y_end)){
         return;
     }
 
+    Serial.println(x);
+    Serial.println(y);
+
     drawLine(x, y, x_end, y, color);
     drawLine(x_end, y, x_end, y_end, color);
     drawLine(x_end, y_end, x, y_end, color);
+    drawLine(x, y_end, x, y, color);
 }
 
 void Graphics::fillRect(int x, int y, int w, int h, Color color){

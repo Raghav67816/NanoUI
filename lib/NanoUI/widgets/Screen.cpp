@@ -19,6 +19,19 @@ void Screen::draw(Graphics &gfx){
     }
 }
 
+void Screen::regionCheck(){
+    for(Widget *child: children){
+        Serial.println(child->isDirty);
+        if(child->isDirty){
+            needsUpdate = true;
+        }
+    }
+}
+
+bool Screen::requireUpdate(){
+    return needsUpdate;
+}
+
 void Screen::setTitle(Graphics *gfx, const char* title, Color titleColor){
 
     Color white = {255, 255, 255};
@@ -34,6 +47,7 @@ void Screen::setTitle(Graphics *gfx, const char* title, Color titleColor){
 
 void Screen::addChild(Widget *child){
     children.push_back(child);
+    child->parent = this;
 }
 
 void Screen::bindEvent(EventType event, std::function<void()> callback){}

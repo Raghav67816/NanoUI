@@ -28,4 +28,6 @@ class Stack{
 
     void goTo(Display &display, Screen &screen, Graphics &gfx);
     Screen* getActiveScreen();
+
+    void renderApp(Graphics &gfx);
 };

@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <functional>
+
 #include "Graphics.h"
 
 enum EventType
@@ -12,7 +13,8 @@ enum EventType
 
 class Widget
 {
-public:
+    public:
+    bool isDirty = false;
     int x;
     int y;
 

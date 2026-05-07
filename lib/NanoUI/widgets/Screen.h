@@ -8,6 +8,9 @@
 
 class Screen: public Widget {
 
+    protected:
+    bool needsUpdate = false;
+
     private:
     Display *display;
 
@@ -20,12 +23,15 @@ class Screen: public Widget {
         this->title = title;
     }
 
-    void draw(Graphics &gfx);
+    void draw(Graphics &gfx) override;
     void onEvent(EventType event) override;
     void bindEvent(EventType event, std::function<void()> callback) override;
     void addChild(Widget *child) override;
     void removeChild(Widget *child) override;
 
     void setTitle(Graphics *gfx, const char* title, Color color);
+
+    bool requireUpdate();
+    void regionCheck();
 };
 

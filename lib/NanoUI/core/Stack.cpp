@@ -1,4 +1,5 @@
 #include "Stack.h"
+#include <Arduino.h>
 
 void Stack::addScreen(Screen &screen){
     screens.push_back(&screen);
@@ -57,4 +58,14 @@ void Stack::onCurrentScreenChanged(Display &display, Graphics &gfx){
 
 Screen* Stack::getActiveScreen(){
     return activeScreen;
+}
+
+void Stack::renderApp(Graphics &gfx){
+    activeScreen->regionCheck();
+    if(activeScreen->requireUpdate()){
+        Serial.println("window is dirty");
+        display.clear();
+        activeScreen->draw(gfx);
+        display.flush();
+    }
 }
