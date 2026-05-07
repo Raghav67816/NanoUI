@@ -67,6 +67,7 @@ void updateProg(){
   currentVal += 1;
   progBar.setProgress(currentVal);
   Serial.println("Writing prog....");
+  label.setText("Writing Prog...");
   delay(1000);
 }
 
