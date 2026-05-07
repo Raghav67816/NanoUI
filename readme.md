@@ -1,3 +1,29 @@
+# Nano UI 
+
+A minimal user-interface framework for micro-controllers and low memory devices.
+
+![alt text](images/banner.jpg)
+
+
+Documentation - **COMING SOON**
+
+
+## Features
+ - Wide range of widgets
+ - Event System
+ - Low memory footprint
+ - Supports SPI/TFT Displays
+
+
+This set of features allows developers to make reactive UI for micro-controllers. 
+
+Bind your widgets to events, trigger then with your physical components.
+
+## Example
+
+![alt text](image.png)
+
+```cpp
 #include <Arduino.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
@@ -133,3 +159,4 @@ void loop(){
         delay(200);
     }
 }
+```
