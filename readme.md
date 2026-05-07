@@ -21,7 +21,7 @@ Bind your widgets to events, trigger then with your physical components.
 
 ## Example
 
-![alt text](image.png)
+![alt text](images/demo.png)
 
 ```cpp
 #include <Arduino.h>
