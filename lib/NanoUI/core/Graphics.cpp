@@ -174,9 +174,6 @@ void Graphics::drawRect(int x, int y, int w, int h, Color color){
         return;
     }
 
-    Serial.println(x);
-    Serial.println(y);
-
     drawLine(x, y, x_end, y, color);
     drawLine(x_end, y, x_end, y_end, color);
     drawLine(x_end, y_end, x, y_end, color);

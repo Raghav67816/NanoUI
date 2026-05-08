@@ -63,7 +63,6 @@ Screen* Stack::getActiveScreen(){
 void Stack::renderApp(Graphics &gfx){
     activeScreen->regionCheck();
     if(activeScreen->requireUpdate()){
-        Serial.println("window is dirty");
         display.clear();
         activeScreen->draw(gfx);
         display.flush();

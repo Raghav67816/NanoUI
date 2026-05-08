@@ -15,7 +15,7 @@ void ProgressBar::draw(Graphics &gfx)
         int clamped_prog = (progress > 100) ? 100 : progress;
         int _prog = (w * progress) / 100;
         if (_prog > 0){
-            gfx.fillRect(x, y, (w / 100) * progress, h, white);
+            gfx.fillRect(x, y, _prog, h, white);
         }
     }
 }
@@ -29,6 +29,7 @@ void ProgressBar::setProgress(int value)
 {
     progress = value;
     this->isDirty = true;
+    Serial.println("prog bar is dirty");
     parent->isDirty = true;
 }
 
