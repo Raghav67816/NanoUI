@@ -53,6 +53,3 @@ void Button::onEvent(EventType event){
     }
 }
 
-void Button::addChild(Widget *child){}
-void Button::removeChild(Widget *child){}
-

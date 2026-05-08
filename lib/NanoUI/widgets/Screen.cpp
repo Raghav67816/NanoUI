@@ -45,11 +45,5 @@ void Screen::setTitle(Graphics *gfx, const char* title, Color titleColor){
     );
 }
 
-void Screen::addChild(Widget *child){
-    children.push_back(child);
-    child->parent = this;
-}
-
 void Screen::bindEvent(EventType event, std::function<void()> callback){}
 void Screen::onEvent(EventType event){}
-void Screen::removeChild(Widget *child){}

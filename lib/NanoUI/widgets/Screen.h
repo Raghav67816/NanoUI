@@ -1,10 +1,7 @@
 #pragma once
 
-
 #include <functional>
 #include "core/Widget.h"
-
-
 
 class Screen: public Widget {
 
@@ -26,8 +23,6 @@ class Screen: public Widget {
     void draw(Graphics &gfx) override;
     void onEvent(EventType event) override;
     void bindEvent(EventType event, std::function<void()> callback) override;
-    void addChild(Widget *child) override;
-    void removeChild(Widget *child) override;
 
     void setTitle(Graphics *gfx, const char* title, Color color);
 

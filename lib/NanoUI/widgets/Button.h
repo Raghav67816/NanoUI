@@ -25,8 +25,6 @@ class Button: public Widget{
     void draw(Graphics &gfx) override;
     void onEvent(EventType event) override;
     void bindEvent(EventType event, std::function<void()> callback) override;
-    void addChild(Widget *widget) override;
-    void removeChild(Widget *widget) override;
     void measureGeo(Graphics &gfx) override;
 
     void setText(Graphics &gfx, char *text);

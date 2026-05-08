@@ -33,50 +33,6 @@ OLEDisplay display(
 
 Graphics gfx(&display);
 
-Color white = {255, 255, 255};
-Color black = {0, 0, 0};
-
-int currentVal = 0;
-
-Stack screenStack(display, gfx);
-
-Screen screen(&display, "Scroll Demo");
-
-Column layout(
-    0,
-    0,
-    SCREEN_WIDTH,
-    SCREEN_HEIGHT - 10
-);
-
-ScrollWidget scrollWidget(
-    100,
-    60
-);
-
-Label label(
-    20,
-    10,
-    "Label 1",
-    white
-);
-
-Label label_b(
-    20,
-    10,
-    "Label 2",
-    white
-);
-
-ProgressBar progressBar(
-    100,
-    10
-);
-
-void dirtyCheck(){
-    Serial.print("Scroll Width is Dirty ?: ");
-    Serial.println(screen.children.at(1)->isDirty);
-}
 
 void setup(){
 
@@ -86,35 +42,6 @@ void setup(){
     if(!oled.begin(SSD1306_SWITCHCAPVCC, 0x3C)){
         return;
     }
-
-    layout.addChild(&label);
-
-    Serial.println("When adding to sw");
-    Serial.print("X: ");
-    Serial.println(progressBar.x);
-    Serial.print("Y: ");
-    Serial.println(progressBar.y);
-
-    scrollWidget.addChild(&progressBar);
-    layout.addChild(&scrollWidget);
-    // layout.addChild(&progressBar);
-    screen.addChild(&layout);
-
-    screenStack.addScreen(screen);
-
-    display.clear();
-    screenStack.goTo(
-        display,
-        screen,
-        gfx
-    );
-    display.flush();
-}
-
-void updateProgress(){
-    currentVal++;
-    progressBar.setProgress(currentVal);
-    label.setText("Writing Prog...");
 }
 
 void loop(){
@@ -122,10 +49,4 @@ void loop(){
         Serial.println("Button Pressed");
         delay(200);
     }
-
-    updateProgress();
-    screenStack.renderApp(gfx);
-    delay(1000);
-
-    dirtyCheck();
 }

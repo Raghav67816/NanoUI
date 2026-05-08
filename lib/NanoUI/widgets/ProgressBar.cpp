@@ -29,12 +29,9 @@ void ProgressBar::setProgress(int value)
 {
     progress = value;
     this->isDirty = true;
-    Serial.println("prog bar is dirty");
     parent->isDirty = true;
 }
 
 void ProgressBar::measureGeo(Graphics &gfx) {}
-void ProgressBar::addChild(Widget *widget) {}
-void ProgressBar::removeChild(Widget *widget) {}
 void ProgressBar::onEvent(EventType event) {}
 void ProgressBar::bindEvent(EventType event, std::function<void()> callback) {}

@@ -17,8 +17,6 @@ class Label: public Widget{
     void measureGeo(Graphics &gfx) override;
     void onEvent(EventType event) override;
     void bindEvent(EventType event, std::function<void()> callback) override;
-    void addChild(Widget *widget) override;
-    void removeChild(Widget *widget);
 
     void setText(char* text);
     void setColor(Color color);

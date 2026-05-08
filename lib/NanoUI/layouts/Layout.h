@@ -13,10 +13,6 @@ class Layout: public Widget{
     virtual void layout(Graphics &gfx) = 0;
 
     void draw(Graphics &gfx);
-
-    void addChild(Widget *widget) override;
-    void removeChild(Widget *widget) override;
-
     void measureGeo(Graphics &gfx) override;
 
     void onEvent(EventType event) override;

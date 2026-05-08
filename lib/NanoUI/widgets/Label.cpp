@@ -24,5 +24,3 @@ char* Label::text(){
 void Label::bindEvent(EventType event, std::function<void()> callback){}
 
 void Label::onEvent(EventType event){}
-void Label::addChild(Widget *child){}
-void Label::removeChild(Widget *child){}
