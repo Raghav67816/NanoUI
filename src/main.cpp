@@ -8,6 +8,7 @@
 
 #include "widgets/Screen.h"
 #include "widgets/Label.h"
+#include "widgets/ScrollWidget.h"
 #include "widgets/ProgressBar.h"
 
 #include "layouts/Column.h"
@@ -34,13 +35,16 @@ OLEDisplay display(
 
 Graphics gfx(&display);
 
+ScrollWidget scrollWidget(0, 0, 100, 50);
+
 Color white = {255, 255, 255};
 
 Stack screenStack(display, gfx);
 
 Screen screen_a(&display, "Screen A");
 
-Column col_layout(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 10);
+Column root_layout(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 10);
+Column col_child(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 30);
 
 Label label(20, 10, "Label 1", white);
 
@@ -57,10 +61,11 @@ void setup(){
         return;
     }
 
-    col_layout.addChild(&label);
-    col_layout.addChild(&progBar);
-    col_layout.addChild(&progBar_b);
-    screen_a.addChild(&col_layout);
+    col_child.addChild(&progBar);
+    root_layout.addChild(&label);
+    root_layout.addChild(&col_child);
+
+    screen_a.addChild(&root_layout);
     screenStack.addScreen(screen_a);
 
     display.clear();
@@ -72,6 +77,8 @@ void increaseProgress(){
     currentProg += 1;
     progBar.setProgress(currentProg);
     progBar_b.setProgress(currentProg + 2);
+
+    scrollWidget.pushOffset(currentProg, 0);
 }
 
 void loop(){

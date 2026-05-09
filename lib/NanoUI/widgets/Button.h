@@ -22,7 +22,7 @@ class Button: public Widget{
         this->textColor = textColor;
     }
     
-    void draw(Graphics &gfx) override;
+    void draw(Graphics &gfx, int offsetX = 0, int offsetY = 0) override;
     void onEvent(EventType event) override;
     void bindEvent(EventType event, std::function<void()> callback) override;
     void measureGeo(Graphics &gfx) override;

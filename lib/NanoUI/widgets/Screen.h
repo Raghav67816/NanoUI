@@ -16,7 +16,7 @@ class Screen: public Widget {
         this->title = title;
     }
 
-    void draw(Graphics &gfx) override;
+    void draw(Graphics &gfx, int offsetX = 0, int offsetY = 0) override;
 
     void onEvent(EventType event) override;
     void bindEvent(EventType event, std::function<void()> callback) override;

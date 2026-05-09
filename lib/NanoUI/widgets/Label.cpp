@@ -1,7 +1,15 @@
 #include "Label.h"
 
-void Label::draw(Graphics &gfx){
-    gfx.drawText(x, y, labelText, color);
+void Label::draw(Graphics &gfx, int offsetX, int offsetY){
+    int drawX = x - offsetX;
+    int drawY = y - offsetY;
+
+    gfx.drawText(
+        drawX,
+        drawY,
+        labelText,
+        color
+    );
 }
 
 void Label::measureGeo(Graphics &gfx){

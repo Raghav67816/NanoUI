@@ -68,7 +68,7 @@ class Widget
     This method is ONLY respondsible for drawing primitives that 
     together form the desired widget
     */
-    virtual void draw(Graphics &gfx) = 0;
+    virtual void draw(Graphics &gfx, int offsetX = 0, int offsetY = 0) = 0;
 
     /*
     void onEvent()
@@ -79,14 +79,14 @@ class Widget
     This event fires registered callback. However, if callback is not set 
     the call is ignored.
     */
-    virtual void onEvent(EventType event) = 0;
+    virtual void onEvent(EventType event);
 
     /*
     void bindEvent()
     
     Bind event to specified callback
     */
-    virtual void bindEvent(EventType event, std::function<void()> callback) = 0;
+    virtual void bindEvent(EventType event, std::function<void()> callback);
     
     /*
     Every widget must use the default Widget::addChild method 

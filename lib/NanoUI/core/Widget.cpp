@@ -26,3 +26,7 @@ void Widget::removeChild(Widget *child){
         }
     }
 }
+
+void Widget::onEvent(EventType event){}
+
+void Widget::bindEvent(EventType event, std::function<void()> callback){}

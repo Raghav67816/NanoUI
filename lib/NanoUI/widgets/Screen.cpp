@@ -7,7 +7,7 @@
 
 #define TITLE_BAR_HEIGHT 10
 
-void Screen::draw(Graphics &gfx){
+void Screen::draw(Graphics &gfx, int offsetX, int offsetY){
     Color white = {255, 255, 255};
     gfx.drawRect(0, 0, display->getWidth(), display->getHeight(), white);
 

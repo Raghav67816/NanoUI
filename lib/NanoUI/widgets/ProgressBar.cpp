@@ -1,26 +1,29 @@
 #include <Arduino.h>
 #include "ProgressBar.h"
 
-void ProgressBar::draw(Graphics &gfx)
+void ProgressBar::draw(Graphics &gfx, int offsetX, int offsetY)
 {
-    if (!gfx.boundCheck(this->x, this->x + w, this->y, this->y + h))
+    int drawX = this->x - offsetX;
+    int drawY = this->y - offsetY;
+
+    if (!gfx.boundCheck(drawX, drawX + w, drawY, drawY + h))
         return;
 
     Color white = {255, 255, 255};
 
-    gfx.drawRect(x, y, w, h, white);
+    gfx.drawRect(drawX, drawY, w, h, white);
 
     if (progress > 0 && progress <= maxValue)
     {
         int clamped_prog = (progress > 100) ? 100 : progress;
         int _prog = (w * progress) / 100;
         if (_prog > 0){
-            gfx.fillRect(x, y, _prog, h, white);
+            gfx.fillRect(drawX, drawY, _prog, h, white);
         }
     }
 
     if(progress > maxValue){
-        gfx.fillRect(x, y, this->w, this->h, white);
+        gfx.fillRect(drawX, drawY, this->w, this->h, white);
     }
 }
 
@@ -42,5 +45,14 @@ void ProgressBar::measureGeo(Graphics &gfx){
     }
 }
 
-void ProgressBar::onEvent(EventType event) {}
-void ProgressBar::bindEvent(EventType event, std::function<void()> callback) {}
+void ProgressBar::bindEvent(EventType event, std::function<void()> callback){
+    if(event == PROGRESS_CHANGED){
+        onValueChanged = callback;
+    }
+}
+
+void ProgressBar::onEvent(EventType event) {
+    if(event == PROGRESS_CHANGED){
+        onValueChanged();
+    }
+}

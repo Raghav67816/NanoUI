@@ -13,7 +13,7 @@ class Label: public Widget{
 
     Label(int w, int h, char* text, Color color): Widget(0, 0, w, h), labelText(text), color(color){}
 
-    void draw(Graphics &gfx) override;
+    void draw(Graphics &gfx, int offsetX = 0, int offsetY = 0) override;
     void measureGeo(Graphics &gfx) override;
     void onEvent(EventType event) override;
     void bindEvent(EventType event, std::function<void()> callback) override;

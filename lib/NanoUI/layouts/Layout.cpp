@@ -1,6 +1,6 @@
 #include "Layout.h"
 
-void Layout::draw(Graphics &gfx){
+void Layout::draw(Graphics &gfx, int offsetX, int offsetY){
     for(Widget *child: children){
         child->measureGeo(gfx);
     }
@@ -10,6 +10,10 @@ void Layout::draw(Graphics &gfx){
     for(Widget *child: children){
         child->draw(gfx);
     }
+}
+
+void Layout::setSpacing(int _spacing){
+    spacing = _spacing;
 }
 
 void Layout::measureGeo(Graphics &gfx){}
