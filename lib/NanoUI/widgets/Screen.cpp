@@ -24,7 +24,6 @@ void Screen::draw(Graphics &gfx, int offsetX, int offsetY){
 bool Screen::_dirtyCheck(){
     for(Widget *child: children){
         if(child->isDirty){
-            this->isDirty = true;
             return true;
         }
     }

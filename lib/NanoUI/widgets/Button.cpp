@@ -38,7 +38,7 @@ void Button::measureGeo(Graphics &gfx){
 
 void Button::setText(Graphics &gfx, char* text){
     labelText = text;
-    isDirty = true;
+    invalidate();
 }
 
 char* Button::text(){

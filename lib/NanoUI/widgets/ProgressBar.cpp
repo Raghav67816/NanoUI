@@ -35,8 +35,7 @@ int ProgressBar::getProgress()
 void ProgressBar::setProgress(int value)
 {
     progress = value;
-    this->isDirty = true;
-    parent->isDirty = true;
+    invalidate();
 }
 
 void ProgressBar::measureGeo(Graphics &gfx){

@@ -19,12 +19,12 @@ void Label::measureGeo(Graphics &gfx){
 
 void Label::setText(char* _text){
     labelText = _text;
-    isDirty = true;
+    invalidate();
 }
 
 void Label::setColor(Color _color){
     color = _color;
-    isDirty = true;
+    invalidate();
 }
 
 char* Label::text(){

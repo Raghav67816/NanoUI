@@ -61,9 +61,6 @@ Screen* Stack::getActiveScreen(){
 }
 
 void Stack::renderApp(Graphics &gfx){
-    Serial.print("Window is dirty ? ");
-    Serial.println(activeScreen->isDirty);
-
     if(activeScreen->_dirtyCheck()){
         display.clear();
         activeScreen->draw(gfx);

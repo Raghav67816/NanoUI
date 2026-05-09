@@ -27,6 +27,16 @@ void Widget::removeChild(Widget *child){
     }
 }
 
+void Widget::invalidate(){
+    isDirty = true;
+    Widget *currentWidget = parent;
+
+    while(currentWidget != nullptr){
+        currentWidget->isDirty = true;
+        currentWidget = currentWidget->parent;
+    }
+}
+
 void Widget::onEvent(EventType event){}
 
 void Widget::bindEvent(EventType event, std::function<void()> callback){}

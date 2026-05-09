@@ -107,4 +107,7 @@ class Widget
     height and width
     */
     virtual void measureGeo(Graphics &gfx) {};
+
+
+    void invalidate();
 };

@@ -24,14 +24,12 @@ void ScrollWidget::pushOffset(int offsetX, int offsetY){
     viewportX += offsetX;
     viewportY += offsetY;
 
-    isDirty = true;
-    parent->isDirty = true;
+    invalidate();
 }
 
 void ScrollWidget::popOffset(int offsetX, int offsetY){
     viewportX -= offsetX;
     viewportY -= offsetY;
 
-    isDirty = true;
-    parent->isDirty = true;
+    invalidate();
 }
