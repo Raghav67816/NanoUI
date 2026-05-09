@@ -14,7 +14,9 @@ void Label::setText(char* _text){
     isDirty = true;
 }
 
-void Label::setColor(Color color){
+void Label::setColor(Color _color){
+    color = _color;
+    isDirty = true;
 }
 
 char* Label::text(){
@@ -22,5 +24,4 @@ char* Label::text(){
 }
 
 void Label::bindEvent(EventType event, std::function<void()> callback){}
-
 void Label::onEvent(EventType event){}

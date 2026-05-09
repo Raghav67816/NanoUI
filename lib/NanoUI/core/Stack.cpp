@@ -61,10 +61,12 @@ Screen* Stack::getActiveScreen(){
 }
 
 void Stack::renderApp(Graphics &gfx){
-    activeScreen->regionCheck();
-    if(activeScreen->requireUpdate()){
+    Serial.print("Window is dirty ? ");
+    Serial.println(activeScreen->isDirty);
+
+    if(activeScreen->_dirtyCheck()){
         display.clear();
         activeScreen->draw(gfx);
-        display.flush();
+        display.flush();   
     }
 }

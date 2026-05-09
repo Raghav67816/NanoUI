@@ -95,8 +95,8 @@ class Widget
 
     same rule applies for remove child.
     */
-    virtual void addChild(Widget *child) = 0;
-    virtual void removeChild(Widget *child) = 0;
+    virtual void addChild(Widget *child);
+    virtual void removeChild(Widget *child);
 
     /*
 

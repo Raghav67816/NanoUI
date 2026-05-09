@@ -1,8 +1,6 @@
 #include "Column.h"
 #include "Arduino.h"
 
-void Column::measureGeo(Graphics &gfx){}
-
 void Column::layout(Graphics &gfx){
     int currentY = y + spacing;
     for(Widget *child: children){

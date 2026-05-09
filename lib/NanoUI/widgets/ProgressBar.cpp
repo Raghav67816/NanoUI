@@ -18,6 +18,10 @@ void ProgressBar::draw(Graphics &gfx)
             gfx.fillRect(x, y, _prog, h, white);
         }
     }
+
+    if(progress > maxValue){
+        gfx.fillRect(x, y, this->w, this->h, white);
+    }
 }
 
 int ProgressBar::getProgress()
@@ -32,6 +36,11 @@ void ProgressBar::setProgress(int value)
     parent->isDirty = true;
 }
 
-void ProgressBar::measureGeo(Graphics &gfx) {}
+void ProgressBar::measureGeo(Graphics &gfx){
+    if(this->h < 10){
+        this->h = 10;
+    }
+}
+
 void ProgressBar::onEvent(EventType event) {}
 void ProgressBar::bindEvent(EventType event, std::function<void()> callback) {}

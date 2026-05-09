@@ -4,10 +4,6 @@
 #include "core/Widget.h"
 
 class Screen: public Widget {
-
-    protected:
-    bool needsUpdate = false;
-
     private:
     Display *display;
 
@@ -21,12 +17,12 @@ class Screen: public Widget {
     }
 
     void draw(Graphics &gfx) override;
+
     void onEvent(EventType event) override;
     void bindEvent(EventType event, std::function<void()> callback) override;
 
     void setTitle(Graphics *gfx, const char* title, Color color);
 
-    bool requireUpdate();
-    void regionCheck();
+    bool _dirtyCheck();
 };
 

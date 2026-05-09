@@ -15,22 +15,23 @@ void Screen::draw(Graphics &gfx){
     setTitle(&gfx, this->title, black);
 
     for(Widget *widget: children){
+        Serial.print("Is Layout Dirty: ");
+        Serial.println(widget->isDirty);
         widget->draw(gfx);
     }
 }
 
-void Screen::regionCheck(){
+bool Screen::_dirtyCheck(){
     for(Widget *child: children){
-        Serial.println(child->isDirty);
         if(child->isDirty){
-            needsUpdate = true;
+            this->isDirty = true;
+            return true;
         }
     }
+
+    return false;
 }
 
-bool Screen::requireUpdate(){
-    return needsUpdate;
-}
 
 void Screen::setTitle(Graphics *gfx, const char* title, Color titleColor){
 
