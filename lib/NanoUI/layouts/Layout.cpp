@@ -8,8 +8,9 @@ void Layout::draw(Graphics &gfx, int offsetX, int offsetY){
     layout(gfx);
 
     for(Widget *child: children){
-        child->draw(gfx);
+        child->draw(gfx, offsetX, offsetY);
     }
+
 }
 
 void Layout::setSpacing(int _spacing){

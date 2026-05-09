@@ -125,12 +125,12 @@ bool Graphics::boundCheck(int x1, int x2, int y1, int y2){
     int w = display->getWidth();
     int h = display->getHeight();
 
-    if(
-        x1 < 0 || x2 < 0 || y1 < 0 || y2 < 0 || x1 > w || x2 > w || y1 > h || y2 > h 
-    ){
-        return false;
-    }
-    return true;
+    return !(
+        x2 < 0 || 
+        x1 > w,
+        y2 < 0 ||
+        y1 > h
+    );
 }
 
 void Graphics::drawLine(int x1, int y1, int x2, int y2, Color color){

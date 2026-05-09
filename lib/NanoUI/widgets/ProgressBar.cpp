@@ -6,8 +6,7 @@ void ProgressBar::draw(Graphics &gfx, int offsetX, int offsetY)
     int drawX = this->x - offsetX;
     int drawY = this->y - offsetY;
 
-    if (!gfx.boundCheck(drawX, drawX + w, drawY, drawY + h))
-        return;
+    if (!gfx.boundCheck(drawX, drawX + w, drawY, drawY + h)) return;
 
     Color white = {255, 255, 255};
 

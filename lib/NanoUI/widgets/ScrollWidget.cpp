@@ -2,21 +2,17 @@
 
 
 void ScrollWidget::measureGeo(Graphics &gfx){
-    if(this->parent != nullptr){
-        this->x = this->parent->x;
-        this->y = this->parent->y;
-
-        this->w = this->parent->w;
-        this->h = this->parent->h;
-    }
+    
 }
 
 void ScrollWidget::draw(Graphics &gfx, int offsetX, int offsetY){
-    int drawX = this->x - offsetX;
-    int drawY = this->y - offsetY;
+    int drawX = offsetX + viewportX;
+    int drawY = offsetY + viewportY;
+
+    Color white = {255, 255, 255};
 
     for(Widget *child: children){
-        child->draw(gfx, offsetX, offsetY);
+        child->draw(gfx, drawX, drawY);
     }
 }
 

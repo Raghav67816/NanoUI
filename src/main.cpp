@@ -18,6 +18,8 @@
 
 #define BTN_PIN 4
 
+int scrollX = 0;
+
 int currentProg = 0;
 
 Adafruit_SSD1306 oled(
@@ -51,6 +53,11 @@ Label label(20, 10, "Label 1", white);
 ProgressBar progBar(100, 10);
 ProgressBar progBar_b(100, 10);
 
+void changeScroll(){
+    scrollX += 1;
+    scrollWidget.pushOffset(scrollX, 0);
+}
+
 
 void setup(){
 
@@ -61,9 +68,13 @@ void setup(){
         return;
     }
 
+    
+
     col_child.addChild(&progBar);
+    scrollWidget.addChild(&col_child);
+
     root_layout.addChild(&label);
-    root_layout.addChild(&col_child);
+    root_layout.addChild(&scrollWidget);
 
     screen_a.addChild(&root_layout);
     screenStack.addScreen(screen_a);
@@ -77,13 +88,12 @@ void increaseProgress(){
     currentProg += 1;
     progBar.setProgress(currentProg);
     progBar_b.setProgress(currentProg + 2);
-
-    scrollWidget.pushOffset(currentProg, 0);
 }
 
 void loop(){
     if(digitalRead(BTN_PIN) == LOW){
         Serial.println("Button Pressed");
+        changeScroll();
         delay(200);
     }
 
