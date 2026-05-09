@@ -18,7 +18,4 @@ class Layout: public Widget{
 
     void draw(Graphics &gfx, int offsetX = 0, int offsetY = 0);
     void measureGeo(Graphics &gfx) override;
-
-    void onEvent(EventType event) override;
-    void bindEvent(EventType event, std::function<void()> callback) override;
 };

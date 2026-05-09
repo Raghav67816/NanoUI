@@ -1,5 +1,6 @@
-#include "Layout.h"
+#pragma once
 
+#include "Layout.h"
 
 class Column: public Layout{
 

@@ -1,4 +1,5 @@
 #include "Widget.h"
+#include <Arduino.h>
 
 void Widget::addChild(Widget *child){
     for(Widget *_child: children){
@@ -34,6 +35,26 @@ void Widget::invalidate(){
     while(currentWidget != nullptr){
         currentWidget->isDirty = true;
         currentWidget = currentWidget->parent;
+    }
+}
+
+void Widget::debugTree(int depth){
+    for(int i=0; i < depth; i++){
+        Serial.print(" ");
+    }
+
+    Serial.printf(
+        "(%d,%d %dx%d)\n",
+        x,
+        y,
+        w,
+        h
+    );
+
+    for(Widget *child: children){
+        if(child != nullptr){
+            child->debugTree(depth + 1);
+        }
     }
 }
 

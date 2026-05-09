@@ -46,18 +46,10 @@ Stack screenStack(display, gfx);
 Screen screen_a(&display, "Screen A");
 
 Column root_layout(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 10);
-Column col_child(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 30);
 
 Label label(20, 10, "Label 1", white);
-
-ProgressBar progBar(100, 10);
-ProgressBar progBar_b(100, 10);
-
-void changeScroll(){
-    scrollX += 1;
-    scrollWidget.pushOffset(scrollX, 0);
-}
-
+Label label_b(20, 10, "Label 2", white);
+Label label_c(20, 10, "Label 3", white);
 
 void setup(){
 
@@ -68,37 +60,25 @@ void setup(){
         return;
     }
 
-    
-
-    col_child.addChild(&progBar);
-    scrollWidget.addChild(&col_child);
-
-    root_layout.addChild(&label);
     root_layout.addChild(&scrollWidget);
-
     screen_a.addChild(&root_layout);
     screenStack.addScreen(screen_a);
 
     display.clear();
     screenStack.goTo(display, screen_a, gfx);
+    screenStack.renderApp(gfx);
     display.flush();
+
+    screen_a.debugTree(0);
 }
 
-void increaseProgress(){
-    currentProg += 1;
-    progBar.setProgress(currentProg);
-    progBar_b.setProgress(currentProg + 2);
-}
 
 void loop(){
     if(digitalRead(BTN_PIN) == LOW){
         Serial.println("Button Pressed");
-        changeScroll();
         delay(200);
     }
 
-    increaseProgress();
     screenStack.renderApp(gfx);
-
     delay(500);
 }

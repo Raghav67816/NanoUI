@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../core/Widget.h"
 #include "../core/Graphics.h"
 #include "../core/Display.h"

@@ -18,6 +18,3 @@ void Layout::setSpacing(int _spacing){
 }
 
 void Layout::measureGeo(Graphics &gfx){}
-
-void Layout::onEvent(EventType event){}
-void Layout::bindEvent(EventType event, std::function<void()> callback){}

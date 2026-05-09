@@ -110,4 +110,6 @@ class Widget
 
 
     void invalidate();
+
+    void debugTree(int depth);
 };

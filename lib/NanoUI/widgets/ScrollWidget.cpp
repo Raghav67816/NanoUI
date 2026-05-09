@@ -1,5 +1,5 @@
 #include "ScrollWidget.h"
-
+#include <Arduino.h>
 
 void ScrollWidget::measureGeo(Graphics &gfx){
     
@@ -10,6 +10,8 @@ void ScrollWidget::draw(Graphics &gfx, int offsetX, int offsetY){
     int drawY = offsetY + viewportY;
 
     Color white = {255, 255, 255};
+
+    gfx.drawRect(this->x, this->y, this->w, this->h, white);
 
     for(Widget *child: children){
         child->draw(gfx, drawX, drawY);
