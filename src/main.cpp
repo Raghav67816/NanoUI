@@ -1,11 +1,12 @@
 #include "platform/sdl/SDLDisplay.h"
 
 int main(){
-    SDLDisplay display{};
+    SDLDisplay display;
 
-    display.initSdl();
+    App app = display.initSdl();
 
     while (true) {
+        display.presentScene(app);
         display.eventLoop();
     }
 

@@ -1,10 +1,13 @@
 #pragma once
+
+#include <SDL2/SDL.h>
 #include "core/Display.h"
 
 typedef struct
 {
     SDL_Renderer *renderer;
     SDL_Window *window;
+    Color *backgroundColor;
 } App;
 
 /*
@@ -16,8 +19,8 @@ allos better debugging.
 The main purpose of this is to make development efficient.
  */
 class SDLDisplay: public Display{
-    public:
 
+    public:
     void clear() override;
     void flush() override;
 
@@ -27,8 +30,7 @@ class SDLDisplay: public Display{
     int getWidth() override;
 
 
-    // init SDL window
-    void initSdl();
-
+    App initSdl();
     void eventLoop();
+    void presentScene(const App &app);
 };

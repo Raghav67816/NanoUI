@@ -7,6 +7,7 @@ add_executable(
 
     ../../core/Graphics.cpp
     ../../core/Widget.cpp
+    ../../platform/sdl/SDLDisplay.cpp
 
     ../../widgets/Label.cpp
     ../../widgets/ProgressBar.cpp

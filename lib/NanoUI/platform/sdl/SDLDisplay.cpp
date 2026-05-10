@@ -1,7 +1,9 @@
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include "SDLDisplay.h"
 
-void initSdl(){
+#include <bits/ios_base.h>
+
+App SDLDisplay::initSdl(){
     int renderFlags = SDL_RENDERER_ACCELERATED;
     int windowFlags = 0;
 
@@ -11,6 +13,7 @@ void initSdl(){
     }
 
     App app;
+
     app.window = SDL_CreateWindow(
         "Nano UI Simulated Display",
         SDL_WINDOWPOS_UNDEFINED,
@@ -33,9 +36,11 @@ void initSdl(){
         printf("failed to create renderer: %s\n", SDL_GetError());
         exit(1);
     }
+
+    return app;
 }
 
-void eventLoop() {
+void SDLDisplay::eventLoop() {
     SDL_Event event;
 
     while (SDL_PollEvent(&event)) {
@@ -47,6 +52,22 @@ void eventLoop() {
                break;
         }
     }
+}
+
+void SDLDisplay::presentScene(const App &app) {
+    Color defaultBgColor = {128, 128, 128};
+
+    const Color *bgColor = (app.backgroundColor->r != 0) ? app.backgroundColor: &defaultBgColor;
+
+    SDL_SetRenderDrawColor(
+        app.renderer,
+        bgColor->r,
+        bgColor->g,
+        bgColor->b,
+        SDL_ALPHA_OPAQUE);
+    SDL_RenderClear(app.renderer);
+
+    SDL_RenderPresent(app.renderer);
 }
 
 void SDLDisplay::clear(){}
