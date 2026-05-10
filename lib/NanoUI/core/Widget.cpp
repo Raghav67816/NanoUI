@@ -1,5 +1,4 @@
 #include "Widget.h"
-#include <Arduino.h>
 
 void Widget::addChild(Widget *child){
     for(Widget *_child: children){
@@ -40,16 +39,16 @@ void Widget::invalidate(){
 
 void Widget::debugTree(int depth){
     for(int i=0; i < depth; i++){
-        Serial.print(" ");
+        // Serial.print(" ");
     }
 
-    Serial.printf(
-        "(%d,%d %dx%d)\n",
-        x,
-        y,
-        w,
-        h
-    );
+    // Serial.printf(
+    //     "(%d,%d %dx%d)\n",
+    //     x,
+    //     y,
+    //     w,
+    //     h
+    // );
 
     for(Widget *child: children){
         if(child != nullptr){
@@ -59,5 +58,4 @@ void Widget::debugTree(int depth){
 }
 
 void Widget::onEvent(EventType event){}
-
 void Widget::bindEvent(EventType event, std::function<void()> callback){}

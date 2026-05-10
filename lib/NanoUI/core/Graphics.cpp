@@ -1,5 +1,4 @@
 #include <math.h>
-#include <Arduino.h>
 
 #include "Graphics.h"
 

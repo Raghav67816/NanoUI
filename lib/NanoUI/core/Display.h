@@ -5,6 +5,8 @@
 
 class Display{
     public: 
+
+    virtual ~Display() = default;
         
     virtual void clear() = 0;
     virtual void flush() = 0;
@@ -15,8 +17,8 @@ class Display{
         Color color
     ) = 0;
 
-    virtual int getWidth();
-    virtual int getHeight();
+    virtual int getWidth() = 0;
+    virtual int getHeight() = 0;
 };
 
 #endif

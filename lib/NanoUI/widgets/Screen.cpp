@@ -1,9 +1,6 @@
 #include "Screen.h"
-#include "Adafruit_SSD1306.h"
 
 #include "widgets/Button.h"
-
-#include <Arduino.h>
 
 #define TITLE_BAR_HEIGHT 10
 
@@ -15,8 +12,6 @@ void Screen::draw(Graphics &gfx, int offsetX, int offsetY){
     setTitle(&gfx, this->title, black);
 
     for(Widget *widget: children){
-        Serial.print("Is Layout Dirty: ");
-        Serial.println(widget->isDirty);
         widget->draw(gfx);
     }
 }

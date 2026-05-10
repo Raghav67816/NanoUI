@@ -1,5 +1,4 @@
 #include "Column.h"
-#include "Arduino.h"
 
 void Column::layout(Graphics &gfx){
     int currentY = y + spacing;

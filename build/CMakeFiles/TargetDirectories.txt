@@ -1,0 +1,5 @@
+/mnt/Sector16/nanoui/NanoUI/build/CMakeFiles/edit_cache.dir
+/mnt/Sector16/nanoui/NanoUI/build/CMakeFiles/rebuild_cache.dir
+/mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir
+/mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl/CMakeFiles/edit_cache.dir
+/mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl/CMakeFiles/rebuild_cache.dir

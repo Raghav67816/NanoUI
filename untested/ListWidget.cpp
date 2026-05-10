@@ -1,5 +1,4 @@
 #include "ListWidget.h"
-#include <Arduino.h>
 
 void ListWidget::draw(Graphics &gfx, int offsetX, int offsetY){
     scrollWidget.draw(gfx, offsetX, offsetY);

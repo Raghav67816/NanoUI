@@ -1,5 +1,4 @@
 #include "ScrollWidget.h"
-#include <Arduino.h>
 
 void ScrollWidget::measureGeo(Graphics &gfx){
     

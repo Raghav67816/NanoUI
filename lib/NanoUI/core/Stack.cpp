@@ -1,5 +1,4 @@
 #include "Stack.h"
-#include <Arduino.h>
 
 void Stack::addScreen(Screen &screen){
     screens.push_back(&screen);

@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "lib/NanoUI/platform/sdl",
+		"source" : "lib/NanoUI/platform/sdl"
+	}
+}

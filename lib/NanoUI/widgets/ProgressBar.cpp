@@ -1,4 +1,3 @@
-#include <Arduino.h>
 #include "ProgressBar.h"
 
 void ProgressBar::draw(Graphics &gfx, int offsetX, int offsetY)
