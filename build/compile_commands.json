@@ -1,12 +1,6 @@
 [
 {
   "directory": "/mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl",
-  "command": "/usr/bin/g++  -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../.. -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../core -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../widgets -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../layouts -isystem /usr/include/SDL2 -g -o CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o -c /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/SDLDisplay.cpp",
-  "file": "/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/SDLDisplay.cpp",
-  "output": "lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o"
-},
-{
-  "directory": "/mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl",
   "command": "/usr/bin/g++  -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../.. -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../core -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../widgets -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../layouts -isystem /usr/include/SDL2 -g -o CMakeFiles/NanoUI_SDL.dir/__/__/core/Graphics.cpp.o -c /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/core/Graphics.cpp",
   "file": "/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/core/Graphics.cpp",
   "output": "lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Graphics.cpp.o"
@@ -16,6 +10,12 @@
   "command": "/usr/bin/g++  -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../.. -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../core -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../widgets -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../layouts -isystem /usr/include/SDL2 -g -o CMakeFiles/NanoUI_SDL.dir/__/__/core/Widget.cpp.o -c /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/core/Widget.cpp",
   "file": "/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/core/Widget.cpp",
   "output": "lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Widget.cpp.o"
+},
+{
+  "directory": "/mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl",
+  "command": "/usr/bin/g++  -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../.. -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../core -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../widgets -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../layouts -isystem /usr/include/SDL2 -g -o CMakeFiles/NanoUI_SDL.dir/__/__/core/Stack.cpp.o -c /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/core/Stack.cpp",
+  "file": "/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/core/Stack.cpp",
+  "output": "lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Stack.cpp.o"
 },
 {
   "directory": "/mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl",
@@ -58,5 +58,17 @@
   "command": "/usr/bin/g++  -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../.. -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../core -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../widgets -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../layouts -isystem /usr/include/SDL2 -g -o CMakeFiles/NanoUI_SDL.dir/__/__/__/__/src/main.cpp.o -c /mnt/Sector16/nanoui/NanoUI/src/main.cpp",
   "file": "/mnt/Sector16/nanoui/NanoUI/src/main.cpp",
   "output": "lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/__/__/src/main.cpp.o"
+},
+{
+  "directory": "/mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl",
+  "command": "/usr/bin/g++  -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../.. -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../core -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../widgets -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../layouts -isystem /usr/include/SDL2 -g -o CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o -c /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/SDLDisplay.cpp",
+  "file": "/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/SDLDisplay.cpp",
+  "output": "lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o"
+},
+{
+  "directory": "/mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl",
+  "command": "/usr/bin/g++  -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../.. -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../core -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../widgets -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../layouts -isystem /usr/include/SDL2 -g -o CMakeFiles/NanoUI_SDL.dir/SDLWindow.cpp.o -c /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/SDLWindow.cpp",
+  "file": "/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/SDLWindow.cpp",
+  "output": "lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLWindow.cpp.o"
 }
 ]

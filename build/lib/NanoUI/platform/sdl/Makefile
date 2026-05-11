@@ -154,6 +154,30 @@ SDLDisplay.cpp.s:
 	cd /mnt/Sector16/nanoui/NanoUI/build && $(MAKE) $(MAKESILENT) -f lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/build.make lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.s
 .PHONY : SDLDisplay.cpp.s
 
+SDLWindow.o: SDLWindow.cpp.o
+.PHONY : SDLWindow.o
+
+# target to build an object file
+SDLWindow.cpp.o:
+	cd /mnt/Sector16/nanoui/NanoUI/build && $(MAKE) $(MAKESILENT) -f lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/build.make lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLWindow.cpp.o
+.PHONY : SDLWindow.cpp.o
+
+SDLWindow.i: SDLWindow.cpp.i
+.PHONY : SDLWindow.i
+
+# target to preprocess a source file
+SDLWindow.cpp.i:
+	cd /mnt/Sector16/nanoui/NanoUI/build && $(MAKE) $(MAKESILENT) -f lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/build.make lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLWindow.cpp.i
+.PHONY : SDLWindow.cpp.i
+
+SDLWindow.s: SDLWindow.cpp.s
+.PHONY : SDLWindow.s
+
+# target to generate assembly for a file
+SDLWindow.cpp.s:
+	cd /mnt/Sector16/nanoui/NanoUI/build && $(MAKE) $(MAKESILENT) -f lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/build.make lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLWindow.cpp.s
+.PHONY : SDLWindow.cpp.s
+
 __/__/__/__/src/main.o: __/__/__/__/src/main.cpp.o
 .PHONY : __/__/__/__/src/main.o
 
@@ -201,6 +225,30 @@ __/__/core/Graphics.s: __/__/core/Graphics.cpp.s
 __/__/core/Graphics.cpp.s:
 	cd /mnt/Sector16/nanoui/NanoUI/build && $(MAKE) $(MAKESILENT) -f lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/build.make lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Graphics.cpp.s
 .PHONY : __/__/core/Graphics.cpp.s
+
+__/__/core/Stack.o: __/__/core/Stack.cpp.o
+.PHONY : __/__/core/Stack.o
+
+# target to build an object file
+__/__/core/Stack.cpp.o:
+	cd /mnt/Sector16/nanoui/NanoUI/build && $(MAKE) $(MAKESILENT) -f lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/build.make lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Stack.cpp.o
+.PHONY : __/__/core/Stack.cpp.o
+
+__/__/core/Stack.i: __/__/core/Stack.cpp.i
+.PHONY : __/__/core/Stack.i
+
+# target to preprocess a source file
+__/__/core/Stack.cpp.i:
+	cd /mnt/Sector16/nanoui/NanoUI/build && $(MAKE) $(MAKESILENT) -f lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/build.make lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Stack.cpp.i
+.PHONY : __/__/core/Stack.cpp.i
+
+__/__/core/Stack.s: __/__/core/Stack.cpp.s
+.PHONY : __/__/core/Stack.s
+
+# target to generate assembly for a file
+__/__/core/Stack.cpp.s:
+	cd /mnt/Sector16/nanoui/NanoUI/build && $(MAKE) $(MAKESILENT) -f lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/build.make lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Stack.cpp.s
+.PHONY : __/__/core/Stack.cpp.s
 
 __/__/core/Widget.o: __/__/core/Widget.cpp.o
 .PHONY : __/__/core/Widget.o
@@ -382,12 +430,18 @@ help:
 	@echo "... SDLDisplay.o"
 	@echo "... SDLDisplay.i"
 	@echo "... SDLDisplay.s"
+	@echo "... SDLWindow.o"
+	@echo "... SDLWindow.i"
+	@echo "... SDLWindow.s"
 	@echo "... __/__/__/__/src/main.o"
 	@echo "... __/__/__/__/src/main.i"
 	@echo "... __/__/__/__/src/main.s"
 	@echo "... __/__/core/Graphics.o"
 	@echo "... __/__/core/Graphics.i"
 	@echo "... __/__/core/Graphics.s"
+	@echo "... __/__/core/Stack.o"
+	@echo "... __/__/core/Stack.i"
+	@echo "... __/__/core/Stack.s"
 	@echo "... __/__/core/Widget.o"
 	@echo "... __/__/core/Widget.i"
 	@echo "... __/__/core/Widget.s"

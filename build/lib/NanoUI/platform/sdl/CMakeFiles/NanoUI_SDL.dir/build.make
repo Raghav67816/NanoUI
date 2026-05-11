@@ -69,24 +69,10 @@ include lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/progress.make
 # Include the compile flags for this target's objects.
 include lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/flags.make
 
-lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/flags.make
-lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o: /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/SDLDisplay.cpp
-lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/Sector16/nanoui/NanoUI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o"
-	cd /mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o -MF CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o.d -o CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o -c /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/SDLDisplay.cpp
-
-lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.i"
-	cd /mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/SDLDisplay.cpp > CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.i
-
-lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.s"
-	cd /mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/SDLDisplay.cpp -o CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.s
-
 lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Graphics.cpp.o: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/flags.make
 lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Graphics.cpp.o: /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/core/Graphics.cpp
 lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Graphics.cpp.o: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/Sector16/nanoui/NanoUI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Graphics.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/Sector16/nanoui/NanoUI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Graphics.cpp.o"
 	cd /mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Graphics.cpp.o -MF CMakeFiles/NanoUI_SDL.dir/__/__/core/Graphics.cpp.o.d -o CMakeFiles/NanoUI_SDL.dir/__/__/core/Graphics.cpp.o -c /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/core/Graphics.cpp
 
 lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Graphics.cpp.i: cmake_force
@@ -100,7 +86,7 @@ lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Graphics.cpp.s: cma
 lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Widget.cpp.o: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/flags.make
 lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Widget.cpp.o: /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/core/Widget.cpp
 lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Widget.cpp.o: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/Sector16/nanoui/NanoUI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Widget.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/Sector16/nanoui/NanoUI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Widget.cpp.o"
 	cd /mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Widget.cpp.o -MF CMakeFiles/NanoUI_SDL.dir/__/__/core/Widget.cpp.o.d -o CMakeFiles/NanoUI_SDL.dir/__/__/core/Widget.cpp.o -c /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/core/Widget.cpp
 
 lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Widget.cpp.i: cmake_force
@@ -110,6 +96,20 @@ lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Widget.cpp.i: cmake
 lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Widget.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/NanoUI_SDL.dir/__/__/core/Widget.cpp.s"
 	cd /mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/core/Widget.cpp -o CMakeFiles/NanoUI_SDL.dir/__/__/core/Widget.cpp.s
+
+lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Stack.cpp.o: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/flags.make
+lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Stack.cpp.o: /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/core/Stack.cpp
+lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Stack.cpp.o: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/Sector16/nanoui/NanoUI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Stack.cpp.o"
+	cd /mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Stack.cpp.o -MF CMakeFiles/NanoUI_SDL.dir/__/__/core/Stack.cpp.o.d -o CMakeFiles/NanoUI_SDL.dir/__/__/core/Stack.cpp.o -c /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/core/Stack.cpp
+
+lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Stack.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/NanoUI_SDL.dir/__/__/core/Stack.cpp.i"
+	cd /mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/core/Stack.cpp > CMakeFiles/NanoUI_SDL.dir/__/__/core/Stack.cpp.i
+
+lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Stack.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/NanoUI_SDL.dir/__/__/core/Stack.cpp.s"
+	cd /mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/core/Stack.cpp -o CMakeFiles/NanoUI_SDL.dir/__/__/core/Stack.cpp.s
 
 lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/widgets/Label.cpp.o: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/flags.make
 lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/widgets/Label.cpp.o: /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/widgets/Label.cpp
@@ -209,25 +209,55 @@ lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/__/__/src/main.cpp.s: cm
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/NanoUI_SDL.dir/__/__/__/__/src/main.cpp.s"
 	cd /mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/Sector16/nanoui/NanoUI/src/main.cpp -o CMakeFiles/NanoUI_SDL.dir/__/__/__/__/src/main.cpp.s
 
+lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/flags.make
+lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o: /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/SDLDisplay.cpp
+lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/Sector16/nanoui/NanoUI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o"
+	cd /mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o -MF CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o.d -o CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o -c /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/SDLDisplay.cpp
+
+lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.i"
+	cd /mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/SDLDisplay.cpp > CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.i
+
+lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.s"
+	cd /mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/SDLDisplay.cpp -o CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.s
+
+lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLWindow.cpp.o: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/flags.make
+lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLWindow.cpp.o: /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/SDLWindow.cpp
+lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLWindow.cpp.o: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/Sector16/nanoui/NanoUI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLWindow.cpp.o"
+	cd /mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLWindow.cpp.o -MF CMakeFiles/NanoUI_SDL.dir/SDLWindow.cpp.o.d -o CMakeFiles/NanoUI_SDL.dir/SDLWindow.cpp.o -c /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/SDLWindow.cpp
+
+lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLWindow.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/NanoUI_SDL.dir/SDLWindow.cpp.i"
+	cd /mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/SDLWindow.cpp > CMakeFiles/NanoUI_SDL.dir/SDLWindow.cpp.i
+
+lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLWindow.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/NanoUI_SDL.dir/SDLWindow.cpp.s"
+	cd /mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/SDLWindow.cpp -o CMakeFiles/NanoUI_SDL.dir/SDLWindow.cpp.s
+
 # Object files for target NanoUI_SDL
 NanoUI_SDL_OBJECTS = \
-"CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o" \
 "CMakeFiles/NanoUI_SDL.dir/__/__/core/Graphics.cpp.o" \
 "CMakeFiles/NanoUI_SDL.dir/__/__/core/Widget.cpp.o" \
+"CMakeFiles/NanoUI_SDL.dir/__/__/core/Stack.cpp.o" \
 "CMakeFiles/NanoUI_SDL.dir/__/__/widgets/Label.cpp.o" \
 "CMakeFiles/NanoUI_SDL.dir/__/__/widgets/ProgressBar.cpp.o" \
 "CMakeFiles/NanoUI_SDL.dir/__/__/widgets/ScrollWidget.cpp.o" \
 "CMakeFiles/NanoUI_SDL.dir/__/__/widgets/Screen.cpp.o" \
 "CMakeFiles/NanoUI_SDL.dir/__/__/layouts/Layout.cpp.o" \
 "CMakeFiles/NanoUI_SDL.dir/__/__/layouts/Column.cpp.o" \
-"CMakeFiles/NanoUI_SDL.dir/__/__/__/__/src/main.cpp.o"
+"CMakeFiles/NanoUI_SDL.dir/__/__/__/__/src/main.cpp.o" \
+"CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o" \
+"CMakeFiles/NanoUI_SDL.dir/SDLWindow.cpp.o"
 
 # External object files for target NanoUI_SDL
 NanoUI_SDL_EXTERNAL_OBJECTS =
 
-lib/NanoUI/platform/sdl/NanoUI_SDL: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o
 lib/NanoUI/platform/sdl/NanoUI_SDL: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Graphics.cpp.o
 lib/NanoUI/platform/sdl/NanoUI_SDL: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Widget.cpp.o
+lib/NanoUI/platform/sdl/NanoUI_SDL: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Stack.cpp.o
 lib/NanoUI/platform/sdl/NanoUI_SDL: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/widgets/Label.cpp.o
 lib/NanoUI/platform/sdl/NanoUI_SDL: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/widgets/ProgressBar.cpp.o
 lib/NanoUI/platform/sdl/NanoUI_SDL: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/widgets/ScrollWidget.cpp.o
@@ -235,10 +265,12 @@ lib/NanoUI/platform/sdl/NanoUI_SDL: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SD
 lib/NanoUI/platform/sdl/NanoUI_SDL: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/layouts/Layout.cpp.o
 lib/NanoUI/platform/sdl/NanoUI_SDL: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/layouts/Column.cpp.o
 lib/NanoUI/platform/sdl/NanoUI_SDL: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/__/__/src/main.cpp.o
+lib/NanoUI/platform/sdl/NanoUI_SDL: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o
+lib/NanoUI/platform/sdl/NanoUI_SDL: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLWindow.cpp.o
 lib/NanoUI/platform/sdl/NanoUI_SDL: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/build.make
 lib/NanoUI/platform/sdl/NanoUI_SDL: /usr/lib/x86_64-linux-gnu/libSDL2.so
 lib/NanoUI/platform/sdl/NanoUI_SDL: lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/mnt/Sector16/nanoui/NanoUI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable NanoUI_SDL"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/mnt/Sector16/nanoui/NanoUI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable NanoUI_SDL"
 	cd /mnt/Sector16/nanoui/NanoUI/build/lib/NanoUI/platform/sdl && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/NanoUI_SDL.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

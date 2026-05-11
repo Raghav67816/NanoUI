@@ -22,8 +22,11 @@ Stack screenStack(display, gfx);
 Screen screen_a(&display, "Screen A");
 
 void setup() {
-
     screenStack.addScreen(screen_a);
+
+    display.clear();
+    screenStack.goTo(display, screen_a, gfx);
+    display.flush();
 }
 
 void loop() {

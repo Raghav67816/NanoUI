@@ -9,8 +9,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/SDLDisplay.cpp" "lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o" "gcc" "lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLDisplay.cpp.o.d"
+  "/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/SDLWindow.cpp" "lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLWindow.cpp.o" "gcc" "lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/SDLWindow.cpp.o.d"
   "/mnt/Sector16/nanoui/NanoUI/src/main.cpp" "lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/__/__/src/main.cpp.o" "gcc" "lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/__/__/src/main.cpp.o.d"
   "/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/core/Graphics.cpp" "lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Graphics.cpp.o" "gcc" "lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Graphics.cpp.o.d"
+  "/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/core/Stack.cpp" "lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Stack.cpp.o" "gcc" "lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Stack.cpp.o.d"
   "/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/core/Widget.cpp" "lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Widget.cpp.o" "gcc" "lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/core/Widget.cpp.o.d"
   "/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/layouts/Column.cpp" "lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/layouts/Column.cpp.o" "gcc" "lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/layouts/Column.cpp.o.d"
   "/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/layouts/Layout.cpp" "lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/layouts/Layout.cpp.o" "gcc" "lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/__/__/layouts/Layout.cpp.o.d"

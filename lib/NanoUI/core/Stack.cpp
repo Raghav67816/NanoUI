@@ -60,6 +60,12 @@ Screen* Stack::getActiveScreen(){
 }
 
 void Stack::renderApp(Graphics &gfx){
+
+    if (activeScreen == nullptr) {
+        this->screenIndex = 0;
+        this->activeScreen = screens.at(this->screenIndex);
+    }
+
     if(activeScreen->_dirtyCheck()){
         display.clear();
         activeScreen->draw(gfx);
