@@ -1,21 +1,17 @@
-#include <cstdio>
+#include "platform/sdl/SDLDisplay.h"
 #include "platform/sdl/SDLWindow.h"
 
+#define SCREEN_WIDTH 800
+#define SCREEN_HEIGHT 600
+
 int main() {
-    printf("starting program...");
+    SDLDisplay display(
+        128,
+        64
+    );
 
-    SDLWindow window(800, 600);
+    SDLWindow window(&display);
 
-    // draw sdl window
-    window.initWindow();
-
-    while (true) {
-        window.eventLoop();
-
-        window.presentWindow();
-
-        SDL_Delay(50);
-    }
-
-    return 0;
+    window.create();
+    window.loop();
 }

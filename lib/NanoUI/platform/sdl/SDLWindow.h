@@ -1,39 +1,41 @@
-#pragma once
+//
+// Created by cooper on 5/10/26.
+//
 
-#include <vector>
+#ifndef NANOUI_SDLWINDOW_H
+#define NANOUI_SDLWINDOW_H
 
-#include "SDL.h"
-#include "core/Color.h"
+#include <SDL.h>
 
-struct SDL_App {
-    SDL_Window *window = nullptr;
-    SDL_Renderer *renderer = nullptr;
-    Color *bgColor = nullptr;
-};
+#include "SDLDisplay.h"
+
 
 class SDLWindow {
 private:
-    int windowW = 800;
-    int windowH = 600;
+    int w = 800;
+    int h = 600;
 
-    int displayW = 128;
-    int displayH = 64;
+    int scale = 2;
 
-    SDL_App app{};
+    SDL_Window *window = nullptr;
+    SDL_Renderer *renderer = nullptr;
+    SDL_Texture *texture = nullptr;
 
-    std::vector<uint8_t> framebuffer;
-    SDL_Texture *displayTexture = nullptr;
+    SDLDisplay *display;
+
+    SDL_Rect destRect;
+
+    Color windowBg = {128, 128, 128};
+
+    bool isRunning = true;
 
 public:
-    SDLWindow(int w, int h): displayW(w), displayH(h) {}
+    SDLWindow(SDLDisplay *sDisplay): display(sDisplay) {}
 
-    void setDisplaySize(int w, int h);
+    void create();
+    void destroy();
 
-    void initWindow();
-    void eventLoop();
-
-    void presentWindow();
-    void prepareDisplayTexture();
-
-    void setPixel(int x, int y, Color pixelColor);
+    void update();
+    void loop();
 };
+#endif //NANOUI_SDLWINDOW_H

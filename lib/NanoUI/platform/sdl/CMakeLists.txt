@@ -15,8 +15,10 @@ add_executable(
     ../../layouts/Column.cpp
 
     ../../../../src/main.cpp
-        SDLWindow.h
+        SDLDisplay.cpp
+        SDLDisplay.h
         SDLWindow.cpp
+        SDLWindow.h
 )
 
 include_directories(${SDL2_INCLUDE_DIRS})

@@ -1,97 +1,133 @@
+//
+// Created by cooper on 5/10/26.
+//
+
 #include "SDLWindow.h"
 
-void SDLWindow::setDisplaySize(int w, int h) {
-    this->displayW = w;
-    this->displayH = h;
-}
-
-void SDLWindow::initWindow() {
-    int renderFlags = SDL_RENDERER_ACCELERATED;
-    int windowFlags = 0;
-
-    framebuffer.resize(this->displayW * this->displayH);
+void SDLWindow::create() {
 
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        printf("failed to initialize SDL: %s\n", SDL_GetError());
-        exit(1);
+        printf("failed to initialize SDL\n");
     }
 
-    app.window = SDL_CreateWindow(
-        "Nano UI Simulated Display",
-        SDL_WINDOWPOS_UNDEFINED,
-        SDL_WINDOWPOS_UNDEFINED,
-        this->windowW,
-        this->windowH,
-        windowFlags
+    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "0");
+
+    this->window = SDL_CreateWindow(
+        "Simulated Display",
+        SDL_WINDOWPOS_CENTERED,
+        SDL_WINDOWPOS_CENTERED,
+        this->w,
+        this->h,
+        0
     );
 
-    if (!app.window) {
-        printf("failed to create window: %s\n", SDL_GetError());
+    if (this->window == nullptr) {
+        printf("failed to create window\n");
+    }
+
+    renderer = SDL_CreateRenderer(
+        this->window,
+        -1,
+        0
+    );
+
+    if (!this->renderer) {
+        printf("failed to create renderer\n");
         exit(1);
     }
 
-    app.renderer = SDL_CreateRenderer(app.window, -1, renderFlags);
-    if (!app.renderer) {
-        printf("failed to create renderer: %s\n", SDL_GetError());
-        exit(1);
-    }
-
-}
-
-void SDLWindow::presentWindow() {
-    SDL_SetRenderDrawColor(app.renderer, 0, 0, 0, 255);
-    SDL_RenderClear(app.renderer);
-
-    SDL_Rect dstRect = {
-        32,
-        16,
-        displayW * 6,
-        displayH * 6
-    };
-
-    prepareDisplayTexture();
-
-    SDL_RenderCopy(app.renderer, this->displayTexture, nullptr, &dstRect);
-    SDL_RenderPresent(app.renderer);
-}
-
-void SDLWindow::prepareDisplayTexture() {
-    if (this->app.renderer == nullptr) {
-        printf("renderer not available");
-        exit(1);
-    }
-
-    this->displayTexture = SDL_CreateTexture(
-        app.renderer,
-        SDL_PIXELFORMAT_RGB332,
+    this->texture = SDL_CreateTexture(
+        this->renderer,
+        SDL_PIXELFORMAT_RGB24,
         SDL_TEXTUREACCESS_STREAMING,
-        this->displayW,
-        this->displayH
+        display->getWidth(),
+        display->getHeight()
     );
+
+    if (!this->texture) {
+        printf("failed to create texture\n");
+        exit(1);
+    }
+
+    SDL_SetRenderDrawColor(
+        this->renderer,
+        128,
+        128,
+        128,
+        SDL_ALPHA_OPAQUE
+    );
+    SDL_RenderClear(this->renderer);
+    SDL_RenderPresent(this->renderer);
 }
 
-void SDLWindow::setPixel(int x, int y, Color pixelColor) {
-    uint8_t _pixelColor = 0;
-    if (x < 0 || y < 0  || x > this->displayW || y > this->displayH) {
-        if (pixelColor.r + pixelColor.g + pixelColor.b >=  3*255) {
-            _pixelColor = 1;
-        }
-        this->framebuffer[y * this->displayW + x] = _pixelColor;
-    }
+void SDLWindow::destroy() {
+    SDL_DestroyTexture(this->texture);
+    SDL_DestroyRenderer(this->renderer);
+    SDL_DestroyWindow(this->window);
 }
 
-void SDLWindow::eventLoop() {
-    SDL_Event event;
+void SDLWindow::update() {
 
-    while (SDL_PollEvent(&event)) {
-        switch (event.type) {
-            case SDL_QUIT:
-                SDL_Quit();
-                exit(0);
+    SDL_SetRenderDrawColor(
+        this->renderer,
+        windowBg.r,
+        windowBg.g,
+        windowBg.b,
+        SDL_ALPHA_OPAQUE
+    );
+    SDL_RenderClear(this->renderer);
 
-            default:
-                break;
+    int scaled_w = display->getWidth() * this->scale;
+    int scaled_h = display->getHeight() * this->scale;
+
+    this->destRect = {
+        (this->w - scaled_w) / 2,
+        (this->h - scaled_h) / 2,
+        scaled_w,
+        scaled_h
+    };
+    SDL_SetRenderDrawColor(
+        this->renderer,
+        0,
+        0,
+        0,
+        SDL_ALPHA_OPAQUE
+    );
+    SDL_RenderFillRect(this->renderer, &this->destRect);
+
+    SDL_RenderPresent(this->renderer);
+}
+
+void SDLWindow::loop() {
+    while (this->isRunning) {
+        SDL_Event event;
+        while (SDL_PollEvent(&event)) {
+            switch (event.type) {
+                case SDL_QUIT:
+                    SDL_Quit();
+                    isRunning = false;
+                    break;
+
+                case SDL_MOUSEWHEEL:
+                    if (event.wheel.y > 0) {
+                        this->scale += 1;
+                        printf("Scaling up: %d \n", this->scale);
+                    }
+
+                    if (event.wheel.y < 0) {
+                        this->scale -= 1;
+                        printf("Scaling down: %d \n", this->scale);
+                    }
+                    break;
+
+                default:
+                    break;
+            }
         }
+
+        this->update();
     }
+
+    this->destroy();
 }
 
