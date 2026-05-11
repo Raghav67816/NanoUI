@@ -215,6 +215,19 @@
     
         
         
+            <a class="terminal-mkdocs-side-nav-item" href="../../Core/SDLDisplay/">SDLDisplay</a>
+        
+    
+    </li>
+            
+        
+            
+            
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
             <a class="terminal-mkdocs-side-nav-item" href="../../Core/Widget/">Widget</a>
         
     
@@ -299,68 +312,11 @@
        </li>
         
     </ul>
-</nav><hr>
-<nav>
-    <ul>
-        <li><a href="#stackstack">Stack::Stack()</a></li>
-        <li><a href="#stackaddscreen">Stack::addScreen()</a></li>
-        <li><a href="#stackremovescreen">Stack::removeScreen()</a></li>
-        <li><a href="#stackforward">Stack::forward();</a></li>
-        <li><a href="#stackback">Stack::back();</a></li>
-        <li><a href="#stackgoto">Stack::goTo()</a></li>
-        <li><a href="#stackgetactivescreen">Stack::getActiveScreen()</a></li>
-        <li><a href="#stackrenderapp">Stack::renderApp()</a></li>
-        
-    </ul>
 </nav>
 </aside>
             <main id="terminal-mkdocs-main-content">
 <section id="mkdocs-terminal-content">
     <p>Stack is recommended to be as the root widget in the application UI tree. It allows you to create multiple screen and manage navigation easily.</p>
-<p>Stack manages it's own array of child array.</p>
-<h1 id="stackstack">Stack::Stack()</h1>
-<p>Params:</p>
-<ul>
-<li>Display* display;</li>
-<li>Graphics &gfx;</li>
-</ul>
-<p>Creates an instance of a stack that acts as the root widget in the widget tree.</p>
-<p>You can also you screen as a root widget, but a screen widget does not support navigation. Even if you are working on a single screen application you should use a stack as root widget.</p>
-<h1 id="stackaddscreen">Stack::addScreen()</h1>
-<p>Params:</p>
-<ul>
-<li>Screen &amp;screen</li>
-</ul>
-<p>Inherits from Widget::addChild().
-Adds a child screen to the stack.</p>
-<h1 id="stackremovescreen">Stack::removeScreen()</h1>
-<p>Params:</p>
-<ul>
-<li>Screen &screen;</li>
-</ul>
-<p>Inherits from Widget::removeScreen().
-Remove a child screen from the stack.</p>
-<h1 id="stackforward">Stack::forward();</h1>
-<p>Renders the next screen in the stack.</p>
-<h1 id="stackback">Stack::back();</h1>
-<p>Renders previous screen in the stack.</p>
-<h1 id="stackgoto">Stack::goTo()</h1>
-<p>Params:</p>
-<ul>
-<li>Display* display;</li>
-<li>Screen &screen;</li>
-<li>Graphics &gfx;</li>
-</ul>
-<p>Renders the specified screen. Please note that the screen must be added to the stack before calling this method. Also, call this method once in <strong>void setup()</strong> or where your code inits the application.</p>
-<h1 id="stackgetactivescreen">Stack::getActiveScreen()</h1>
-<p>Returns the currently active screen.
-Returns: Screen* activeScreen;</p>
-<h1 id="stackrenderapp">Stack::renderApp()</h1>
-<p>Params:</p>
-<ul>
-<li>Graphics &amp;gfx</li>
-</ul>
-<p>Renders the application. Must be called in **void loop() ** or must be called in an infinite loop.</p>
 </section>
 
             </main>
