@@ -68,6 +68,9 @@ void SDLWindow::destroy() {
 
 void SDLWindow::update() {
 
+    auto& fb = display->getFrameBuffer();
+    printf("Pixel 0: %d, %d, %d  \n", fb[0], fb[1], fb[2]);
+
     SDL_SetRenderDrawColor(
         this->renderer,
         windowBg.r,
@@ -93,12 +96,14 @@ void SDLWindow::update() {
         0,
         SDL_ALPHA_OPAQUE
     );
-    SDL_RenderFillRect(this->renderer, &this->destRect);
 
+    SDL_UpdateTexture(this->texture, nullptr, display->getFrameBuffer().data(), display->getWidth() * 3);
+    SDL_RenderCopy(this->renderer, this->texture, nullptr, &this->destRect);
     SDL_RenderPresent(this->renderer);
 }
 
-void SDLWindow::loop() {
+void SDLWindow::loop(std::function<void()> applicationLoop, std::function<void()> setupLoop) {
+    setupLoop();
     while (this->isRunning) {
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
@@ -125,6 +130,7 @@ void SDLWindow::loop() {
             }
         }
 
+        applicationLoop();
         this->update();
     }
 

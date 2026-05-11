@@ -17,27 +17,29 @@ void SDLDisplay::drawPixel(int x, int y, Color color) {
         printf("pixel out of index");
         return;
     }
-    frameBuffer[y*w + x] = color;
+
+    int index = (y*w + x) * 3;
+
+    frameBuffer[index] = color.r;
+    frameBuffer[index + 1] = color.g;
+    frameBuffer[index + 2] = color.b;
 }
 
 void SDLDisplay::clear() {
     Color blackPixel = {0, 0, 0};
     for (int i=0; i<w*h; i++) {
-        frameBuffer[i] = blackPixel;
+        frameBuffer[i] = 0;
     }
     printf("framebuffer cleared");
 }
 
-std::vector<Color> SDLDisplay::getFrameBuffer() {
+std::vector<uint8_t>& SDLDisplay::getFrameBuffer() {
     return frameBuffer;
 }
 
-void SDLDisplay::onFlush(std::function<void(SDLDisplay&)> callback) {
-    flushCallback = callback;
-}
-
 void SDLDisplay::flush() {
-    flushCallback(*this);
+    // stays empty,
+    // framebuffer updates every frame automatically
 }
 
 int SDLDisplay::getHeight() {

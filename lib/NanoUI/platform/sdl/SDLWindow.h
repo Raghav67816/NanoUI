@@ -17,6 +17,8 @@ private:
 
     int scale = 2;
 
+    int testInt = 0;
+
     SDL_Window *window = nullptr;
     SDL_Renderer *renderer = nullptr;
     SDL_Texture *texture = nullptr;
@@ -36,6 +38,6 @@ public:
     void destroy();
 
     void update();
-    void loop();
+    void loop(std::function<void()> applicationLoop, std::function<void()> appSetup);
 };
 #endif //NANOUI_SDLWINDOW_H

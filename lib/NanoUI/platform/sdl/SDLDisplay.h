@@ -22,7 +22,7 @@
  * */
 class SDLDisplay: public Display {
 private:
-    std::vector<Color> frameBuffer;
+    std::vector<uint8_t> frameBuffer;
     int w;
     int h;
 
@@ -30,7 +30,7 @@ private:
 
 public:
     SDLDisplay(int width, int height): w(width), h(height) {
-        frameBuffer.resize(w*h);
+        frameBuffer.resize(w*h * 3);
         printf("frame buffer resized to %dx%d", w, h);
     }
 
@@ -43,7 +43,7 @@ public:
     void clear() override;
 
     void onFlush(std::function<void(SDLDisplay&)> callback);
-    std::vector<Color> getFrameBuffer();
+    std::vector<uint8_t>& getFrameBuffer();
 };
 
 

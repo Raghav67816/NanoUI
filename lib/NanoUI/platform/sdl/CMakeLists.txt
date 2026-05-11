@@ -3,8 +3,9 @@ find_package(SDL2 REQUIRED)
 add_executable(
     NanoUI_SDL
 
-        ../../core/Graphics.cpp
+    ../../core/Graphics.cpp
     ../../core/Widget.cpp
+    ../../core/Stack.cpp
 
         ../../widgets/Label.cpp
     ../../widgets/ProgressBar.cpp
