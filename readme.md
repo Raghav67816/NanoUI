@@ -5,7 +5,7 @@ A minimal user-interface framework for micro-controllers and low memory devices.
 ![alt text](images/banner.jpg)
 
 
-Documentation - **COMING SOON**
+Documentation [here](https://raghav67816.github.io/NanoUI/)
 
 
 ## Features

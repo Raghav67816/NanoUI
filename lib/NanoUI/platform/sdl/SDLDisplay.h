@@ -31,7 +31,11 @@ private:
 public:
     SDLDisplay(int width, int height): w(width), h(height) {
         frameBuffer.resize(w*h * 3);
-        printf("frame buffer resized to %dx%d", w, h);
+        printf("frame buffer resized to %dx%d \n", w, h);
+
+        for (int i=0; i<w*h; i++) {
+            frameBuffer[i] = 0;
+        }
     }
 
     int getHeight() override;

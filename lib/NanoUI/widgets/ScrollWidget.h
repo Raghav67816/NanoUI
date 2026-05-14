@@ -1,3 +1,5 @@
+#include <cstdio>
+
 #include "core/Widget.h"
 
 class ScrollWidget: public Widget{
@@ -6,10 +8,8 @@ class ScrollWidget: public Widget{
     int viewportX = 0;
     int viewportY = 0;
 
-    public:
-    int w, h;
-
-    ScrollWidget(int x, int y, int w, int h): Widget(0, 0, w, h){}
+public:
+    ScrollWidget(int x, int y, int w, int h): Widget(x, y, w, h) {}
 
     void draw(Graphics &gfx, int offsetX = 0, int offsetY = 0) override;
     void measureGeo(Graphics &gfx) override;

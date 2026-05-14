@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../.. -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../core -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../widgets -I/mnt/Sector16/nanoui/NanoUI/lib/NanoUI/platform/sdl/../../layouts -isystem /usr/include/SDL2
 
-CXX_FLAGS = -g
+CXX_FLAGS =  -fsanitize=address -g -g
 

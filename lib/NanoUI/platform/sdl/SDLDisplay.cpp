@@ -14,7 +14,7 @@
  */
 void SDLDisplay::drawPixel(int x, int y, Color color) {
     if (x < 0 || x >= w || y < 0 || y >= h) {
-        printf("pixel out of index");
+        printf("pixel out of index (%d, %d) \n", x, y);
         return;
     }
 
@@ -26,11 +26,9 @@ void SDLDisplay::drawPixel(int x, int y, Color color) {
 }
 
 void SDLDisplay::clear() {
-    Color blackPixel = {0, 0, 0};
     for (int i=0; i<w*h; i++) {
         frameBuffer[i] = 0;
     }
-    printf("framebuffer cleared");
 }
 
 std::vector<uint8_t>& SDLDisplay::getFrameBuffer() {

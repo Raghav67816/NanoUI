@@ -67,10 +67,6 @@ void SDLWindow::destroy() {
 }
 
 void SDLWindow::update() {
-
-    auto& fb = display->getFrameBuffer();
-    printf("Pixel 0: %d, %d, %d  \n", fb[0], fb[1], fb[2]);
-
     SDL_SetRenderDrawColor(
         this->renderer,
         windowBg.r,
@@ -132,8 +128,10 @@ void SDLWindow::loop(std::function<void()> applicationLoop, std::function<void()
 
         applicationLoop();
         this->update();
+        SDL_Delay(100);
     }
 
     this->destroy();
 }
+
 

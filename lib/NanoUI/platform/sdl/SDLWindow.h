@@ -8,6 +8,7 @@
 #include <SDL.h>
 
 #include "SDLDisplay.h"
+#include "widgets/Screen.h"
 
 
 class SDLWindow {
