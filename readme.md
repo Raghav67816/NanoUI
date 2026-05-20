@@ -24,139 +24,108 @@ Bind your widgets to events, trigger then with your physical components.
 ![alt text](images/demo.png)
 
 ```cpp
-#include <Arduino.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
+#include <string>
 
-#include "core/Graphics.h"
-#include "core/OLEDisplay.h"
+#include "Label.h"
+#include "ProgressBar.h"
+#include "ScrollWidget.h"
+#include "platform/sdl/SDLDisplay.h"
+#include "platform/sdl/SDLWindow.h"
 
-#include "widgets/Screen.h"
-#include "widgets/Button.h"
 #include "widgets/Label.h"
+#include "core/Graphics.h"
+#include "widgets/Screen.h"
+#include "core/Stack.h"
 
 #include "layouts/Column.h"
 
-#define SCREEN_WIDTH 128
-#define SCREEN_HEIGHT 64
+#define SCREEN_WIDTH 800
+#define SCREEN_HEIGHT 600
 
-#define BTN_PIN 4
 
-// ==============================
-// OLED Display Setup
-// ==============================
-
-Adafruit_SSD1306 oled(
-    SCREEN_WIDTH,
-    SCREEN_HEIGHT,
-    &Wire,
-    -1
+SDLDisplay display(
+    128,
+    64
 );
-
-// NanoUI display abstraction
-OLEDisplay display(
-    SCREEN_WIDTH,
-    SCREEN_HEIGHT,
-    &oled
-);
-
-// Graphics renderer
-Graphics gfx(&display);
-
-// ==============================
-// Colors
-// ==============================
 
 Color white = {255, 255, 255};
-Color black = {0, 0, 0};
+Color black = {0, 0, 0, };
 
-// ==============================
-// UI Widgets
-// ==============================
+Graphics gfx(&display);
 
-// Main screen
-Screen screen(&display, "NanoUI Demo");
+SDLWindow window(&display);
 
-// Vertical layout
-Column layout(
-    0,
-    0,
-    SCREEN_WIDTH,
-    SCREEN_HEIGHT - 10
-);
+int currentProg = 0;
 
-// Widgets
-Label label(
-    20,
-    10,
-    "Label 1",
-    white
-);
+Stack screenStack(display, gfx);
 
-Button button(
-    40,
-    20,
-    "Button",
-    white,
-    black
-);
+Column root_layout(0, 0, display.getWidth(), display.getHeight() - 10);
 
-// ==============================
-// Button Callback
-// ==============================
+Label prog(20, 10, "0%", white);
+ProgressBar progress_bar(100, 10);
 
-void onButtonPress(){
-    Serial.println("Button Pressed");
+Screen screen_a(&display, "Screen A");
+
+void updateProg() {
+    currentProg += 1;
+    progress_bar.setProgress(currentProg);
+    prog.setText("Writing data....");
 }
 
-// ==============================
-// Arduino Setup
-// ==============================
+void setup() {
+    root_layout.addChild(&prog);
+    root_layout.addChild(&progress_bar);
 
-void setup(){
+    screen_a.addChild(&root_layout);
+    screenStack.addScreen(screen_a);
 
-    pinMode(BTN_PIN, INPUT_PULLUP);
-
-    Serial.begin(9600);
-
-    // Initialize OLED
-    if(!oled.begin(SSD1306_SWITCHCAPVCC, 0x3C)){
-        return;
-    }
-
-    // Bind button event
-    button.bindEvent(
-        BUTTON_PRESSED,
-        onButtonPress
-    );
-
-    // Add widgets to layout
-    layout.addChild(&label);
-    layout.addChild(&button);
-
-    // Add layout to screen
-    screen.addChild(&layout);
-
-    // Render UI
     display.clear();
-
-    screen.draw(gfx);
-
+    screenStack.goTo(display, screen_a, gfx);
     display.flush();
 }
 
-// ==============================
-// Arduino Loop
-// ==============================
-
-void loop(){
-
-    // Simulate button event
-    if(digitalRead(BTN_PIN) == LOW){
-
-        button.onEvent(BUTTON_PRESSED);
-
-        delay(200);
-    }
+void loop() {
+    screenStack.renderApp(gfx);
+    updateProg();
+    display.flush();
 }
+
+int main() {
+    window.create();
+    window.loop(loop, setup);
+}
+```
+
+## Installation
+
+1. Install dependencies
+```bash
+# Ubuntu/Debian
+sudo apt install libsdl2-dev
+
+# macOS
+brew install sdl2
+```
+
+2. Install library
+Go to **Releases** install the latest **LIBRARY** file.
+
+3. Include headers
+
+for example
+
+```cpp
+#include "NanoUI/core/Display.h"
+...
+```
+
+## Example
+An example is provided with SDL backend, make sure you have SDL2 installed.
+
+Now, go to releases and install [example file](https://github.com/Raghav67816/NanoUI/releases/download/ui/NanoUI_SDL.zip).
+
+in terminal type:
+```bash
+chmod +x ./executable-name
+./executable-name
 ```
