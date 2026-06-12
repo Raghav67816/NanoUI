@@ -5,7 +5,7 @@
 #ifndef NANOUI_SDLWINDOW_H
 #define NANOUI_SDLWINDOW_H
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 #include "SDLDisplay.h"
 #include "widgets/Screen.h"

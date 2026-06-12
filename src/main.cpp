@@ -1,29 +1,31 @@
 #include <string>
 
-#include "Label.h"
-#include "ProgressBar.h"
-#include "ScrollWidget.h"
-#include "platform/sdl/SDLDisplay.h"
-#include "platform/sdl/SDLWindow.h"
+#include "lib/NanoUI/core/Stack.h"
 
-#include "widgets/Label.h"
-#include "core/Graphics.h"
-#include "widgets/Screen.h"
-#include "core/Stack.h"
+#include "lib/NanoUI/platform/sdl/SDLDisplay.h"
+#include "lib/NanoUI/platform/sdl/SDLWindow.h"
 
-#include "layouts/Column.h"
+#include "lib/NanoUI/widgets/Label.h"
+#include "lib/NanoUI/widgets/Screen.h"
+#include "lib/NanoUI/widgets/ProgressBar.h"
+#include "lib/NanoUI/widgets/ScrollWidget.h"
+
+#include "lib/NanoUI/layouts/Column.h"
 
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
 
+#define DISPLAY_WIDTH 128
+#define DISPLAY_HEIGHT 64
+
 
 SDLDisplay display(
-    128,
-    64
+    DISPLAY_WIDTH, 
+    DISPLAY_HEIGHT
 );
 
 Color white = {255, 255, 255};
-Color black = {0, 0, 0, };
+Color black = {0, 0, 0};
 
 Graphics gfx(&display);
 
@@ -35,20 +37,12 @@ Stack screenStack(display, gfx);
 
 Column root_layout(0, 0, display.getWidth(), display.getHeight() - 10);
 
-Label prog(20, 10, "0%", white);
-ProgressBar progress_bar(100, 10);
-
 Screen screen_a(&display, "Screen A");
 
-void updateProg() {
-    currentProg += 1;
-    progress_bar.setProgress(currentProg);
-    prog.setText("Writing data....");
-}
+ScrollWidget scrollWidget(0, 0, DISPLAY_WIDTH - 1, DISPLAY_HEIGHT - 10);
 
 void setup() {
-    root_layout.addChild(&prog);
-    root_layout.addChild(&progress_bar);
+    root_layout.addChild(&scrollWidget);
 
     screen_a.addChild(&root_layout);
     screenStack.addScreen(screen_a);
@@ -60,7 +54,6 @@ void setup() {
 
 void loop() {
     screenStack.renderApp(gfx);
-    updateProg();
     display.flush();
 }
 

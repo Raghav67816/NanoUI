@@ -1,32 +1,18 @@
 #include "ScrollWidget.h"
+#include <iostream>
+
+using namespace std;
 
 void ScrollWidget::measureGeo(Graphics &gfx){
     
 }
 
 void ScrollWidget::draw(Graphics &gfx, int offsetX, int offsetY){
-    int drawX = offsetX + viewportX;
-    int drawY = offsetY + viewportY;
+    int drawX = this->x - offsetX;
+    int drawY = this->y - offsetY;
 
-    Color white = {255, 255, 255};
+    cout << this->w << endl;
 
-    gfx.drawRect(this->x, this->y, this->w, this->h, white);
-
-    for(Widget *child: children){
-        child->draw(gfx, drawX, drawY);
-    }
-}
-
-void ScrollWidget::pushOffset(int offsetX, int offsetY){
-    viewportX += offsetX;
-    viewportY += offsetY;
-
-    invalidate();
-}
-
-void ScrollWidget::popOffset(int offsetX, int offsetY){
-    viewportX -= offsetX;
-    viewportY -= offsetY;
-
-    invalidate();
+    if(!gfx.boundCheck(drawX, drawX + this->w, drawY, drawY + this->h)) return;
+    gfx.drawRect(drawX, drawY, this->w, this->h, {255, 255, 255});
 }

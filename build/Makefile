@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/Sector16/nanoui/NanoUI
+CMAKE_SOURCE_DIR = /home/cooper/NanoUI
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/Sector16/nanoui/NanoUI/build
+CMAKE_BINARY_DIR = /home/cooper/NanoUI/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/Sector16/nanoui/NanoUI/build/CMakeFiles /mnt/Sector16/nanoui/NanoUI/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cooper/NanoUI/build/CMakeFiles /home/cooper/NanoUI/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/Sector16/nanoui/NanoUI/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cooper/NanoUI/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -126,8 +126,344 @@ NanoUI_SDL: cmake_check_build_system
 
 # fast build rule for target.
 NanoUI_SDL/fast:
-	$(MAKE) $(MAKESILENT) -f lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/build.make lib/NanoUI/platform/sdl/CMakeFiles/NanoUI_SDL.dir/build
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/build
 .PHONY : NanoUI_SDL/fast
+
+lib/NanoUI/core/Graphics.o: lib/NanoUI/core/Graphics.cpp.o
+.PHONY : lib/NanoUI/core/Graphics.o
+
+# target to build an object file
+lib/NanoUI/core/Graphics.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/core/Graphics.cpp.o
+.PHONY : lib/NanoUI/core/Graphics.cpp.o
+
+lib/NanoUI/core/Graphics.i: lib/NanoUI/core/Graphics.cpp.i
+.PHONY : lib/NanoUI/core/Graphics.i
+
+# target to preprocess a source file
+lib/NanoUI/core/Graphics.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/core/Graphics.cpp.i
+.PHONY : lib/NanoUI/core/Graphics.cpp.i
+
+lib/NanoUI/core/Graphics.s: lib/NanoUI/core/Graphics.cpp.s
+.PHONY : lib/NanoUI/core/Graphics.s
+
+# target to generate assembly for a file
+lib/NanoUI/core/Graphics.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/core/Graphics.cpp.s
+.PHONY : lib/NanoUI/core/Graphics.cpp.s
+
+lib/NanoUI/core/Stack.o: lib/NanoUI/core/Stack.cpp.o
+.PHONY : lib/NanoUI/core/Stack.o
+
+# target to build an object file
+lib/NanoUI/core/Stack.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/core/Stack.cpp.o
+.PHONY : lib/NanoUI/core/Stack.cpp.o
+
+lib/NanoUI/core/Stack.i: lib/NanoUI/core/Stack.cpp.i
+.PHONY : lib/NanoUI/core/Stack.i
+
+# target to preprocess a source file
+lib/NanoUI/core/Stack.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/core/Stack.cpp.i
+.PHONY : lib/NanoUI/core/Stack.cpp.i
+
+lib/NanoUI/core/Stack.s: lib/NanoUI/core/Stack.cpp.s
+.PHONY : lib/NanoUI/core/Stack.s
+
+# target to generate assembly for a file
+lib/NanoUI/core/Stack.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/core/Stack.cpp.s
+.PHONY : lib/NanoUI/core/Stack.cpp.s
+
+lib/NanoUI/core/Widget.o: lib/NanoUI/core/Widget.cpp.o
+.PHONY : lib/NanoUI/core/Widget.o
+
+# target to build an object file
+lib/NanoUI/core/Widget.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/core/Widget.cpp.o
+.PHONY : lib/NanoUI/core/Widget.cpp.o
+
+lib/NanoUI/core/Widget.i: lib/NanoUI/core/Widget.cpp.i
+.PHONY : lib/NanoUI/core/Widget.i
+
+# target to preprocess a source file
+lib/NanoUI/core/Widget.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/core/Widget.cpp.i
+.PHONY : lib/NanoUI/core/Widget.cpp.i
+
+lib/NanoUI/core/Widget.s: lib/NanoUI/core/Widget.cpp.s
+.PHONY : lib/NanoUI/core/Widget.s
+
+# target to generate assembly for a file
+lib/NanoUI/core/Widget.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/core/Widget.cpp.s
+.PHONY : lib/NanoUI/core/Widget.cpp.s
+
+lib/NanoUI/layouts/Column.o: lib/NanoUI/layouts/Column.cpp.o
+.PHONY : lib/NanoUI/layouts/Column.o
+
+# target to build an object file
+lib/NanoUI/layouts/Column.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/layouts/Column.cpp.o
+.PHONY : lib/NanoUI/layouts/Column.cpp.o
+
+lib/NanoUI/layouts/Column.i: lib/NanoUI/layouts/Column.cpp.i
+.PHONY : lib/NanoUI/layouts/Column.i
+
+# target to preprocess a source file
+lib/NanoUI/layouts/Column.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/layouts/Column.cpp.i
+.PHONY : lib/NanoUI/layouts/Column.cpp.i
+
+lib/NanoUI/layouts/Column.s: lib/NanoUI/layouts/Column.cpp.s
+.PHONY : lib/NanoUI/layouts/Column.s
+
+# target to generate assembly for a file
+lib/NanoUI/layouts/Column.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/layouts/Column.cpp.s
+.PHONY : lib/NanoUI/layouts/Column.cpp.s
+
+lib/NanoUI/layouts/Layout.o: lib/NanoUI/layouts/Layout.cpp.o
+.PHONY : lib/NanoUI/layouts/Layout.o
+
+# target to build an object file
+lib/NanoUI/layouts/Layout.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/layouts/Layout.cpp.o
+.PHONY : lib/NanoUI/layouts/Layout.cpp.o
+
+lib/NanoUI/layouts/Layout.i: lib/NanoUI/layouts/Layout.cpp.i
+.PHONY : lib/NanoUI/layouts/Layout.i
+
+# target to preprocess a source file
+lib/NanoUI/layouts/Layout.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/layouts/Layout.cpp.i
+.PHONY : lib/NanoUI/layouts/Layout.cpp.i
+
+lib/NanoUI/layouts/Layout.s: lib/NanoUI/layouts/Layout.cpp.s
+.PHONY : lib/NanoUI/layouts/Layout.s
+
+# target to generate assembly for a file
+lib/NanoUI/layouts/Layout.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/layouts/Layout.cpp.s
+.PHONY : lib/NanoUI/layouts/Layout.cpp.s
+
+lib/NanoUI/layouts/Row.o: lib/NanoUI/layouts/Row.cpp.o
+.PHONY : lib/NanoUI/layouts/Row.o
+
+# target to build an object file
+lib/NanoUI/layouts/Row.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/layouts/Row.cpp.o
+.PHONY : lib/NanoUI/layouts/Row.cpp.o
+
+lib/NanoUI/layouts/Row.i: lib/NanoUI/layouts/Row.cpp.i
+.PHONY : lib/NanoUI/layouts/Row.i
+
+# target to preprocess a source file
+lib/NanoUI/layouts/Row.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/layouts/Row.cpp.i
+.PHONY : lib/NanoUI/layouts/Row.cpp.i
+
+lib/NanoUI/layouts/Row.s: lib/NanoUI/layouts/Row.cpp.s
+.PHONY : lib/NanoUI/layouts/Row.s
+
+# target to generate assembly for a file
+lib/NanoUI/layouts/Row.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/layouts/Row.cpp.s
+.PHONY : lib/NanoUI/layouts/Row.cpp.s
+
+lib/NanoUI/platform/sdl/SDLDisplay.o: lib/NanoUI/platform/sdl/SDLDisplay.cpp.o
+.PHONY : lib/NanoUI/platform/sdl/SDLDisplay.o
+
+# target to build an object file
+lib/NanoUI/platform/sdl/SDLDisplay.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/platform/sdl/SDLDisplay.cpp.o
+.PHONY : lib/NanoUI/platform/sdl/SDLDisplay.cpp.o
+
+lib/NanoUI/platform/sdl/SDLDisplay.i: lib/NanoUI/platform/sdl/SDLDisplay.cpp.i
+.PHONY : lib/NanoUI/platform/sdl/SDLDisplay.i
+
+# target to preprocess a source file
+lib/NanoUI/platform/sdl/SDLDisplay.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/platform/sdl/SDLDisplay.cpp.i
+.PHONY : lib/NanoUI/platform/sdl/SDLDisplay.cpp.i
+
+lib/NanoUI/platform/sdl/SDLDisplay.s: lib/NanoUI/platform/sdl/SDLDisplay.cpp.s
+.PHONY : lib/NanoUI/platform/sdl/SDLDisplay.s
+
+# target to generate assembly for a file
+lib/NanoUI/platform/sdl/SDLDisplay.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/platform/sdl/SDLDisplay.cpp.s
+.PHONY : lib/NanoUI/platform/sdl/SDLDisplay.cpp.s
+
+lib/NanoUI/platform/sdl/SDLWindow.o: lib/NanoUI/platform/sdl/SDLWindow.cpp.o
+.PHONY : lib/NanoUI/platform/sdl/SDLWindow.o
+
+# target to build an object file
+lib/NanoUI/platform/sdl/SDLWindow.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/platform/sdl/SDLWindow.cpp.o
+.PHONY : lib/NanoUI/platform/sdl/SDLWindow.cpp.o
+
+lib/NanoUI/platform/sdl/SDLWindow.i: lib/NanoUI/platform/sdl/SDLWindow.cpp.i
+.PHONY : lib/NanoUI/platform/sdl/SDLWindow.i
+
+# target to preprocess a source file
+lib/NanoUI/platform/sdl/SDLWindow.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/platform/sdl/SDLWindow.cpp.i
+.PHONY : lib/NanoUI/platform/sdl/SDLWindow.cpp.i
+
+lib/NanoUI/platform/sdl/SDLWindow.s: lib/NanoUI/platform/sdl/SDLWindow.cpp.s
+.PHONY : lib/NanoUI/platform/sdl/SDLWindow.s
+
+# target to generate assembly for a file
+lib/NanoUI/platform/sdl/SDLWindow.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/platform/sdl/SDLWindow.cpp.s
+.PHONY : lib/NanoUI/platform/sdl/SDLWindow.cpp.s
+
+lib/NanoUI/widgets/Button.o: lib/NanoUI/widgets/Button.cpp.o
+.PHONY : lib/NanoUI/widgets/Button.o
+
+# target to build an object file
+lib/NanoUI/widgets/Button.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/widgets/Button.cpp.o
+.PHONY : lib/NanoUI/widgets/Button.cpp.o
+
+lib/NanoUI/widgets/Button.i: lib/NanoUI/widgets/Button.cpp.i
+.PHONY : lib/NanoUI/widgets/Button.i
+
+# target to preprocess a source file
+lib/NanoUI/widgets/Button.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/widgets/Button.cpp.i
+.PHONY : lib/NanoUI/widgets/Button.cpp.i
+
+lib/NanoUI/widgets/Button.s: lib/NanoUI/widgets/Button.cpp.s
+.PHONY : lib/NanoUI/widgets/Button.s
+
+# target to generate assembly for a file
+lib/NanoUI/widgets/Button.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/widgets/Button.cpp.s
+.PHONY : lib/NanoUI/widgets/Button.cpp.s
+
+lib/NanoUI/widgets/Label.o: lib/NanoUI/widgets/Label.cpp.o
+.PHONY : lib/NanoUI/widgets/Label.o
+
+# target to build an object file
+lib/NanoUI/widgets/Label.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/widgets/Label.cpp.o
+.PHONY : lib/NanoUI/widgets/Label.cpp.o
+
+lib/NanoUI/widgets/Label.i: lib/NanoUI/widgets/Label.cpp.i
+.PHONY : lib/NanoUI/widgets/Label.i
+
+# target to preprocess a source file
+lib/NanoUI/widgets/Label.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/widgets/Label.cpp.i
+.PHONY : lib/NanoUI/widgets/Label.cpp.i
+
+lib/NanoUI/widgets/Label.s: lib/NanoUI/widgets/Label.cpp.s
+.PHONY : lib/NanoUI/widgets/Label.s
+
+# target to generate assembly for a file
+lib/NanoUI/widgets/Label.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/widgets/Label.cpp.s
+.PHONY : lib/NanoUI/widgets/Label.cpp.s
+
+lib/NanoUI/widgets/ProgressBar.o: lib/NanoUI/widgets/ProgressBar.cpp.o
+.PHONY : lib/NanoUI/widgets/ProgressBar.o
+
+# target to build an object file
+lib/NanoUI/widgets/ProgressBar.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/widgets/ProgressBar.cpp.o
+.PHONY : lib/NanoUI/widgets/ProgressBar.cpp.o
+
+lib/NanoUI/widgets/ProgressBar.i: lib/NanoUI/widgets/ProgressBar.cpp.i
+.PHONY : lib/NanoUI/widgets/ProgressBar.i
+
+# target to preprocess a source file
+lib/NanoUI/widgets/ProgressBar.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/widgets/ProgressBar.cpp.i
+.PHONY : lib/NanoUI/widgets/ProgressBar.cpp.i
+
+lib/NanoUI/widgets/ProgressBar.s: lib/NanoUI/widgets/ProgressBar.cpp.s
+.PHONY : lib/NanoUI/widgets/ProgressBar.s
+
+# target to generate assembly for a file
+lib/NanoUI/widgets/ProgressBar.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/widgets/ProgressBar.cpp.s
+.PHONY : lib/NanoUI/widgets/ProgressBar.cpp.s
+
+lib/NanoUI/widgets/Screen.o: lib/NanoUI/widgets/Screen.cpp.o
+.PHONY : lib/NanoUI/widgets/Screen.o
+
+# target to build an object file
+lib/NanoUI/widgets/Screen.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/widgets/Screen.cpp.o
+.PHONY : lib/NanoUI/widgets/Screen.cpp.o
+
+lib/NanoUI/widgets/Screen.i: lib/NanoUI/widgets/Screen.cpp.i
+.PHONY : lib/NanoUI/widgets/Screen.i
+
+# target to preprocess a source file
+lib/NanoUI/widgets/Screen.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/widgets/Screen.cpp.i
+.PHONY : lib/NanoUI/widgets/Screen.cpp.i
+
+lib/NanoUI/widgets/Screen.s: lib/NanoUI/widgets/Screen.cpp.s
+.PHONY : lib/NanoUI/widgets/Screen.s
+
+# target to generate assembly for a file
+lib/NanoUI/widgets/Screen.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/widgets/Screen.cpp.s
+.PHONY : lib/NanoUI/widgets/Screen.cpp.s
+
+lib/NanoUI/widgets/ScrollWidget.o: lib/NanoUI/widgets/ScrollWidget.cpp.o
+.PHONY : lib/NanoUI/widgets/ScrollWidget.o
+
+# target to build an object file
+lib/NanoUI/widgets/ScrollWidget.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/widgets/ScrollWidget.cpp.o
+.PHONY : lib/NanoUI/widgets/ScrollWidget.cpp.o
+
+lib/NanoUI/widgets/ScrollWidget.i: lib/NanoUI/widgets/ScrollWidget.cpp.i
+.PHONY : lib/NanoUI/widgets/ScrollWidget.i
+
+# target to preprocess a source file
+lib/NanoUI/widgets/ScrollWidget.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/widgets/ScrollWidget.cpp.i
+.PHONY : lib/NanoUI/widgets/ScrollWidget.cpp.i
+
+lib/NanoUI/widgets/ScrollWidget.s: lib/NanoUI/widgets/ScrollWidget.cpp.s
+.PHONY : lib/NanoUI/widgets/ScrollWidget.s
+
+# target to generate assembly for a file
+lib/NanoUI/widgets/ScrollWidget.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/widgets/ScrollWidget.cpp.s
+.PHONY : lib/NanoUI/widgets/ScrollWidget.cpp.s
+
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NanoUI_SDL.dir/build.make CMakeFiles/NanoUI_SDL.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -138,6 +474,48 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... NanoUI_SDL"
+	@echo "... lib/NanoUI/core/Graphics.o"
+	@echo "... lib/NanoUI/core/Graphics.i"
+	@echo "... lib/NanoUI/core/Graphics.s"
+	@echo "... lib/NanoUI/core/Stack.o"
+	@echo "... lib/NanoUI/core/Stack.i"
+	@echo "... lib/NanoUI/core/Stack.s"
+	@echo "... lib/NanoUI/core/Widget.o"
+	@echo "... lib/NanoUI/core/Widget.i"
+	@echo "... lib/NanoUI/core/Widget.s"
+	@echo "... lib/NanoUI/layouts/Column.o"
+	@echo "... lib/NanoUI/layouts/Column.i"
+	@echo "... lib/NanoUI/layouts/Column.s"
+	@echo "... lib/NanoUI/layouts/Layout.o"
+	@echo "... lib/NanoUI/layouts/Layout.i"
+	@echo "... lib/NanoUI/layouts/Layout.s"
+	@echo "... lib/NanoUI/layouts/Row.o"
+	@echo "... lib/NanoUI/layouts/Row.i"
+	@echo "... lib/NanoUI/layouts/Row.s"
+	@echo "... lib/NanoUI/platform/sdl/SDLDisplay.o"
+	@echo "... lib/NanoUI/platform/sdl/SDLDisplay.i"
+	@echo "... lib/NanoUI/platform/sdl/SDLDisplay.s"
+	@echo "... lib/NanoUI/platform/sdl/SDLWindow.o"
+	@echo "... lib/NanoUI/platform/sdl/SDLWindow.i"
+	@echo "... lib/NanoUI/platform/sdl/SDLWindow.s"
+	@echo "... lib/NanoUI/widgets/Button.o"
+	@echo "... lib/NanoUI/widgets/Button.i"
+	@echo "... lib/NanoUI/widgets/Button.s"
+	@echo "... lib/NanoUI/widgets/Label.o"
+	@echo "... lib/NanoUI/widgets/Label.i"
+	@echo "... lib/NanoUI/widgets/Label.s"
+	@echo "... lib/NanoUI/widgets/ProgressBar.o"
+	@echo "... lib/NanoUI/widgets/ProgressBar.i"
+	@echo "... lib/NanoUI/widgets/ProgressBar.s"
+	@echo "... lib/NanoUI/widgets/Screen.o"
+	@echo "... lib/NanoUI/widgets/Screen.i"
+	@echo "... lib/NanoUI/widgets/Screen.s"
+	@echo "... lib/NanoUI/widgets/ScrollWidget.o"
+	@echo "... lib/NanoUI/widgets/ScrollWidget.i"
+	@echo "... lib/NanoUI/widgets/ScrollWidget.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 
