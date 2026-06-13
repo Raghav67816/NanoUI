@@ -39,7 +39,7 @@ Column root_layout(0, 0, display.getWidth(), display.getHeight() - 10);
 
 Screen screen_a(&display, "Screen A");
 
-ScrollWidget scrollWidget(0, 0, DISPLAY_WIDTH - 1, DISPLAY_HEIGHT - 10);
+ScrollWidget scrollWidget(0, 0, DISPLAY_WIDTH - 8, DISPLAY_HEIGHT - 14);
 
 void setup() {
     root_layout.addChild(&scrollWidget);

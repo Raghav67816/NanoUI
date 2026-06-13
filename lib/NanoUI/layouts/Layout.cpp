@@ -1,6 +1,10 @@
 #include "Layout.h"
+#include <iostream>
 
 void Layout::draw(Graphics &gfx, int offsetX, int offsetY){
+
+    int totalSpacing = OUTER_PADDING + INNER_PADDING;
+
     for(Widget *child: children){
         child->measureGeo(gfx);
     }

@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <iostream>
 
 #include "core/Widget.h"
 
@@ -9,7 +10,10 @@ class ScrollWidget: public Widget{
     int viewportY = 0;
 
 public:
-    ScrollWidget(int x, int y, int w, int h): Widget(x, y, w, h) {}
+    ScrollWidget(int x, int y, int w, int h): Widget(x, y, w, h) {
+        std::cout << w << std::endl;
+        std::cout << h << std::endl;       
+    }
 
     void draw(Graphics &gfx, int offsetX = 0, int offsetY = 0) override;
     void measureGeo(Graphics &gfx) override;

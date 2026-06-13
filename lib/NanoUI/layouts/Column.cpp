@@ -1,10 +1,10 @@
 #include "Column.h"
 
 void Column::layout(Graphics &gfx){
-    int currentY = y + spacing;
+    int currentY = this->y + spacing;
     for(Widget *child: children){
         child->x -= 1;
-        child->x = x + spacing;
+        child->x = this->x + spacing;
         child->y = currentY;
 
         currentY += child->h + spacing;

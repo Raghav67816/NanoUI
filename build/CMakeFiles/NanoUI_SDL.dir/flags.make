@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/cooper/NanoUI -I/home/cooper/NanoUI/src -I/home/cooper/NanoUI/lib/NanoUI -I/home/cooper/NanoUI/lib/NanoUI/core -I/home/cooper/NanoUI/lib/NanoUI/widgets -I/home/cooper/NanoUI/lib/NanoUI/layouts -I/home/cooper/NanoUI/lib/NanoUI/platform/sdl -isystem /usr/include/SDL2
 
-CXX_FLAGS =  -fsanitize=address -g -g -std=gnu++17
+CXX_FLAGS = -g -std=gnu++17
 
