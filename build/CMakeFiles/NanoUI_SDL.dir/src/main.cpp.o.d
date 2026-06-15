@@ -295,7 +295,7 @@ CMakeFiles/NanoUI_SDL.dir/src/main.cpp.o: \
  /home/cooper/NanoUI/lib/NanoUI/widgets/Label.h \
  /home/cooper/NanoUI/lib/NanoUI/widgets/../core/Display.h \
  /home/cooper/NanoUI/lib/NanoUI/widgets/ProgressBar.h \
- /home/cooper/NanoUI/lib/NanoUI/widgets/ScrollWidget.h \
+ /home/cooper/NanoUI/lib/NanoUI/widgets/ListWidget.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/ostream \
  /usr/include/c++/13/ios /usr/include/c++/13/exception \
  /usr/include/c++/13/bits/exception_ptr.h \

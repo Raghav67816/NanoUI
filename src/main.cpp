@@ -8,7 +8,7 @@
 #include "lib/NanoUI/widgets/Label.h"
 #include "lib/NanoUI/widgets/Screen.h"
 #include "lib/NanoUI/widgets/ProgressBar.h"
-#include "lib/NanoUI/widgets/ScrollWidget.h"
+#include "lib/NanoUI/widgets/ListWidget.h"
 
 #include "lib/NanoUI/layouts/Column.h"
 
@@ -31,7 +31,7 @@ Graphics gfx(&display);
 
 SDLWindow window(&display);
 
-int currentProg = 0;
+int offsetX = 0;
 
 Stack screenStack(display, gfx);
 
@@ -39,12 +39,16 @@ Column root_layout(0, 0, display.getWidth(), display.getHeight() - 10);
 
 Screen screen_a(&display, "Screen A");
 
-ScrollWidget scrollWidget(0, 0, DISPLAY_WIDTH - 8, DISPLAY_HEIGHT - 14);
+ListWidget listWidget(0, 0, DISPLAY_WIDTH, DISPLAY_HEIGHT - 10);
+
+Label label(20, 10, "Hello", white);
+
 
 void setup() {
-    root_layout.addChild(&scrollWidget);
-
+    listWidget.addChild(&label);
+    root_layout.addChild(&listWidget);
     screen_a.addChild(&root_layout);
+
     screenStack.addScreen(screen_a);
 
     display.clear();

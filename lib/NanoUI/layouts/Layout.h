@@ -2,9 +2,6 @@
 
 #include "core/Widget.h"
 
-#define OUTER_PADDING 2;
-#define INNER_PADDING 2;
-
 class Layout: public Widget{
     public:
 

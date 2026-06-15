@@ -8,7 +8,8 @@
 enum EventType
 {
     BUTTON_PRESSED,
-    PROGRESS_CHANGED
+    PROGRESS_CHANGED,
+    CURRENT_ITEM_CHANGED
 };
 
 
