@@ -17,7 +17,8 @@ class ListWidget: public Widget{
 
 public:
     ListWidget(int x, int y, int w, int h): Widget(x, y, w, h) {
-        col = &Column(x, y, w, h);
+        Column _col(x, y, w, h);
+        this->col = col;
     }
 
     void draw(Graphics &gfx, int offsetX = 0, int offsetY = 0) override;

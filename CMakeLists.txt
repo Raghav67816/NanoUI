@@ -6,6 +6,10 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -g")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
+
+set(SDLTTF_VENDORED ON)
 
 find_package(SDL2 REQUIRED)
 
@@ -24,7 +28,8 @@ add_executable(NanoUI_SDL
 
     lib/NanoUI/widgets/Label.cpp
     lib/NanoUI/widgets/ProgressBar.cpp
-    lib/NanoUI/widgets/ScrollWidget.cpp
+    lib/NanoUI/widgets/ListWidget.cpp
+    lib/NanoUI/widgets/ListItem.h
     lib/NanoUI/widgets/Screen.cpp
     lib/NanoUI/widgets/Button.cpp
 
@@ -47,5 +52,4 @@ target_include_directories(NanoUI_SDL PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/lib/NanoUI/platform/sdl
 )
 
-
-target_link_libraries(NanoUI_SDL PRIVATE SDL2::SDL2)
+target_link_libraries(NanoUI_SDL PRIVATE SDL2::SDL2 SDL2_ttf)

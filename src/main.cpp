@@ -1,67 +1,119 @@
-#include <string>
+#include <Wire.h>
+#include <Adafruit_SH110X.h>
 
-#include "lib/NanoUI/core/Stack.h"
+#include "esp_timer.h"
+#include "esp_bt_main.h"
 
-#include "lib/NanoUI/platform/sdl/SDLDisplay.h"
-#include "lib/NanoUI/platform/sdl/SDLWindow.h"
-
-#include "lib/NanoUI/widgets/Label.h"
-#include "lib/NanoUI/widgets/Screen.h"
-#include "lib/NanoUI/widgets/ProgressBar.h"
-#include "lib/NanoUI/widgets/ListWidget.h"
-
-#include "lib/NanoUI/layouts/Column.h"
-
-#define SCREEN_WIDTH 800
-#define SCREEN_HEIGHT 600
+#include "core/Stack.h"
+#include "core/Graphics.h"
+#include "widgets/Screen.h"
+#include "core/OLEDisplayX.h"
+#include "layouts/Column.h"
+#include "layouts/Row.h"
+#include "widgets/Label.h"
+#include "core/Color.h"
 
 #define DISPLAY_WIDTH 128
 #define DISPLAY_HEIGHT 64
 
-
-SDLDisplay display(
-    DISPLAY_WIDTH, 
-    DISPLAY_HEIGHT
-);
+#define SDA 8
+#define SCK 4
 
 Color white = {255, 255, 255};
-Color black = {0, 0, 0};
+
+Adafruit_SH1106G oled = Adafruit_SH1106G(
+  DISPLAY_WIDTH, 
+  DISPLAY_HEIGHT,
+  &Wire,
+  -1
+);
+
+OLEDisplayX display(
+  DISPLAY_WIDTH,
+  DISPLAY_HEIGHT,
+  &oled
+);
 
 Graphics gfx(&display);
 
-SDLWindow window(&display);
+Stack app(display, gfx);
+Screen home_screen(
+  &display,
+  "Home"
+);
+Column root_layout(0, 0, DISPLAY_WIDTH, DISPLAY_HEIGHT - 10);
+Row temp_container(0, 0, DISPLAY_WIDTH, 20);
+Row ble_container(40, 0, DISPLAY_WIDTH, 20);
 
-int offsetX = 0;
+Label itemp_label(20, 10, "Temp: ", white);
+Label temp_val(10, 10, "0", white);
 
-Stack screenStack(display, gfx);
+Label ble_label(10, 10, "BLE Status: ", white);
+Label ble_stat(10, 10, "X", white);
 
-Column root_layout(0, 0, display.getWidth(), display.getHeight() - 10);
+Screen error_screen(
+  &display,
+  "Error"
+);
+Label error_val(DISPLAY_WIDTH - 10, 10, "ERROR", white);
 
-Screen screen_a(&display, "Screen A");
+char temp_buff[5];
 
-ListWidget listWidget(0, 0, DISPLAY_WIDTH, DISPLAY_HEIGHT - 10);
-
-Label label(20, 10, "Hello", white);
-
-
-void setup() {
-    listWidget.addChild(&label);
-    root_layout.addChild(&listWidget);
-    screen_a.addChild(&root_layout);
-
-    screenStack.addScreen(screen_a);
-
-    display.clear();
-    screenStack.goTo(display, screen_a, gfx);
-    display.flush();
+void update_temp(void* arg){
+  float temp = temperatureRead();
+  temp_val.setText(dtostrf(temp, 1, 2, temp_buff));
 }
 
-void loop() {
-    screenStack.renderApp(gfx);
-    display.flush();
+const esp_timer_create_args_t tpt_config = {
+  .callback = update_temp,
+  .arg = nullptr,
+  .dispatch_method = ESP_TIMER_TASK,
+  .name = "temp_proc_timer",
+  .skip_unhandled_events = true
+};
+
+esp_timer_handle_t temp_timer = NULL;
+
+void setup(){
+  Serial.begin(115200);
+  Wire.begin(SDA, SCK);
+  Wire.setClock(400000);
+
+  temp_container.addChild(&itemp_label);
+  temp_container.addChild(&temp_val);
+
+  ble_container.addChild(&ble_label);
+  ble_container.addChild(&ble_stat);
+
+  root_layout.addChild(&ble_container);
+  root_layout.addChild(&temp_container);
+  home_screen.addChild(&root_layout);
+
+  app.addScreen(home_screen);
+  app.addScreen(error_screen);
+
+  esp_err_t _ttemp = esp_timer_create(&tpt_config, &temp_timer);
+  esp_timer_start_periodic(temp_timer, 1000000);
+  
+  if(!oled.begin(0x3C, true)){
+    while(1);
+  }
+
+  if(!esp_timer_init() == ESP_OK){
+    app.goTo(display, error_screen, gfx);
+    error_val.setText("ESP Timer Failed");
+  }
+
+  oled.setTextSize(2);
+
+  display.clear();
+  app.goTo(display, home_screen, gfx);
+  display.flush();
 }
 
-int main() {
-    window.create();
-    window.loop(loop, setup);
+
+void loop(){
+  app.renderApp(gfx);
+
+  display.flush();
 }

@@ -1,7 +1,6 @@
 CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/platform/sdl/SDLWindow.cpp.o: \
  /home/cooper/NanoUI/lib/NanoUI/platform/sdl/SDLWindow.cpp \
- /usr/include/stdc-predef.h \
- /home/cooper/NanoUI/lib/NanoUI/platform/sdl/SDLWindow.h \
+ /usr/include/stdc-predef.h /usr/include/SDL2/SDL_ttf.h \
  /usr/include/SDL2/SDL.h /usr/include/SDL2/SDL_main.h \
  /usr/include/SDL2/SDL_stdinc.h /usr/include/SDL2/SDL_config.h \
  /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \
@@ -227,6 +226,8 @@ CMakeFiles/NanoUI_SDL.dir/lib/NanoUI/platform/sdl/SDLWindow.cpp.o: \
  /usr/include/SDL2/SDL_system.h /usr/include/SDL2/SDL_timer.h \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
  /usr/include/SDL2/SDL_misc.h \
+ /home/cooper/NanoUI/lib/NanoUI/platform/sdl/SDLWindow.h \
+ /usr/include/SDL2/SDL.h \
  /home/cooper/NanoUI/lib/NanoUI/platform/sdl/SDLDisplay.h \
  /usr/include/c++/13/cstdio /usr/include/c++/13/functional \
  /usr/include/c++/13/bits/stl_function.h \
