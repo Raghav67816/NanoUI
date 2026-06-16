@@ -1,5 +1,4 @@
 #include <cstdio>
-#include <iostream>
 
 #include "core/Widget.h"
 #include "layouts/Column.h"

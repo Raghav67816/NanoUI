@@ -19,6 +19,10 @@
 #define SDA 8
 #define SCK 4
 
+#define BTN_RIGHT 1
+#define BTN_OK 0
+#define BTN_LEFT 10
+
 Color white = {255, 255, 255};
 
 Adafruit_SH1106G oled = Adafruit_SH1106G(
@@ -39,7 +43,7 @@ Graphics gfx(&display);
 Stack app(display, gfx);
 Screen home_screen(
   &display,
-  "Home"
+  "SYSTEM STATUS"
 );
 Column root_layout(0, 0, DISPLAY_WIDTH, DISPLAY_HEIGHT - 10);
 Row temp_container(0, 0, DISPLAY_WIDTH, 20);
@@ -57,7 +61,13 @@ Screen error_screen(
 );
 Label error_val(DISPLAY_WIDTH - 10, 10, "ERROR", white);
 
+Screen menu_screen(
+    &display,
+    "MENU"
+);
+
 char temp_buff[5];
+char analog_buff[5];
 
 void update_temp(void* arg){
   float temp = temperatureRead();
@@ -79,6 +89,10 @@ void setup(){
   Wire.begin(SDA, SCK);
   Wire.setClock(400000);
 
+  pinMode(BTN_OK, INPUT_PULLUP);
+  pinMode(BTN_RIGHT, INPUT_PULLUP);
+  pinMode(BTN_LEFT, INPUT_PULLUP);
+
   temp_container.addChild(&itemp_label);
   temp_container.addChild(&temp_val);
 
@@ -91,6 +105,7 @@ void setup(){
 
   app.addScreen(home_screen);
   app.addScreen(error_screen);
+  app.addScreen(menu_screen);
 
   esp_err_t _ttemp = esp_timer_create(&tpt_config, &temp_timer);
   esp_timer_start_periodic(temp_timer, 1000000);
@@ -114,6 +129,13 @@ void setup(){
 
 void loop(){
   app.renderApp(gfx);
+
+  if(digitalRead(BTN_OK) == LOW){
+    ble_stat.setText("pressed");
+    if(app.getActiveScreen() == &home_screen){
+        app.goTo(display, menu_screen, gfx);
+    }
+  }
 
   display.flush();
 }

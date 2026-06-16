@@ -51,6 +51,7 @@ void Stack::onCurrentScreenChanged(Display &display, Graphics &gfx){
 
     activeScreen->measureGeo(gfx);
     activeScreen->setTitle(&gfx, activeScreen->title, black);
+    display.clear();
     activeScreen->draw(gfx);
 
 }
