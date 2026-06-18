@@ -5,18 +5,22 @@
 #include "esp_bt_main.h"
 
 #include "core/Stack.h"
-#include "core/Graphics.h"
-#include "widgets/Screen.h"
-#include "core/OLEDisplayX.h"
-#include "layouts/Column.h"
-#include "layouts/Row.h"
-#include "widgets/Label.h"
 #include "core/Color.h"
+#include "core/Graphics.h"
+#include "core/OLEDisplayX.h"
+
+#include "layouts/Row.h"
+#include "layouts/Column.h"
+
+#include "widgets/Label.h"
+#include "widgets/Screen.h"
+#include "widgets/ListItem.h"
+#include "widgets/ListWidget.h"
 
 #define DISPLAY_WIDTH 128
 #define DISPLAY_HEIGHT 64
-
 #define SDA 8
+
 #define SCK 4
 
 #define BTN_RIGHT 1
@@ -66,6 +70,16 @@ Screen menu_screen(
     "MENU"
 );
 
+Column menu_root_layout(0, 0, DISPLAY_WIDTH, DISPLAY_HEIGHT - 10);
+
+ListItem item_a("Item 1");
+ListItem item_b("Item 2");
+ListItem item_c("Item 3");
+
+ListWidget list_widget(0, 10, DISPLAY_WIDTH, DISPLAY_HEIGHT - 10);
+
+ListItem items[3] = {item_a, item_b, item_c};
+
 char temp_buff[5];
 char analog_buff[5];
 
@@ -84,6 +98,7 @@ const esp_timer_create_args_t tpt_config = {
 
 esp_timer_handle_t temp_timer = NULL;
 
+
 void setup(){
   Serial.begin(115200);
   Wire.begin(SDA, SCK);
@@ -99,13 +114,22 @@ void setup(){
   ble_container.addChild(&ble_label);
   ble_container.addChild(&ble_stat);
 
+  list_widget.addItem(&item_a);
+  list_widget.addItem(&item_b);
+  list_widget.addItem(&item_c);
+
+
   root_layout.addChild(&ble_container);
   root_layout.addChild(&temp_container);
+
   home_screen.addChild(&root_layout);
 
+  menu_root_layout.addChild(&list_widget);
+  menu_screen.addChild(&menu_root_layout);
+
   app.addScreen(home_screen);
-  app.addScreen(error_screen);
   app.addScreen(menu_screen);
+  app.addScreen(error_screen);
 
   esp_err_t _ttemp = esp_timer_create(&tpt_config, &temp_timer);
   esp_timer_start_periodic(temp_timer, 1000000);
@@ -122,7 +146,7 @@ void setup(){
   oled.setTextSize(2);
 
   display.clear();
-  app.goTo(display, home_screen, gfx);
+  app.goTo(display, menu_screen, gfx);
   display.flush();
 }
 
@@ -131,9 +155,13 @@ void loop(){
   app.renderApp(gfx);
 
   if(digitalRead(BTN_OK) == LOW){
-    ble_stat.setText("pressed");
-    if(app.getActiveScreen() == &home_screen){
-        app.goTo(display, menu_screen, gfx);
+    Screen *activeScreen = app.getActiveScreen();
+    if(activeScreen == &home_screen){
+      app.goTo(display, menu_screen, gfx);
+    }
+
+    if(activeScreen == &menu_screen){
+      app.goTo(display, home_screen, gfx);
     }
   }
 
