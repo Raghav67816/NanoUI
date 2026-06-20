@@ -1,12 +1,12 @@
 #include "Label.h"
 
 void Label::draw(Graphics &gfx, int offsetX, int offsetY){
-    int drawX = x - offsetX;
-    int drawY = y - offsetY;
+    // int drawX = x - offsetX;
+    // int drawY = y - offsetY;
 
     gfx.drawText(
-        drawX,
-        drawY,
+        this->x,
+        this->y,
         labelText,
         color
     );
@@ -27,7 +27,7 @@ void Label::setColor(Color _color){
     invalidate();
 }
 
-char* Label::text(){
+const char* Label::text(){
     return labelText;
 }
 

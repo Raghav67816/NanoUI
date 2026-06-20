@@ -28,6 +28,7 @@
 #define BTN_LEFT 10
 
 Color white = {255, 255, 255};
+Color black = {0, 0, 0};
 
 Adafruit_SH1106G oled = Adafruit_SH1106G(
   DISPLAY_WIDTH, 
@@ -70,15 +71,15 @@ Screen menu_screen(
     "MENU"
 );
 
-Column menu_root_layout(0, 0, DISPLAY_WIDTH, DISPLAY_HEIGHT - 10);
+Column menu_root_layout(0, 10, DISPLAY_WIDTH, DISPLAY_HEIGHT - 10);
 
 ListItem item_a("Item 1");
 ListItem item_b("Item 2");
 ListItem item_c("Item 3");
 
-ListWidget list_widget(0, 10, DISPLAY_WIDTH, DISPLAY_HEIGHT - 10);
+Label item_alt(20, 10, "Item 1A", white);
 
-ListItem items[3] = {item_a, item_b, item_c};
+ListWidget list_widget(0, 10, DISPLAY_WIDTH, DISPLAY_HEIGHT - 10);
 
 char temp_buff[5];
 char analog_buff[5];
@@ -114,9 +115,11 @@ void setup(){
   ble_container.addChild(&ble_label);
   ble_container.addChild(&ble_stat);
 
-  list_widget.addItem(&item_a);
-  list_widget.addItem(&item_b);
-  list_widget.addItem(&item_c);
+  list_widget.addChild(&item_a);
+  list_widget.addChild(&item_b);
+  list_widget.addChild(&item_c);
+
+  // list_widget.addChild(&item_alt);
 
 
   root_layout.addChild(&ble_container);

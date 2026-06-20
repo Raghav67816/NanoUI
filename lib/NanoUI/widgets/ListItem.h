@@ -8,10 +8,11 @@ class ListItem: public Label{
     private:
     bool isFocused = false;
 
-    Color white = {0, 255, 255};
-
     public:
-    ListItem(char* text): Label(20, 10, text, white){}
+    ListItem(char* text): Label(20, 10, text, {0, 0, 0}){
+        Color white = {255, 255, 255};
+        Label::setColor(white);
+    }
 
-    void draw(Graphics &gfx, int offsetX = 0, int offsetY = 0) override;
+    // void draw(Graphics &gfx, int offsetX = 0, int offsetY = 0) override;
 };

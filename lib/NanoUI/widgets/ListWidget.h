@@ -14,8 +14,8 @@ class ListWidget: public Column{
     ListWidget(int x, int y, int w, int h): Column(x, y, w, h){}
 
     void bindEvent(EventType event, std::function<void(ListItem *item)> callback);
-    void draw(Graphics &gfx, int offsetX = 0, int offsetY = 0) override;
-    void measureGeo(Graphics &gfx) override;
+    // void draw(Graphics &gfx, int offsetX = 0, int offsetY = 0) override;
+    // void measureGeo(Graphics &gfx) override;
 
     void addItem(ListItem *item);
     void removeItem(ListItem *item);

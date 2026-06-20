@@ -20,21 +20,23 @@ void ListWidget::removeItem(ListItem *item){
     this->isDirty = true;
 }
 
-void ListWidget::draw(Graphics &gfx, int offsetX, int offsetY){
+// void ListWidget::draw(Graphics &gfx, int offsetX, int offsetY){
 
-    // if(!gfx.boundCheck(this->x, this->x + this->w, this->h, this->y + this->h)) return;
+//     if(!gfx.boundCheck(this->x, this->x + this->w, this->h, this->y + this->h)) return;
 
-    for(Widget *child: children){
-        child->draw(gfx);
-    }
-}
+//     gfx.drawRect(this->x, this->y, this->w, this->h, {255, 255, 255});
 
-void ListWidget::measureGeo(Graphics &gfx){
-    if(this->w > parent->w){
-        this->w = parent->w;
-    }
+//     for(Widget *child: children){
+//         child->draw(gfx);
+//     }
+// }
 
-    if(this->h > parent->h){
-        this->h = parent->h;
-    }
-}
+// void ListWidget::measureGeo(Graphics &gfx){
+//     if(this->w > parent->w){
+//         this->w = parent->w;
+//     }
+
+//     if(this->h > parent->h){
+//         this->h = parent->h;
+//     }
+// }
