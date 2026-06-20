@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../core/Widget.h"
+#include "core/Widget.h"
 #include "core/Color.h"
 
 class Button: public Widget{

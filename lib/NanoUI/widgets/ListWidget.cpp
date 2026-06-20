@@ -20,23 +20,13 @@ void ListWidget::removeItem(ListItem *item){
     this->isDirty = true;
 }
 
-// void ListWidget::draw(Graphics &gfx, int offsetX, int offsetY){
+void ListWidget::focusItem(int index){
+    if(index > this->children.capacity()) return;
+    ListItem *item = static_cast<ListItem*>(this->children[index]);
+    item->setFocused(true);
+    this->currentFocusedIndex = index;
+}
 
-//     if(!gfx.boundCheck(this->x, this->x + this->w, this->h, this->y + this->h)) return;
-
-//     gfx.drawRect(this->x, this->y, this->w, this->h, {255, 255, 255});
-
-//     for(Widget *child: children){
-//         child->draw(gfx);
-//     }
-// }
-
-// void ListWidget::measureGeo(Graphics &gfx){
-//     if(this->w > parent->w){
-//         this->w = parent->w;
-//     }
-
-//     if(this->h > parent->h){
-//         this->h = parent->h;
-//     }
-// }
+int ListWidget::getFocusedItem(){
+    return this->currentFocusedIndex;
+}

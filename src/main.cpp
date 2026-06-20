@@ -17,6 +17,8 @@
 #include "widgets/ListItem.h"
 #include "widgets/ListWidget.h"
 
+#include "input/GPIOButton.h"
+
 #define DISPLAY_WIDTH 128
 #define DISPLAY_HEIGHT 64
 #define SDA 8
@@ -99,6 +101,9 @@ const esp_timer_create_args_t tpt_config = {
 
 esp_timer_handle_t temp_timer = NULL;
 
+GPIOButton btn_left(BTN_LEFT, millis);
+GPIOButton btn_ok(BTN_OK, millis);
+GPIOButton btn_right(BTN_RIGHT, millis);
 
 void setup(){
   Serial.begin(115200);
@@ -118,6 +123,8 @@ void setup(){
   list_widget.addChild(&item_a);
   list_widget.addChild(&item_b);
   list_widget.addChild(&item_c);
+
+  list_widget.focusItem(0);
 
   // list_widget.addChild(&item_alt);
 
@@ -157,12 +164,15 @@ void setup(){
 void loop(){
   app.renderApp(gfx);
 
-  if(digitalRead(BTN_OK) == LOW){
+  int btn_ok_state = digitalRead(BTN_OK);
+  int btn_left_state = digitalRead(BTN_LEFT);
+  int btn_right_state = digitalRead(BTN_RIGHT);
+
+  if(btn_ok.pressed(!btn_ok_state)){
     Screen *activeScreen = app.getActiveScreen();
     if(activeScreen == &home_screen){
       app.goTo(display, menu_screen, gfx);
     }
-
     if(activeScreen == &menu_screen){
       app.goTo(display, home_screen, gfx);
     }

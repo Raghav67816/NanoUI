@@ -10,6 +10,8 @@ class ListWidget: public Column{
     ListItem *activeItem = NULL;
     std::function<void(ListItem *item)> _onCurrentItemChanged;
 
+    int currentFocusedIndex = 0;
+
     public:
     ListWidget(int x, int y, int w, int h): Column(x, y, w, h){}
 
@@ -21,5 +23,7 @@ class ListWidget: public Column{
     void removeItem(ListItem *item);
 
     void focusItem(int index);
+    int getFocusedItem();
+
     void onCurrentItemChanged();
 };
