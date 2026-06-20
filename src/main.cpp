@@ -33,25 +33,22 @@ Color white = {255, 255, 255};
 Color black = {0, 0, 0};
 
 Adafruit_SH1106G oled = Adafruit_SH1106G(
-  DISPLAY_WIDTH, 
-  DISPLAY_HEIGHT,
-  &Wire,
-  -1
-);
+    DISPLAY_WIDTH,
+    DISPLAY_HEIGHT,
+    &Wire,
+    -1);
 
 OLEDisplayX display(
-  DISPLAY_WIDTH,
-  DISPLAY_HEIGHT,
-  &oled
-);
+    DISPLAY_WIDTH,
+    DISPLAY_HEIGHT,
+    &oled);
 
 Graphics gfx(&display);
 
 Stack app(display, gfx);
 Screen home_screen(
-  &display,
-  "SYSTEM STATUS"
-);
+    &display,
+    "SYSTEM STATUS");
 Column root_layout(0, 0, DISPLAY_WIDTH, DISPLAY_HEIGHT - 10);
 Row temp_container(0, 0, DISPLAY_WIDTH, 20);
 Row ble_container(40, 0, DISPLAY_WIDTH, 20);
@@ -63,21 +60,19 @@ Label ble_label(10, 10, "BLE Status: ", white);
 Label ble_stat(10, 10, "X", white);
 
 Screen error_screen(
-  &display,
-  "Error"
-);
+    &display,
+    "Error");
 Label error_val(DISPLAY_WIDTH - 10, 10, "ERROR", white);
 
 Screen menu_screen(
     &display,
-    "MENU"
-);
+    "MENU");
 
 Column menu_root_layout(0, 10, DISPLAY_WIDTH, DISPLAY_HEIGHT - 10);
 
-ListItem item_a("Item 1");
-ListItem item_b("Item 2");
-ListItem item_c("Item 3");
+ListItem item_a("Wi-Fi Options");
+ListItem item_b("About");
+ListItem item_c("Home");
 
 Label item_alt(20, 10, "Item 1A", white);
 
@@ -86,18 +81,18 @@ ListWidget list_widget(0, 10, DISPLAY_WIDTH, DISPLAY_HEIGHT - 10);
 char temp_buff[5];
 char analog_buff[5];
 
-void update_temp(void* arg){
+void update_temp(void *arg)
+{
   float temp = temperatureRead();
   temp_val.setText(dtostrf(temp, 1, 2, temp_buff));
 }
 
 const esp_timer_create_args_t tpt_config = {
-  .callback = update_temp,
-  .arg = nullptr,
-  .dispatch_method = ESP_TIMER_TASK,
-  .name = "temp_proc_timer",
-  .skip_unhandled_events = true
-};
+    .callback = update_temp,
+    .arg = nullptr,
+    .dispatch_method = ESP_TIMER_TASK,
+    .name = "temp_proc_timer",
+    .skip_unhandled_events = true};
 
 esp_timer_handle_t temp_timer = NULL;
 
@@ -105,7 +100,8 @@ GPIOButton btn_left(BTN_LEFT, millis);
 GPIOButton btn_ok(BTN_OK, millis);
 GPIOButton btn_right(BTN_RIGHT, millis);
 
-void setup(){
+void setup()
+{
   Serial.begin(115200);
   Wire.begin(SDA, SCK);
   Wire.setClock(400000);
@@ -128,7 +124,6 @@ void setup(){
 
   // list_widget.addChild(&item_alt);
 
-
   root_layout.addChild(&ble_container);
   root_layout.addChild(&temp_container);
 
@@ -143,12 +138,15 @@ void setup(){
 
   esp_err_t _ttemp = esp_timer_create(&tpt_config, &temp_timer);
   esp_timer_start_periodic(temp_timer, 1000000);
-  
-  if(!oled.begin(0x3C, true)){
-    while(1);
+
+  if (!oled.begin(0x3C, true))
+  {
+    while (1)
+      ;
   }
 
-  if(!esp_timer_init() == ESP_OK){
+  if (!esp_timer_init() == ESP_OK)
+  {
     app.goTo(display, error_screen, gfx);
     error_val.setText("ESP Timer Failed");
   }
@@ -160,23 +158,62 @@ void setup(){
   display.flush();
 }
 
+void loop()
+{
+    app.renderApp(gfx);
 
-void loop(){
-  app.renderApp(gfx);
+    int btn_ok_state = digitalRead(BTN_OK);
+    int btn_left_state = digitalRead(BTN_LEFT);
+    int btn_right_state = digitalRead(BTN_RIGHT);
 
-  int btn_ok_state = digitalRead(BTN_OK);
-  int btn_left_state = digitalRead(BTN_LEFT);
-  int btn_right_state = digitalRead(BTN_RIGHT);
 
-  if(btn_ok.pressed(!btn_ok_state)){
+    bool okPressed = btn_ok.pressed(!btn_ok_state);
+    bool leftPressed = btn_left.pressed(!btn_left_state);
+    bool rightPressed = btn_right.pressed(!btn_right_state);
+
+
     Screen *activeScreen = app.getActiveScreen();
-    if(activeScreen == &home_screen){
-      app.goTo(display, menu_screen, gfx);
-    }
-    if(activeScreen == &menu_screen){
-      app.goTo(display, home_screen, gfx);
-    }
-  }
 
-  display.flush();
+
+    if(okPressed)
+    {
+        if(activeScreen == &home_screen)
+        {
+            app.goTo(display, menu_screen, gfx);
+            Serial.println("at home");
+        }
+        else if(activeScreen == &menu_screen)
+        {
+            ListItem *item = list_widget.getFocusedItem();
+
+            if(item && strcmp(item->labelText, "Home") == 0)
+            {
+                app.goTo(display, home_screen, gfx);
+            }
+        }
+    }
+
+
+    if(activeScreen == &menu_screen)
+    {
+        if(leftPressed)
+        {
+            int activeItem = list_widget.getFocusedItemIndex();
+            list_widget.focusItem(activeItem + 1);
+
+            Serial.println(activeItem);
+        }
+
+
+        if(rightPressed)
+        {
+            int activeItem = list_widget.getFocusedItemIndex();
+            list_widget.focusItem(activeItem - 1);
+
+            Serial.println(activeItem);
+        }
+    }
+
+
+    display.flush();
 }

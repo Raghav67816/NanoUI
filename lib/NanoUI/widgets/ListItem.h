@@ -11,6 +11,8 @@ class ListItem: public Label{
     Color white = {255, 255, 255};
     Color black = {0, 0, 0};
 
+    // void removeFocus();
+
     public:
     ListItem(char* text): Label(20, 10, text, {0, 0, 0}){
         Color white = {255, 255, 255};
