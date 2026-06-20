@@ -1,3 +1,0 @@
-/home/cooper/NanoUI/build/CMakeFiles/NanoUI_SDL.dir
-/home/cooper/NanoUI/build/CMakeFiles/edit_cache.dir
-/home/cooper/NanoUI/build/CMakeFiles/rebuild_cache.dir
