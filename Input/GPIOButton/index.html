@@ -18,7 +18,7 @@
 
     
  
-<title>Color - Nano UI</title>
+<title>GPIOButton - Nano UI</title>
 
 
 <link href="../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
@@ -145,9 +145,13 @@
             
     
         
-        <span class="
         
-    terminal-mkdocs-side-nav-item--active terminal-mkdocs-side-nav-section-no-index">Core</span>
+            
+            
+            <span class="
+        
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Core</span>
+        
     
     
         
@@ -160,19 +164,8 @@
                 <li class="terminal-mkdocs-side-nav-li-ul-li">
     
         
-        <span class="terminal-mkdocs-side-nav-item--active">Color</span>
-    
-    </li>
-            
         
-            
-            
-             
-                <li class="terminal-mkdocs-side-nav-li-ul-li">
-    
-        
-        
-            <a class="terminal-mkdocs-side-nav-item" href="../Display/">Displays</a>
+            <a class="terminal-mkdocs-side-nav-item" href="../../Core/Color/">Color</a>
         
     
     </li>
@@ -185,7 +178,7 @@
     
         
         
-            <a class="terminal-mkdocs-side-nav-item" href="../Graphics/">Graphics</a>
+            <a class="terminal-mkdocs-side-nav-item" href="../../Core/Display/">Displays</a>
         
     
     </li>
@@ -198,7 +191,7 @@
     
         
         
-            <a class="terminal-mkdocs-side-nav-item" href="../OLED%20Display/">OLED Display</a>
+            <a class="terminal-mkdocs-side-nav-item" href="../../Core/Graphics/">Graphics</a>
         
     
     </li>
@@ -211,7 +204,7 @@
     
         
         
-            <a class="terminal-mkdocs-side-nav-item" href="../OLEDisplayX/">OLEDisplayX</a>
+            <a class="terminal-mkdocs-side-nav-item" href="../../Core/OLED%20Display/">OLED Display</a>
         
     
     </li>
@@ -224,7 +217,7 @@
     
         
         
-            <a class="terminal-mkdocs-side-nav-item" href="../SDLDisplay/">SDLDisplay</a>
+            <a class="terminal-mkdocs-side-nav-item" href="../../Core/OLEDisplayX/">OLEDisplayX</a>
         
     
     </li>
@@ -237,7 +230,20 @@
     
         
         
-            <a class="terminal-mkdocs-side-nav-item" href="../Widget/">Widget</a>
+            <a class="terminal-mkdocs-side-nav-item" href="../../Core/SDLDisplay/">SDLDisplay</a>
+        
+    
+    </li>
+            
+        
+            
+            
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="terminal-mkdocs-side-nav-item" href="../../Core/Widget/">Widget</a>
         
     
     </li>
@@ -256,13 +262,9 @@
             
     
         
+        <span class="
         
-            
-            
-            <span class="
-        
-    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Input</span>
-        
+    terminal-mkdocs-side-nav-item--active terminal-mkdocs-side-nav-section-no-index">Input</span>
     
     
         
@@ -275,9 +277,7 @@
                 <li class="terminal-mkdocs-side-nav-li-ul-li">
     
         
-        
-            <a class="terminal-mkdocs-side-nav-item" href="../../Input/GPIOButton/">GPIOButton</a>
-        
+        <span class="terminal-mkdocs-side-nav-item--active">GPIOButton</span>
     
     </li>
             
@@ -408,35 +408,59 @@
 </nav><hr>
 <nav>
     <ul>
-        <li><a href="#color">Color</a></li>
-        <li><a href="#for-monochrome-displays">For Monochrome Displays</a></li>
+        <li><a href="#gpiobuttongpiobutton">GPIOButton::GPIOButton()</a></li>
+        <li><a href="#gpiobuttonpressed">GPIOButton::pressed()</a></li>
         
     </ul>
 </nav>
 </aside>
             <main id="terminal-mkdocs-main-content">
 <section id="mkdocs-terminal-content">
-    <h1 id="color">Color</h1>
-<p>The framework supports both monochrome and colored displays. To support both types of display the framework provides a common absrtaction to define colors that works across displays.</p>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">Color</span><span class="p">{</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">r</span><span class="p">;</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">g</span><span class="p">;</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">};</span>
+    <p>Unlike <strong>Button</strong> which is a UI component. GPIOButton adds debounce to physical push buttons. This also has similar function calls and a callback can be added to this button.</p>
+<h1 id="gpiobuttongpiobutton">GPIOButton::GPIOButton()</h1>
+<p>Params:</p>
+<ul>
+<li>int pin</li>
+<li>unsigned long (*time_provider)()</li>
+<li>signed long debounceTime</li>
+</ul>
+<p>Creates an instance of GPIOButton. Please <strong>note</strong> that you <strong>MUST</strong> provide <strong>time_provider</strong> argument as <strong>millis()</strong> function. The default debounce threshold time is <strong>200 ms</strong></p>
+<p>Also, you <strong>MUST</strong> init pins in the <strong>void setup()</strong> method.</p>
+<p>Please see the example below.</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Arduino.h&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;NanoUI/inputs/GPIOButton.h&quot;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cp">#define BTN_OK 8</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">GPIOButton</span><span class="p">(</span><span class="n">BTN_OK</span><span class="p">,</span><span class="w"> </span><span class="n">millis</span><span class="p">);</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">....</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="kt">void</span><span class="w"> </span><span class="n">setup</span><span class="p">(){</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="p">...</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="n">pinMode</span><span class="p">(</span><span class="n">BTN_OK</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT</span><span class="p">);</span><span class="w"> </span><span class="c1">// can be INPUT_PULLUP, or INPUT_PULLDOWN depending on the use case.</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">}</span>
 </span></code></pre></div>
-<p>To define a color:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>// Black
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Color black = {0, 0, 0};
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>// White
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>Color white = {255, 255, 255};
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>// and so on 
-</span></code></pre></div></p>
-<p>However, monochrome displays only support black and white color only. If you try to pass <strong>red</strong> color it will be ignored and passed as black.</p>
-<h1 id="for-monochrome-displays">For Monochrome Displays</h1>
-<p>If <strong>RED+GREEN+BLUE</strong> &lt; 255: Color is Black
-If <strong>RED+GREEN+BLUE</strong> &gt;= 255: Color is White</p>
+<h1 id="gpiobuttonpressed">GPIOButton::pressed()</h1>
+<p>Params:</p>
+<ul>
+<li>int state;</li>
+</ul>
+<p>Returns:</p>
+<ul>
+<li>bool isPressed;</li>
+</ul>
+<p>The framework aims to be independent of hardware, that is why we ask you to provide the digital pin state to the function.</p>
+<p>If the button was pressed <strong>true</strong> will be returned.</p>
+<p>Below is an example:</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Your code here</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">(){</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">ok_btn_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">digitalRead</span><span class="p">(</span><span class="n">BTN_OK</span><span class="p">);</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">btn</span><span class="p">.</span><span class="n">pressed</span><span class="p">(</span><span class="n">ok_btn_state</span><span class="p">)){</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="c1">// your logic</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">}</span>
+</span></code></pre></div>
 </section>
 
             </main>
