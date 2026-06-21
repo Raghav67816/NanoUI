@@ -21,3 +21,4 @@ class GPIOButton{
     bool pressed(int state);
     void setOnPressed(std::function<void()> onPressed);
 };
+
