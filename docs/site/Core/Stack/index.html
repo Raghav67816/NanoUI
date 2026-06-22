@@ -145,13 +145,9 @@
             
     
         
+        <span class="
         
-            
-            
-            <span class="
-        
-    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Core</span>
-        
+    terminal-mkdocs-side-nav-item--active terminal-mkdocs-side-nav-section-no-index">Core</span>
     
     
         
@@ -165,7 +161,7 @@
     
         
         
-            <a class="terminal-mkdocs-side-nav-item" href="../../Core/Color/">Color</a>
+            <a class="terminal-mkdocs-side-nav-item" href="../Color/">Color</a>
         
     
     </li>
@@ -178,7 +174,7 @@
     
         
         
-            <a class="terminal-mkdocs-side-nav-item" href="../../Core/Display/">Displays</a>
+            <a class="terminal-mkdocs-side-nav-item" href="../Display/">Displays</a>
         
     
     </li>
@@ -191,7 +187,7 @@
     
         
         
-            <a class="terminal-mkdocs-side-nav-item" href="../../Core/Graphics/">Graphics</a>
+            <a class="terminal-mkdocs-side-nav-item" href="../Graphics/">Graphics</a>
         
     
     </li>
@@ -204,7 +200,7 @@
     
         
         
-            <a class="terminal-mkdocs-side-nav-item" href="../../Core/OLED%20Display/">OLED Display</a>
+            <a class="terminal-mkdocs-side-nav-item" href="../OLED%20Display/">OLED Display</a>
         
     
     </li>
@@ -217,7 +213,7 @@
     
         
         
-            <a class="terminal-mkdocs-side-nav-item" href="../../Core/OLEDisplayX/">OLEDisplayX</a>
+            <a class="terminal-mkdocs-side-nav-item" href="../OLEDisplayX/">OLEDisplayX</a>
         
     
     </li>
@@ -230,7 +226,7 @@
     
         
         
-            <a class="terminal-mkdocs-side-nav-item" href="../../Core/SDLDisplay/">SDLDisplay</a>
+            <a class="terminal-mkdocs-side-nav-item" href="../SDLDisplay/">SDLDisplay</a>
         
     
     </li>
@@ -242,8 +238,19 @@
                 <li class="terminal-mkdocs-side-nav-li-ul-li">
     
         
+        <span class="terminal-mkdocs-side-nav-item--active">Stack</span>
+    
+    </li>
+            
         
-            <a class="terminal-mkdocs-side-nav-item" href="../../Core/Widget/">Widget</a>
+            
+            
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="terminal-mkdocs-side-nav-item" href="../Widget/">Widget</a>
         
     
     </li>
@@ -301,9 +308,13 @@
             
     
         
-        <span class="
         
-    terminal-mkdocs-side-nav-item--active terminal-mkdocs-side-nav-section-no-index">Widgets</span>
+            
+            
+            <span class="
+        
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Widgets</span>
+        
     
     
         
@@ -317,7 +328,7 @@
     
         
         
-            <a class="terminal-mkdocs-side-nav-item" href="../Button/">Button</a>
+            <a class="terminal-mkdocs-side-nav-item" href="../../Widgets/Button/">Button</a>
         
     
     </li>
@@ -330,7 +341,7 @@
     
         
         
-            <a class="terminal-mkdocs-side-nav-item" href="../Label/">Label</a>
+            <a class="terminal-mkdocs-side-nav-item" href="../../Widgets/Label/">Label</a>
         
     
     </li>
@@ -343,7 +354,7 @@
     
         
         
-            <a class="terminal-mkdocs-side-nav-item" href="../ListItem/">ListItem</a>
+            <a class="terminal-mkdocs-side-nav-item" href="../../Widgets/ListItem/">ListItem</a>
         
     
     </li>
@@ -356,7 +367,7 @@
     
         
         
-            <a class="terminal-mkdocs-side-nav-item" href="../ListWidget/">ListWidget</a>
+            <a class="terminal-mkdocs-side-nav-item" href="../../Widgets/ListWidget/">ListWidget</a>
         
     
     </li>
@@ -369,7 +380,7 @@
     
         
         
-            <a class="terminal-mkdocs-side-nav-item" href="../Progress%20Bar/">Progress Bar</a>
+            <a class="terminal-mkdocs-side-nav-item" href="../../Widgets/Progress%20Bar/">Progress Bar</a>
         
     
     </li>
@@ -382,19 +393,8 @@
     
         
         
-            <a class="terminal-mkdocs-side-nav-item" href="../Screen/">Screen</a>
+            <a class="terminal-mkdocs-side-nav-item" href="../../Widgets/Screen/">Screen</a>
         
-    
-    </li>
-            
-        
-            
-            
-             
-                <li class="terminal-mkdocs-side-nav-li-ul-li">
-    
-        
-        <span class="terminal-mkdocs-side-nav-item--active">Stack</span>
     
     </li>
             
@@ -405,11 +405,68 @@
        </li>
         
     </ul>
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#stackstack">Stack::Stack()</a></li>
+        <li><a href="#stackaddscreen">Stack::addScreen()</a></li>
+        <li><a href="#stackremovescreen">Stack::removeScreen()</a></li>
+        <li><a href="#stackforward">Stack::forward()</a></li>
+        <li><a href="#stackback">Stack::back()</a></li>
+        <li><a href="#stackgoto">Stack::goTo()</a></li>
+        <li><a href="#stackgetactivescreen">Stack::getActiveScreen()</a></li>
+        <li><a href="#stackrenderapp">Stack::renderApp()</a></li>
+        
+    </ul>
 </nav>
 </aside>
             <main id="terminal-mkdocs-main-content">
 <section id="mkdocs-terminal-content">
     <p>Stack is recommended to be as the root widget in the application UI tree. It allows you to create multiple screen and manage navigation easily.</p>
+<h1 id="stackstack">Stack::Stack()</h1>
+<p>Params:</p>
+<ul>
+<li>Display display</li>
+<li>Graphics gfx</li>
+</ul>
+<p>Constructs a Stack with <strong>no</strong> screens.</p>
+<h1 id="stackaddscreen">Stack::addScreen()</h1>
+<p>Params:</p>
+<ul>
+<li>Screen screen</li>
+</ul>
+<p>Adds a screen to the stack. Duplicates are ignored. 
+Screens that are not added to stack using this method are ignored and can't be rendered.</p>
+<h1 id="stackremovescreen">Stack::removeScreen()</h1>
+<p>Params:</p>
+<ul>
+<li>Screen screen</li>
+</ul>
+<p>Remove a screen from the stack, if it exists.</p>
+<h1 id="stackforward">Stack::forward()</h1>
+<p>Renders the next screen. This call is ignored if the last screen was being displayed.</p>
+<h1 id="stackback">Stack::back()</h1>
+<p>Renders the previous screen. This call is ignored if the 1st screen was being displayed.</p>
+<h1 id="stackgoto">Stack::goTo()</h1>
+<p>Params:</p>
+<ul>
+<li>Display display</li>
+<li>Screen screen</li>
+<li>Graphics gfx</li>
+</ul>
+<p>Renders the specified screen if it exists in the stack.</p>
+<h1 id="stackgetactivescreen">Stack::getActiveScreen()</h1>
+<p>Returns:</p>
+<ul>
+<li>Screen* activeScreen</li>
+</ul>
+<p>Returns a pointer to the active screen.</p>
+<h1 id="stackrenderapp">Stack::renderApp()</h1>
+<p>Params:</p>
+<ul>
+<li>Graphics gfx</li>
+</ul>
+<p>This function is the most important function. This draws your app, if this function is not called in <strong>void loop()</strong> your application will not be rendered. This function call must be followed by <strong>display.flush()</strong></p>
 </section>
 
             </main>
