@@ -2,11 +2,12 @@
 
 #include "core/Widget.h"
 #include "core/Color.h"
+#include "core/Event.h"
 
 class Button: public Widget{
 
     private:
-    std::function<void()> _onPress;
+    Event<> onPress;
 
     public:
     char* labelText;
@@ -23,8 +24,6 @@ class Button: public Widget{
     }
     
     void draw(Graphics &gfx, int offsetX = 0, int offsetY = 0) override;
-    void onEvent(EventType event) override;
-    void bindEvent(EventType event, std::function<void()> callback) override;
     void measureGeo(Graphics &gfx) override;
 
     void setText(Graphics &gfx, char *text);

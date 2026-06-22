@@ -32,6 +32,3 @@ void Label::setColor(Color _color){
 const char* Label::text(){
     return labelText;
 }
-
-void Label::bindEvent(EventType event, std::function<void()> callback){}
-void Label::onEvent(EventType event){}

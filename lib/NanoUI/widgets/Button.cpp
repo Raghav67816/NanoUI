@@ -45,15 +45,3 @@ char* Button::text(){
     return labelText;
 }
 
-void Button::bindEvent(EventType event, std::function<void()> callback){
-    if(event == BUTTON_PRESSED){
-        _onPress = callback;
-    }
-}
-
-void Button::onEvent(EventType event){
-    if(event == BUTTON_PRESSED && _onPress){
-        _onPress();
-    }
-}
-

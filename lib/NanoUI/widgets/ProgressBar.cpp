@@ -42,14 +42,3 @@ void ProgressBar::measureGeo(Graphics &gfx){
     }
 }
 
-void ProgressBar::bindEvent(EventType event, std::function<void()> callback){
-    if(event == PROGRESS_CHANGED){
-        onValueChanged = callback;
-    }
-}
-
-void ProgressBar::onEvent(EventType event) {
-    if(event == PROGRESS_CHANGED){
-        onValueChanged();
-    }
-}

@@ -1,4 +1,5 @@
 #include "core/Widget.h"
+#include "core/Event.h"
 
 class ProgressBar: public Widget{
 
@@ -6,15 +7,13 @@ class ProgressBar: public Widget{
     int maxValue = 100;
     int progress = 0;
 
-    std::function<void()> onValueChanged;
+    Event<int> onValueChanged;
 
     public:
 
     ProgressBar(int w, int h): Widget(0, 0, w, h){}
 
     void draw(Graphics &gfx, int offsetX = 0, int offsetY = 0) override;
-    void onEvent(EventType event) override;
-    void bindEvent(EventType event, std::function<void()> callback) override;
     void measureGeo(Graphics &gfx) override;
 
     int getProgress();

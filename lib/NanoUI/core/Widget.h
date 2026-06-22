@@ -5,14 +5,6 @@
 
 #include "Graphics.h"
 
-enum EventType
-{
-    BUTTON_PRESSED,
-    PROGRESS_CHANGED,
-    CURRENT_ITEM_CHANGED
-};
-
-
 /*
 base widget from which all widgets inherit
 description of properties
@@ -70,24 +62,6 @@ class Widget
     together form the desired widget
     */
     virtual void draw(Graphics &gfx, int offsetX = 0, int offsetY = 0) = 0;
-
-    /*
-    void onEvent()
-
-    This is an optional method, however it is recommended to be implemented 
-    in every widget.
-
-    This event fires registered callback. However, if callback is not set 
-    the call is ignored.
-    */
-    virtual void onEvent(EventType event);
-
-    /*
-    void bindEvent()
-    
-    Bind event to specified callback
-    */
-    virtual void bindEvent(EventType event, std::function<void()> callback);
     
     /*
     Every widget must use the default Widget::addChild method 

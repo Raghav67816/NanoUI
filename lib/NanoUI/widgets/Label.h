@@ -1,9 +1,8 @@
 #pragma once
 
-#include "../core/Widget.h"
-#include "../core/Graphics.h"
-#include "../core/Display.h"
-
+#include "core/Color.h"
+#include "core/Widget.h"
+#include "core/Graphics.h"
 
 class Label: public Widget{
     private:
@@ -17,8 +16,6 @@ class Label: public Widget{
 
     void draw(Graphics &gfx, int offsetX = 0, int offsetY = 0) override;
     void measureGeo(Graphics &gfx) override;
-    void onEvent(EventType event) override;
-    void bindEvent(EventType event, std::function<void()> callback) override;
 
     void setText(char* text);
     void setColor(Color color);

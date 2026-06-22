@@ -5,18 +5,6 @@ void ListWidget::draw(Graphics &gfx, int offsetX, int offsetY){
     Column::draw(gfx, 0, this->local_offsetY);
 }
 
-void ListWidget::bindEvent(EventType event, std::function<void(ListItem *item)> callback)
-{
-    if (event == CURRENT_ITEM_CHANGED && callback != NULL)
-    {
-        _onCurrentItemChanged = callback;
-    }
-}
-
-void ListWidget::onCurrentItemChanged()
-{
-    _onCurrentItemChanged(this->getFocusedItem());
-}
 
 void ListWidget::focusItem(int index)
 {

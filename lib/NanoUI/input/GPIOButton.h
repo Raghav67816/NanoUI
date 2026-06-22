@@ -2,6 +2,8 @@
 
 #include <functional>
 
+#include "core/Event.h"
+
 class GPIOButton{
     private:
     
@@ -11,14 +13,14 @@ class GPIOButton{
 
     unsigned long (*getTime)();
 
-    std::function<void()> _onPress;
-
     public:
+
+    Event<> onPress;
+
     GPIOButton(int pin, unsigned long (*time)(), 
         signed long debounceTime = 200): 
     pin(pin), debounceTime(debounceTime), getTime(time){}
 
     bool pressed(int state);
-    void setOnPressed(std::function<void()> onPressed);
 };
 

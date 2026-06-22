@@ -40,5 +40,3 @@ void Screen::setTitle(Graphics *gfx, const char* title, Color titleColor){
     );
 }
 
-void Screen::bindEvent(EventType event, std::function<void()> callback){}
-void Screen::onEvent(EventType event){}

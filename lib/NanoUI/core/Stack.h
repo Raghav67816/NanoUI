@@ -2,6 +2,7 @@
 
 #include <vector>
 
+#include "core/Event.h"
 #include "widgets/Screen.h"
 
 class Stack{
@@ -17,6 +18,8 @@ class Stack{
     void onCurrentScreenChanged(Display &display, Graphics &gfx);
 
     public:
+
+    Event<Screen*> onScreenChanged;
 
     Stack(Display &display, Graphics &gfx):display(display), gfx(gfx){}
 
