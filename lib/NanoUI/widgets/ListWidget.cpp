@@ -1,6 +1,10 @@
 #include "ListWidget.h"
 #include <Arduino.h>
 
+void ListWidget::draw(Graphics &gfx, int offsetX, int offsetY){
+    Column::draw(gfx, 0, this->local_offsetY);
+}
+
 void ListWidget::bindEvent(EventType event, std::function<void(ListItem *item)> callback)
 {
     if (event == CURRENT_ITEM_CHANGED && callback != NULL)
@@ -29,6 +33,8 @@ void ListWidget::focusItem(int index)
     ListItem *item = static_cast<ListItem *>(this->children[index]);
     item->setFocused(true);
     this->currentFocusedIndex = index;
+
+    this->local_offsetY = 10 * this->currentFocusedIndex;
 }
 
 ListItem* ListWidget::getFocusedItem()

@@ -222,3 +222,11 @@ int Graphics::getTextWidth(const char *text){
     }
     return index*6;
 }
+
+void Graphics::drawCircle(int x, int y, int radius, Color color){
+
+}
+
+void Graphics::fillCircle(int x, int y, int radius, Color color){
+
+}

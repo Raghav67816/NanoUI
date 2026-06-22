@@ -3,6 +3,7 @@
 
 #include "esp_timer.h"
 #include "esp_bt_main.h"
+#include "esp_cpu.h"
 
 #include "core/Stack.h"
 #include "core/Color.h"
@@ -84,8 +85,8 @@ char analog_buff[5];
 
 void update_temp(void *arg)
 {
-  float temp = temperatureRead();
-  temp_val.setText(dtostrf(temp, 1, 2, temp_buff));
+    float temp = temperatureRead();
+    temp_val.setText(dtostrf(temp, 1, 2, temp_buff));
 }
 
 const esp_timer_create_args_t tpt_config = {
@@ -103,60 +104,63 @@ GPIOButton btn_right(BTN_RIGHT, millis);
 
 void setup()
 {
-  Serial.begin(115200);
-  Wire.begin(SDA, SCK);
-  Wire.setClock(400000);
+    Serial.begin(115200);
+    Wire.begin(SDA, SCK);
+    Wire.setClock(400000);
 
-  pinMode(BTN_OK, INPUT_PULLUP);
-  pinMode(BTN_RIGHT, INPUT_PULLUP);
-  pinMode(BTN_LEFT, INPUT_PULLUP);
+    pinMode(BTN_OK, INPUT_PULLUP);
+    pinMode(BTN_RIGHT, INPUT_PULLUP);
+    pinMode(BTN_LEFT, INPUT_PULLUP);
 
-  temp_container.addChild(&itemp_label);
-  temp_container.addChild(&temp_val);
+    temp_container.addChild(&itemp_label);
+    temp_container.addChild(&temp_val);
 
-  ble_container.addChild(&ble_label);
-  ble_container.addChild(&ble_stat);
+    ble_container.addChild(&ble_label);
+    ble_container.addChild(&ble_stat);
 
-  list_widget.addChild(&item_a);
-  list_widget.addChild(&item_b);
-  list_widget.addChild(&item_c);
+    list_widget.addChild(&item_a);
+    list_widget.addChild(&item_b);
+    list_widget.addChild(&item_c);
 
-  list_widget.focusItem(0);
+    list_widget.focusItem(0);
 
-  // list_widget.addChild(&item_alt);
+    // list_widget.addChild(&item_alt);
 
-  root_layout.addChild(&ble_container);
-  root_layout.addChild(&temp_container);
+    root_layout.addChild(&ble_container);
+    root_layout.addChild(&temp_container);
 
-  home_screen.addChild(&root_layout);
+    home_screen.addChild(&root_layout);
 
-  menu_root_layout.addChild(&list_widget);
-  menu_screen.addChild(&menu_root_layout);
+    menu_root_layout.addChild(&list_widget);
+    menu_screen.addChild(&menu_root_layout);
 
-  app.addScreen(home_screen);
-  app.addScreen(menu_screen);
-  app.addScreen(error_screen);
+    app.addScreen(home_screen);
+    app.addScreen(menu_screen);
+    app.addScreen(error_screen);
 
-  esp_err_t _ttemp = esp_timer_create(&tpt_config, &temp_timer);
-  esp_timer_start_periodic(temp_timer, 1000000);
+    esp_err_t _ttemp = esp_timer_create(&tpt_config, &temp_timer);
+    esp_timer_start_periodic(temp_timer, 1000000);
 
-  if (!oled.begin(0x3C, true))
-  {
-    while (1)
-      ;
-  }
+    if (!oled.begin(0x3C, true))
+    {
+        while (1)
+            ;
+    }
 
-  if (!esp_timer_init() == ESP_OK)
-  {
-    app.goTo(display, error_screen, gfx);
-    error_val.setText("ESP Timer Failed");
-  }
+    if (!esp_timer_init() == ESP_OK)
+    {
+        app.goTo(display, error_screen, gfx);
+        error_val.setText("ESP Timer Failed");
+    }
 
-  oled.setTextSize(2);
+    oled.setTextSize(2);
 
-  display.clear();
-  app.goTo(display, menu_screen, gfx);
-  display.flush();
+    display.clear();
+    app.goTo(display, menu_screen, gfx);
+    display.flush();
+
+    Serial.println("before: ");
+    Serial.println(item_b.y);
 }
 
 void loop()
@@ -167,50 +171,49 @@ void loop()
     int btn_left_state = digitalRead(BTN_LEFT);
     int btn_right_state = digitalRead(BTN_RIGHT);
 
-
     bool okPressed = btn_ok.pressed(!btn_ok_state);
     bool leftPressed = btn_left.pressed(!btn_left_state);
     bool rightPressed = btn_right.pressed(!btn_right_state);
 
-
     Screen *activeScreen = app.getActiveScreen();
 
-
-    if(okPressed)
+    if (okPressed)
     {
-        if(activeScreen == &home_screen)
+        if (activeScreen == &home_screen)
         {
             app.goTo(display, menu_screen, gfx);
             Serial.println("at home");
         }
-        else if(activeScreen == &menu_screen)
+        else if (activeScreen == &menu_screen)
         {
             ListItem *item = list_widget.getFocusedItem();
 
-            if(item && strcmp(item->labelText, "Home") == 0)
+            if (item && strcmp(item->labelText, "Home") == 0)
             {
                 app.goTo(display, home_screen, gfx);
             }
         }
     }
 
-
-    if(activeScreen == &menu_screen)
+    if (activeScreen == &menu_screen)
     {
-        if(leftPressed)
+
+        if (leftPressed)
         {
             int activeItem = list_widget.getFocusedItemIndex();
             list_widget.focusItem(activeItem - 1);
+
+            Serial.println(item_b.y - list_widget.local_offsetY);
         }
 
-
-        if(rightPressed)
+        if (rightPressed)
         {
             int activeItem = list_widget.getFocusedItemIndex();
             list_widget.focusItem(activeItem + 1);
+
+            Serial.println(item_b.y - list_widget.local_offsetY);
         }
     }
-
 
     display.flush();
 }

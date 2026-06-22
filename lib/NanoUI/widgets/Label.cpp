@@ -1,12 +1,14 @@
 #include "Label.h"
+#include <Arduino.h>
 
 void Label::draw(Graphics &gfx, int offsetX, int offsetY){
-    // int drawX = x - offsetX;
-    // int drawY = y - offsetY;
+
+    int drawX = this->x - offsetX;
+    int drawY = this->y - offsetY;
 
     gfx.drawText(
-        this->x,
-        this->y,
+        drawX,
+        drawY,
         labelText,
         color
     );
