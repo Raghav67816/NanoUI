@@ -73,6 +73,7 @@ Column menu_root_layout(0, 10, DISPLAY_WIDTH, DISPLAY_HEIGHT - 10);
 ListItem item_a("Wi-Fi Options");
 ListItem item_b("About");
 ListItem item_c("Home");
+ListItem item_d("Extra Item");
 
 Label item_alt(20, 10, "Item 1A", white);
 
@@ -199,18 +200,14 @@ void loop()
         if(leftPressed)
         {
             int activeItem = list_widget.getFocusedItemIndex();
-            list_widget.focusItem(activeItem + 1);
-
-            Serial.println(activeItem);
+            list_widget.focusItem(activeItem - 1);
         }
 
 
         if(rightPressed)
         {
             int activeItem = list_widget.getFocusedItemIndex();
-            list_widget.focusItem(activeItem - 1);
-
-            Serial.println(activeItem);
+            list_widget.focusItem(activeItem + 1);
         }
     }
 

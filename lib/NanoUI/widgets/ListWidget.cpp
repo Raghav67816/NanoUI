@@ -1,4 +1,5 @@
 #include "ListWidget.h"
+#include <Arduino.h>
 
 void ListWidget::bindEvent(EventType event, std::function<void(ListItem *item)> callback)
 {
@@ -16,8 +17,15 @@ void ListWidget::onCurrentItemChanged()
 void ListWidget::focusItem(int index)
 {
     this->clearFocus();
-    if (index >= this->children.size())
-        return;
+
+    if(index <= 0){
+        index = 0;
+    }
+
+    if(index >= (int)this->children.size()){
+        index = (int)this->children.size() - 1;
+    }
+
     ListItem *item = static_cast<ListItem *>(this->children[index]);
     item->setFocused(true);
     this->currentFocusedIndex = index;
