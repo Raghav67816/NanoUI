@@ -121,6 +121,7 @@ void setup()
     list_widget.addChild(&item_a);
     list_widget.addChild(&item_b);
     list_widget.addChild(&item_c);
+    list_widget.addChild(&item_d);
 
     list_widget.focusItem(0);
 
@@ -203,7 +204,7 @@ void loop()
             int activeItem = list_widget.getFocusedItemIndex();
             list_widget.focusItem(activeItem - 1);
 
-            Serial.println(item_b.y - list_widget.local_offsetY);
+            Serial.println(item_b.y);
         }
 
         if (rightPressed)
@@ -211,7 +212,7 @@ void loop()
             int activeItem = list_widget.getFocusedItemIndex();
             list_widget.focusItem(activeItem + 1);
 
-            Serial.println(item_b.y - list_widget.local_offsetY);
+            // Serial.println(item_b.y - list_widget.local_offsetY);
         }
     }
 

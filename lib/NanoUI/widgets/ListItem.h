@@ -3,6 +3,8 @@
 #include "core/Color.h"
 #include "widgets/Label.h"
 
+#define INNER_PADDING 2
+
 class ListItem: public Label{
 
     private:
