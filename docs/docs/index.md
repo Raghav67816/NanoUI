@@ -2,7 +2,7 @@
 
 Nano UI is a user-interface framework for micro-controllers and edge devices. It allows developers to build beautiful interface with wide range of optimised widgets. The event driven architecture allows devs to keep UI logic separated from systems logic.
 
-![alt text](../images/banner-removebg-preview.png)
+![alt text](images/banner-removebg-preview.png)
 
 
 # Features
