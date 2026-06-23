@@ -17,7 +17,7 @@ class Screen: public Widget {
         this->title = title;
     }
 
-    void draw(Graphics &gfx, int offsetX = 0, int offsetY = 0) override;
+    void draw(Graphics &gfx, Theme*  theme, int offsetX = 0, int offsetY = 0) override;
     void setTitle(Graphics *gfx, const char* title, Color color);
     bool _dirtyCheck();
 };

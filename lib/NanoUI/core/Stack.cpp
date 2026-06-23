@@ -52,7 +52,7 @@ void Stack::onCurrentScreenChanged(Display &display, Graphics &gfx){
     activeScreen->measureGeo(gfx);
     activeScreen->setTitle(&gfx, activeScreen->title, black);
     display.clear();
-    activeScreen->draw(gfx);
+    activeScreen->draw(gfx, this->_theme);
 
 }
 
@@ -69,7 +69,11 @@ void Stack::renderApp(Graphics &gfx){
 
     if(activeScreen->_dirtyCheck()){
         display.clear();
-        activeScreen->draw(gfx);
+        activeScreen->draw(gfx, this->_theme);
         display.flush();   
     }
+}
+
+void Stack::setTheme(Theme* theme){
+    this->_theme = theme;
 }

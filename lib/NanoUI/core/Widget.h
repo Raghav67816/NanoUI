@@ -3,6 +3,7 @@
 #include <vector>
 #include <functional>
 
+#include "Theme.h"
 #include "Graphics.h"
 
 /*
@@ -61,7 +62,7 @@ class Widget
     This method is ONLY respondsible for drawing primitives that 
     together form the desired widget
     */
-    virtual void draw(Graphics &gfx, int offsetX = 0, int offsetY = 0) = 0;
+    virtual void draw(Graphics &gfx, Theme* theme, int offsetX = 0, int offsetY = 0) = 0;
     
     /*
     Every widget must use the default Widget::addChild method 

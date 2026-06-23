@@ -4,7 +4,7 @@
 
 #define TITLE_BAR_HEIGHT 10
 
-void Screen::draw(Graphics &gfx, int offsetX, int offsetY){
+void Screen::draw(Graphics &gfx, Theme* theme, int offsetX, int offsetY){
     Color white = {255, 255, 255};
     gfx.drawRect(0, 0, display->getWidth(), display->getHeight(), white);
 
@@ -12,7 +12,7 @@ void Screen::draw(Graphics &gfx, int offsetX, int offsetY){
     setTitle(&gfx, this->title, black);
 
     for(Widget *widget: children){
-        widget->draw(gfx);
+        widget->draw(gfx, theme);
     }
 }
 

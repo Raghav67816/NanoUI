@@ -1,8 +1,7 @@
 #include "ListWidget.h"
-#include <Arduino.h>
 
-void ListWidget::draw(Graphics &gfx, int offsetX, int offsetY){
-    Column::draw(gfx, 0, this->local_offsetY);
+void ListWidget::draw(Graphics &gfx, Theme* theme, int offsetX, int offsetY){
+    Column::draw(gfx, theme, 0, this->local_offsetY);
 }
 
 

@@ -1,7 +1,6 @@
 #include "Label.h"
-#include <Arduino.h>
 
-void Label::draw(Graphics &gfx, int offsetX, int offsetY){
+void Label::draw(Graphics &gfx, Theme* theme, int offsetX, int offsetY){
 
     int drawX = this->x - offsetX;
     int drawY = this->y - offsetY;
@@ -10,7 +9,7 @@ void Label::draw(Graphics &gfx, int offsetX, int offsetY){
         drawX,
         drawY,
         labelText,
-        color
+        theme->foreground
     );
 }
 

@@ -18,7 +18,7 @@ class ListWidget: public Column{
     
     ListWidget(int x, int y, int w, int h): Column(x, y, w, h){}
 
-    void draw(Graphics &gfx, int offsetX = 0, int offsetY = 0) override;
+    void draw(Graphics &gfx, Theme* theme, int offsetX = 0, int offsetY = 0) override;
 
     ListItem* getFocusedItem();
     int getFocusedItemIndex();

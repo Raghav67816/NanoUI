@@ -7,6 +7,7 @@
 
 #include "core/Stack.h"
 #include "core/Color.h"
+#include "core/Theme.h"
 #include "core/Graphics.h"
 #include "core/OLEDisplayX.h"
 
@@ -30,8 +31,20 @@
 #define BTN_OK 0
 #define BTN_LEFT 10
 
+
 Color white = {255, 255, 255};
 Color black = {0, 0, 0};
+
+Theme appTheme = {
+    .background = black,
+    .foreground = white,
+    .primary = white,
+    .secondary = black,
+    .accent = white,
+    .selection = white,
+    .selectionText = black,
+    .disabled = black
+};
 
 Adafruit_SH1106G oled = Adafruit_SH1106G(
     DISPLAY_WIDTH,
@@ -46,7 +59,7 @@ OLEDisplayX display(
 
 Graphics gfx(&display);
 
-Stack app(display, gfx);
+Stack app(display, gfx, &appTheme);
 Screen home_screen(
     &display,
     "SYSTEM STATUS");

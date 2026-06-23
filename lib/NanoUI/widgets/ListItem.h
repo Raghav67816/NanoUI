@@ -21,7 +21,7 @@ class ListItem: public Label{
         Label::setColor(white);
     }
 
-    void draw(Graphics &gfx, int offsetX = 0, int offsetY = 0) override;
+    void draw(Graphics &gfx, Theme* theme, int offsetX = 0, int offsetY = 0) override;
 
     void setFocused(bool isFocused);
 };

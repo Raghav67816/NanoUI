@@ -2,7 +2,7 @@
 
 #define PADDING 2
 
-void Button::draw(Graphics &gfx, int offsetX, int offsetY){
+void Button::draw(Graphics &gfx, Theme* theme, int offsetX, int offsetY){
 
     int drawX = this->x - offsetX;
     int drawY = this->y - offsetY;

@@ -14,7 +14,7 @@ class Label: public Widget{
 
     Label(int w, int h, const char* text, Color color): Widget(0, 0, w, h), labelText(text), color(color){}
 
-    void draw(Graphics &gfx, int offsetX = 0, int offsetY = 0) override;
+    void draw(Graphics &gfx, Theme* theme, int offsetX = 0, int offsetY = 0) override;
     void measureGeo(Graphics &gfx) override;
 
     void setText(char* text);
