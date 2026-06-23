@@ -10,9 +10,10 @@ class Label: public Widget{
     public:
     const char* labelText;
     Color color;
+    bool hasCustomColor = false;
 
 
-    Label(int w, int h, const char* text, Color color): Widget(0, 0, w, h), labelText(text), color(color){}
+    Label(int w, int h, const char* text, Color color): Widget(0, 0, w, h), labelText(text){}
 
     void draw(Graphics &gfx, Theme* theme, int offsetX = 0, int offsetY = 0) override;
     void measureGeo(Graphics &gfx) override;

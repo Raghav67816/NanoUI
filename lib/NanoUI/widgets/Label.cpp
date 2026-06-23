@@ -5,11 +5,20 @@ void Label::draw(Graphics &gfx, Theme* theme, int offsetX, int offsetY){
     int drawX = this->x - offsetX;
     int drawY = this->y - offsetY;
 
+    Color textColor = {0, 0, 0};
+    if(this->hasCustomColor){
+        textColor = color;
+    }
+
+    else{
+        textColor = theme->foreground;
+    }
+
     gfx.drawText(
         drawX,
         drawY,
         labelText,
-        theme->foreground
+        textColor
     );
 }
 
@@ -25,6 +34,7 @@ void Label::setText(char* _text){
 
 void Label::setColor(Color _color){
     color = _color;
+    hasCustomColor = true;
     invalidate();
 }
 
