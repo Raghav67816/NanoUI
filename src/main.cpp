@@ -1,233 +1,73 @@
-#include <Wire.h>
-#include <Adafruit_SH110X.h>
+#include <LovyanGFX.hpp>
 
-#include "esp_timer.h"
-#include "esp_bt_main.h"
-#include "esp_cpu.h"
+class LGFX : public lgfx::LGFX_Device
+{
+    lgfx::Panel_ILI9488 _panel;
+    lgfx::Bus_SPI _bus;
 
-#include "core/Stack.h"
-#include "core/Color.h"
-#include "core/Theme.h"
-#include "core/Graphics.h"
-#include "core/OLEDisplayX.h"
+public:
+    LGFX()
+    {
+        {
+            auto cfg = _bus.config();
 
-#include "layouts/Row.h"
-#include "layouts/Column.h"
+            cfg.spi_host = SPI2_HOST;
+            cfg.spi_mode = 0;
+            cfg.freq_write = 40000000;
+            cfg.freq_read  = 16000000;
 
-#include "widgets/Label.h"
-#include "widgets/Screen.h"
-#include "widgets/ListItem.h"
-#include "widgets/ListWidget.h"
+            cfg.pin_sclk = 4;
+            cfg.pin_mosi = 6;
+            cfg.pin_miso = 5;
+            cfg.pin_dc   = 2;
 
-#include "input/GPIOButton.h"
+            _bus.config(cfg);
+            _panel.setBus(&_bus);
+        }
 
-#define DISPLAY_WIDTH 128
-#define DISPLAY_HEIGHT 64
-#define SDA 8
+        {
+            auto cfg = _panel.config();
 
-#define SCK 4
+            cfg.pin_cs  = 0;
+            cfg.pin_rst = 10;
+            cfg.pin_busy = -1;
 
-#define BTN_RIGHT 1
-#define BTN_OK 0
-#define BTN_LEFT 10
+            cfg.memory_width  = 320;
+            cfg.memory_height = 480;
 
+            cfg.panel_width  = 320;
+            cfg.panel_height = 480;
 
-Color white = {255, 255, 255};
-Color black = {0, 0, 0};
+            cfg.offset_x = 0;
+            cfg.offset_y = 0;
 
-Theme appTheme = {
-    .background = black,
-    .foreground = white,
-    .primary = white,
-    .secondary = black,
-    .accent = white,
-    .selection = white,
-    .selectionText = black,
-    .disabled = black
+            cfg.invert = false;
+            cfg.rgb_order = false;
+
+            _panel.config(cfg);
+        }
+
+        setPanel(&_panel);
+    }
 };
 
-Adafruit_SH1106G oled = Adafruit_SH1106G(
-    DISPLAY_WIDTH,
-    DISPLAY_HEIGHT,
-    &Wire,
-    -1);
-
-OLEDisplayX display(
-    DISPLAY_WIDTH,
-    DISPLAY_HEIGHT,
-    &oled);
-
-Graphics gfx(&display);
-
-Stack app(display, gfx, &appTheme);
-Screen home_screen(
-    &display,
-    "SYSTEM STATUS");
-Column root_layout(0, 0, DISPLAY_WIDTH, DISPLAY_HEIGHT - 10);
-Row temp_container(0, 0, DISPLAY_WIDTH, 20);
-Row ble_container(40, 0, DISPLAY_WIDTH, 20);
-
-Label itemp_label(20, 10, "Temp: ", white);
-Label temp_val(10, 10, "0", white);
-
-Label ble_label(10, 10, "BLE Status: ", white);
-Label ble_stat(10, 10, "X", white);
-
-Screen error_screen(
-    &display,
-    "Error");
-Label error_val(DISPLAY_WIDTH - 10, 10, "ERROR", white);
-
-Screen menu_screen(
-    &display,
-    "MENU");
-
-Column menu_root_layout(0, 10, DISPLAY_WIDTH, DISPLAY_HEIGHT - 10);
-
-ListItem item_a("Wi-Fi Options");
-ListItem item_b("About");
-ListItem item_c("Home");
-ListItem item_d("Extra Item");
-
-Label item_alt(20, 10, "Item 1A", white);
-
-ListWidget list_widget(0, 10, DISPLAY_WIDTH, DISPLAY_HEIGHT - 10);
-
-char temp_buff[5];
-char analog_buff[5];
-
-void update_temp(void *arg)
-{
-    float temp = temperatureRead();
-    temp_val.setText(dtostrf(temp, 1, 2, temp_buff));
-}
-
-const esp_timer_create_args_t tpt_config = {
-    .callback = update_temp,
-    .arg = nullptr,
-    .dispatch_method = ESP_TIMER_TASK,
-    .name = "temp_proc_timer",
-    .skip_unhandled_events = true};
-
-esp_timer_handle_t temp_timer = NULL;
-
-GPIOButton btn_left(BTN_LEFT, millis);
-GPIOButton btn_ok(BTN_OK, millis);
-GPIOButton btn_right(BTN_RIGHT, millis);
+LGFX tft;
 
 void setup()
 {
-    Serial.begin(115200);
-    Wire.begin(SDA, SCK);
-    Wire.setClock(400000);
+    tft.init();
+    tft.setRotation(1);
 
-    pinMode(BTN_OK, INPUT_PULLUP);
-    pinMode(BTN_RIGHT, INPUT_PULLUP);
-    pinMode(BTN_LEFT, INPUT_PULLUP);
+    tft.fillScreen(TFT_BLACK);
 
-    temp_container.addChild(&itemp_label);
-    temp_container.addChild(&temp_val);
+    tft.drawPixel(100, 100, TFT_RED);
+    tft.drawLine(50, 50, 200, 200, TFT_GREEN);
 
-    ble_container.addChild(&ble_label);
-    ble_container.addChild(&ble_stat);
-
-    list_widget.addChild(&item_a);
-    list_widget.addChild(&item_b);
-    list_widget.addChild(&item_c);
-    list_widget.addChild(&item_d);
-
-    list_widget.focusItem(0);
-
-    // list_widget.addChild(&item_alt);
-
-    root_layout.addChild(&ble_container);
-    root_layout.addChild(&temp_container);
-
-    home_screen.addChild(&root_layout);
-
-    menu_root_layout.addChild(&list_widget);
-    menu_screen.addChild(&menu_root_layout);
-
-    app.addScreen(home_screen);
-    app.addScreen(menu_screen);
-    app.addScreen(error_screen);
-
-    esp_err_t _ttemp = esp_timer_create(&tpt_config, &temp_timer);
-    esp_timer_start_periodic(temp_timer, 1000000);
-
-    if (!oled.begin(0x3C, true))
-    {
-        while (1)
-            ;
-    }
-
-    if (!esp_timer_init() == ESP_OK)
-    {
-        app.goTo(display, error_screen, gfx);
-        error_val.setText("ESP Timer Failed");
-    }
-
-    oled.setTextSize(2);
-
-    display.clear();
-    app.goTo(display, menu_screen, gfx);
-    display.flush();
-
-    Serial.println("before: ");
-    Serial.println(item_b.y);
+    tft.setCursor(10, 10);
+    tft.setTextColor(TFT_WHITE);
+    tft.println("Hello NanoUI");
 }
 
 void loop()
 {
-    app.renderApp(gfx);
-
-    int btn_ok_state = digitalRead(BTN_OK);
-    int btn_left_state = digitalRead(BTN_LEFT);
-    int btn_right_state = digitalRead(BTN_RIGHT);
-
-    bool okPressed = btn_ok.pressed(!btn_ok_state);
-    bool leftPressed = btn_left.pressed(!btn_left_state);
-    bool rightPressed = btn_right.pressed(!btn_right_state);
-
-    Screen *activeScreen = app.getActiveScreen();
-
-    if (okPressed)
-    {
-        if (activeScreen == &home_screen)
-        {
-            app.goTo(display, menu_screen, gfx);
-            Serial.println("at home");
-        }
-        else if (activeScreen == &menu_screen)
-        {
-            ListItem *item = list_widget.getFocusedItem();
-
-            if (item && strcmp(item->labelText, "Home") == 0)
-            {
-                app.goTo(display, home_screen, gfx);
-            }
-        }
-    }
-
-    if (activeScreen == &menu_screen)
-    {
-
-        if (leftPressed)
-        {
-            int activeItem = list_widget.getFocusedItemIndex();
-            list_widget.focusItem(activeItem - 1);
-
-            Serial.println(item_b.y);
-        }
-
-        if (rightPressed)
-        {
-            int activeItem = list_widget.getFocusedItemIndex();
-            list_widget.focusItem(activeItem + 1);
-
-            // Serial.println(item_b.y - list_widget.local_offsetY);
-        }
-    }
-
-    display.flush();
 }
