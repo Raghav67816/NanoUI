@@ -40,3 +40,5 @@ void Screen::setTitle(Graphics *gfx, const char* title, Color titleColor){
     );
 }
 
+
+void Screen::processInput(InputTypes inputType, Cordinates points){}

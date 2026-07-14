@@ -6,6 +6,8 @@
 #include "Theme.h"
 #include "Graphics.h"
 
+#include "core/types.h"
+
 /*
 base widget from which all widgets inherit
 description of properties
@@ -83,6 +85,19 @@ class Widget
     height and width
     */
     virtual void measureGeo(Graphics &gfx) {};
+
+    /*
+
+    void processInput
+
+    To support touch input and mouse input, every widget must implement a processInput
+    method. When the user touches the screen, or uses joystick with a push button to emulate a mouse click
+    the cordinates are propogated down the widget tree, widgets check if the cordinates are in bounds
+    if in bounds widget broadcasts events such as pressed/clicked/focused
+
+    */
+
+    virtual void processInput(InputTypes inputType, Cordinates points) = 0;
 
 
     void invalidate();

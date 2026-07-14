@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "Theme.h"
+#include "core/types.h"
 #include "core/Event.h"
 #include "widgets/Screen.h"
 

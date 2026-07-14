@@ -24,3 +24,11 @@ void ListItem::setFocused(bool isFocused)
 {
     this->isFocused = isFocused;
 }
+
+void ListItem::processInput(InputTypes inputType, Cordinates point){
+    if(this->x + this->w <= point.x && this->y + this->h <= point.y){
+        if(inputType == TOUCH){
+            this->onSelect.broadcast(this->_text);
+        }
+    }
+}

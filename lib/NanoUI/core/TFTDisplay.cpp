@@ -13,13 +13,6 @@ void TFTDisplay::drawPixel(int x, int y, Color color){
         return;
     }
 
-    int _color = 0;
-    if(color.r + color.g + color.b == (3*255)){
-        _color = 1;
-    } else{
-        _color = 0;
-    }
-
     display->drawPixel(x, y, display->color565(color.r, color.g, color.b));
 }
 

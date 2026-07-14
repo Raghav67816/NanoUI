@@ -4,6 +4,8 @@
 #include "core/Color.h"
 #include "core/Event.h"
 
+#include "core/types.h"
+
 class Button: public Widget{
 
     private:
@@ -25,6 +27,8 @@ class Button: public Widget{
     
     void draw(Graphics &gfx, Theme* theme, int offsetX = 0, int offsetY = 0) override;
     void measureGeo(Graphics &gfx) override;
+
+    void processInput(InputTypes inputType, Cordinates point) override;
 
     void setText(Graphics &gfx, char *text);
     char* text();

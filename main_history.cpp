@@ -6,10 +6,6 @@
 #include "core/Graphics.h"
 #include "core/TFTDisplay.h"
 
-#include "widgets/Screen.h"
-
-#include <XPT2046_Touchscreen.h>
-
 class LGFX : public lgfx::LGFX_Device
 {
     lgfx::Panel_ILI9488 _panel;
@@ -72,10 +68,10 @@ Theme appTheme = {
     .accent = white,
     .selection = white,
     .selectionText = black,
-    .disabled = black};
+    .disabled = black
+};
 
 LGFX tft;
-XPT2046_Touchscreen touchSPI(7);
 TFTDisplay tft_display(480, 320, &tft);
 
 Graphics gfx(&tft_display);
@@ -83,18 +79,14 @@ Stack app(tft_display, gfx, &appTheme);
 
 Screen home_screen(
     &tft_display,
-    "SYSTEM STATUS");
+    "SYSTEM STATUS"
+);
 
 void setup()
 {
     tft.init();
-
-    SPI.begin(4, 1, 3);
-    touchSPI.begin();
-
-    touchSPI.setRotation(1);
     tft.setRotation(1);
-
+    
     app.addScreen(home_screen);
 
     tft_display.clear();
@@ -105,15 +97,5 @@ void setup()
 void loop()
 {
     app.renderApp(gfx);
-    if (touchSPI.touched())
-    {
-        TS_Point p = touchSPI.getPoint();
-
-        Serial.printf(
-            "X=%d Y=%d Z=%d\n",
-            p.x,
-            p.y,
-            p.z);
-    }
     tft_display.flush();
 }

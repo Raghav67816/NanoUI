@@ -45,3 +45,11 @@ char* Button::text(){
     return labelText;
 }
 
+void Button::processInput(InputTypes inputType, Cordinates point){
+    if(this->x + this->w <= point.x && this->y + this->h <= point.y){
+        if(inputType == TOUCH){
+            this->onPress.broadcast();
+        }
+    }
+}
+
