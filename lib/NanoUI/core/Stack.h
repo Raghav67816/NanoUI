@@ -3,8 +3,10 @@
 #include <vector>
 
 #include "Theme.h"
+
 #include "core/types.h"
 #include "core/Event.h"
+
 #include "widgets/Screen.h"
 
 class Stack{
@@ -17,6 +19,7 @@ class Stack{
     Graphics &gfx;
     Display &display;
     Theme* _theme;
+    SizeMetrics *size_metrics;
 
     void onCurrentScreenChanged(Display &display, Graphics &gfx);
 
@@ -24,7 +27,7 @@ class Stack{
 
     Event<Screen*> onScreenChanged;
 
-    Stack(Display &display, Graphics &gfx, Theme* theme):display(display), gfx(gfx), _theme(theme){}
+    Stack(Display &display, Graphics &gfx, Theme* theme, SizeMetrics* size_metrics_):display(display), gfx(gfx), _theme(theme), size_metrics(size_metrics_){}
 
     void addScreen(Screen &screen);
     void removeScreen(Screen &screen);
@@ -36,6 +39,7 @@ class Stack{
     Screen* getActiveScreen();
 
     void setTheme(Theme* theme);
+    void setSizes(SizeMetrics *size_metrics);
 
     void renderApp(Graphics &gfx);
 };

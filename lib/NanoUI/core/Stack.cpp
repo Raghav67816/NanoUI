@@ -1,6 +1,7 @@
 #include "Stack.h"
 
 void Stack::addScreen(Screen &screen){
+    screen.set_title_bar_height(this->size_metrics->title_bar_height);
     screens.push_back(&screen);
 };
 
@@ -76,4 +77,8 @@ void Stack::renderApp(Graphics &gfx){
 
 void Stack::setTheme(Theme* theme){
     this->_theme = theme;
+}
+
+void Stack::setSizes(SizeMetrics *size_metrics){
+    this->size_metrics = size_metrics;
 }

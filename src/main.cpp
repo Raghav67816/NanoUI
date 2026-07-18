@@ -1,4 +1,5 @@
 #include <LovyanGFX.hpp>
+#include <SPI.h>
 
 #include "core/Color.h"
 #include "core/Stack.h"
@@ -8,7 +9,12 @@
 
 #include "widgets/Screen.h"
 
-#include <XPT2046_Touchscreen.h>
+
+#define TFT_SCK 4
+#define TFT_MOSI 6
+#define TFT_MISO 5
+#define TFT_CS 0
+
 
 class LGFX : public lgfx::LGFX_Device
 {
@@ -16,6 +22,7 @@ class LGFX : public lgfx::LGFX_Device
     lgfx::Bus_SPI _bus;
 
 public:
+
     LGFX()
     {
         {
@@ -23,29 +30,34 @@ public:
 
             cfg.spi_host = SPI2_HOST;
             cfg.spi_mode = 0;
-            cfg.freq_write = 40000000;
-            cfg.freq_read = 16000000;
 
-            cfg.pin_sclk = 4;
-            cfg.pin_mosi = 6;
-            cfg.pin_miso = 5;
+            cfg.freq_write = 40000000;
+            cfg.freq_read  = 16000000;
+
+            cfg.pin_sclk = TFT_SCK;
+            cfg.pin_mosi = TFT_MOSI;
+
+            // TFT does not use MISO
+            cfg.pin_miso = TFT_MISO;
+
             cfg.pin_dc = 2;
 
             _bus.config(cfg);
             _panel.setBus(&_bus);
         }
 
+
         {
             auto cfg = _panel.config();
 
-            cfg.pin_cs = 0;
+            cfg.pin_cs  = TFT_CS;
             cfg.pin_rst = 10;
             cfg.pin_busy = -1;
 
-            cfg.memory_width = 320;
+            cfg.memory_width  = 320;
             cfg.memory_height = 480;
 
-            cfg.panel_width = 320;
+            cfg.panel_width  = 320;
             cfg.panel_height = 480;
 
             cfg.offset_x = 0;
@@ -61,8 +73,16 @@ public:
     }
 };
 
-Color white = {255, 255, 255};
-Color black = {0, 0, 0};
+
+Color white = {255,255,255};
+Color black = {0,0,0};
+
+SizeMetrics size_policy = {
+    .button_height = 60,
+    .title_bar_height = 48,
+    .font_size = 14,
+};
+
 
 Theme appTheme = {
     .background = black,
@@ -72,48 +92,67 @@ Theme appTheme = {
     .accent = white,
     .selection = white,
     .selectionText = black,
-    .disabled = black};
+    .disabled = black
+};
+
 
 LGFX tft;
-XPT2046_Touchscreen touchSPI(7);
-TFTDisplay tft_display(480, 320, &tft);
+TFTDisplay tft_display(
+    480,
+    320,
+    &tft
+);
+
 
 Graphics gfx(&tft_display);
-Stack app(tft_display, gfx, &appTheme);
+
+Stack app(
+    tft_display,
+    gfx,
+    &appTheme,
+    &size_policy
+);
+
 
 Screen home_screen(
     &tft_display,
-    "SYSTEM STATUS");
+    "SYSTEM STATUS"
+);
+
+
 
 void setup()
 {
+    Serial.begin(115200);
+    delay(500);
+
+    Serial.println("BOOT");
+
+
+    // TFT
     tft.init();
-
-    SPI.begin(4, 1, 3);
-    touchSPI.begin();
-
-    touchSPI.setRotation(1);
     tft.setRotation(1);
 
     app.addScreen(home_screen);
-
     tft_display.clear();
-    app.goTo(tft_display, home_screen, gfx);
+
+    app.goTo(
+        tft_display,
+        home_screen,
+        gfx
+    );
+
     tft_display.flush();
+
+
+    Serial.println("READY");
 }
+
+
 
 void loop()
 {
     app.renderApp(gfx);
-    if (touchSPI.touched())
-    {
-        TS_Point p = touchSPI.getPoint();
 
-        Serial.printf(
-            "X=%d Y=%d Z=%d\n",
-            p.x,
-            p.y,
-            p.z);
-    }
     tft_display.flush();
 }

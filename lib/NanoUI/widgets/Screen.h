@@ -7,6 +7,7 @@
 class Screen: public Widget {
     private:
     Display *display;
+    int title_bar_height = 0;
 
     public:
 
@@ -16,10 +17,12 @@ class Screen: public Widget {
         this->display = display;
         this->title = title;
     }
-
+    
     void draw(Graphics &gfx, Theme*  theme, int offsetX = 0, int offsetY = 0) override;
     void setTitle(Graphics *gfx, const char* title, Color color);
     void processInput(InputTypes inputType, Cordinates points) override;
     bool _dirtyCheck();
+
+    void set_title_bar_height(int h);
 };
 
