@@ -5,11 +5,22 @@
 #define TITLE_BAR_HEIGHT 10
 
 void Screen::draw(Graphics &gfx, Theme* theme, int offsetX, int offsetY){
-    Color white = {255, 255, 255};
-    gfx.drawRect(0, 0, display->getWidth(), display->getHeight(), white);
 
-    Color black = Color {0, 0, 0};
-    setTitle(&gfx, this->title, black);
+    gfx.fillRect(
+        0, 0,
+        this->display->getWidth(),
+        this->display->getHeight(),
+        this->theme->background
+    );
+
+    gfx.drawRect(
+        0, 0,
+        display->getWidth(),
+        display->getHeight(),
+        this->theme->background
+    );
+
+    setTitle(&gfx, this->title, this->theme->selectionText);
 
     for(Widget *widget: children){
         widget->draw(gfx, theme);
@@ -28,21 +39,29 @@ bool Screen::_dirtyCheck(){
 
 
 void Screen::setTitle(Graphics *gfx, const char* title, Color titleColor){
+    gfx->fillRect(
+        0, 0,
+        display->getWidth(),
+        this->size_metrics->title_bar_height,
+        this->theme->primary
+    );
 
-    Color white = {255, 255, 255};
-
-    gfx->fillRect(0, 0, display->getWidth(), this->title_bar_height, white);
     gfx->drawText(
         (display->getWidth() - gfx->getTextWidth(title)) / 2,
-        (this->title_bar_height - 7)/2,
+        (this->size_metrics->title_bar_height - 7)/2,
         title,
         titleColor
     );
 }
 
+void Screen::setTheme(Theme* theme){
+    this->theme = theme;
+}
+
+void Screen::setSizeMetrics(SizeMetrics* size_metrics){
+    this->size_metrics = size_metrics;
+}
+
 
 void Screen::processInput(InputTypes inputType, Cordinates points){}
 
-void Screen::set_title_bar_height(int h){
-    this->title_bar_height = h;
-}

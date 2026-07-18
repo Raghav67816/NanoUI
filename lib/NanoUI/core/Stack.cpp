@@ -1,7 +1,8 @@
 #include "Stack.h"
 
 void Stack::addScreen(Screen &screen){
-    screen.set_title_bar_height(this->size_metrics->title_bar_height);
+    screen.setTheme(this->_theme);
+    screen.setSizeMetrics(this->size_metrics);
     screens.push_back(&screen);
 };
 

@@ -64,7 +64,7 @@ public:
             cfg.offset_y = 0;
 
             cfg.invert = false;
-            cfg.rgb_order = false;
+            cfg.rgb_order = true;
 
             _panel.config(cfg);
         }
@@ -74,8 +74,14 @@ public:
 };
 
 
-Color white = {255,255,255};
-Color black = {0,0,0};
+Color white      = {255, 255, 255};
+Color black      = {0, 0, 0};
+
+Color bg         = {30, 30, 30};
+Color surface    = {45, 45, 48};
+Color blue       = {0, 120, 215};
+Color cyan       = {0, 170, 255};
+Color grey       = {120, 120, 120};
 
 SizeMetrics size_policy = {
     .button_height = 60,
@@ -85,14 +91,14 @@ SizeMetrics size_policy = {
 
 
 Theme appTheme = {
-    .background = black,
+    .background = bg,
     .foreground = white,
-    .primary = white,
-    .secondary = black,
-    .accent = white,
-    .selection = white,
-    .selectionText = black,
-    .disabled = black
+    .primary = blue,
+    .secondary = surface,
+    .accent = cyan,
+    .selection = {70, 110, 180},
+    .selectionText = white,
+    .disabled = grey
 };
 
 

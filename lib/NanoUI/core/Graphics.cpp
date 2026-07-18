@@ -199,7 +199,14 @@ void Graphics::drawChar(int x, int y, char c, Color color) {
         uint8_t line = font[index + col];
         for(int row=0; row < 7; row++){
             if((line >> row) & 1){
-                display->drawPixel(x + col, y + row, color);
+                // display->drawPixel(x + col * 2, y + row * 2, color);
+                this->fillRect(
+                    x + col * 2,
+                    y + row * 2,
+                    2,
+                    2,
+                    color
+                );
             }
         }
     }
@@ -211,7 +218,7 @@ void Graphics::drawText(int x, int y, const char* text, Color color){
     while(text[index] != '\0'){
         drawChar(cursorx, y, text[index], color);
         index++;
-        cursorx += 6;
+        cursorx += 6*2;
     }
 }
 
@@ -220,7 +227,7 @@ int Graphics::getTextWidth(const char *text){
     while(text[index] != '\0'){
         index++;
     }
-    return index*6;
+    return index*6*2;
 }
 
 void Graphics::drawCircle(int x, int y, int radius, Color color){

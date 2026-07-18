@@ -7,7 +7,8 @@
 class Screen: public Widget {
     private:
     Display *display;
-    int title_bar_height = 0;
+    SizeMetrics *size_metrics;
+    Theme *theme;
 
     public:
 
@@ -23,6 +24,7 @@ class Screen: public Widget {
     void processInput(InputTypes inputType, Cordinates points) override;
     bool _dirtyCheck();
 
-    void set_title_bar_height(int h);
+    void setTheme(Theme *theme);
+    void setSizeMetrics(SizeMetrics *size_metrics);
 };
 
