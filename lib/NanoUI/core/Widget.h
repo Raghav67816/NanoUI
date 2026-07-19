@@ -45,6 +45,8 @@ class Widget
     std::vector<Widget *> children;
     Widget *parent = nullptr;
 
+    SizeMetrics *size_metrics;
+
     /*
     Every widget must define basic geometry.
     leaving them undefined will result in unwanted behaviour.
@@ -87,6 +89,7 @@ class Widget
     virtual void measureGeo(Graphics &gfx) {};
 
     /*
+    EXPERIMENTAL
 
     void processInput
 
@@ -98,6 +101,8 @@ class Widget
     */
 
     virtual void processInput(InputTypes inputType, Cordinates points) = 0;
+
+    virtual void setSizeMetrics(SizeMetrics *size_metrics);
 
 
     void invalidate();

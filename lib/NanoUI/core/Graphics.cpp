@@ -190,7 +190,7 @@ void Graphics::fillRect(int x, int y, int w, int h, Color color){
     }
 }
 
-void Graphics::drawChar(int x, int y, char c, Color color) {
+void Graphics::drawChar(int x, int y, char c, int charSize, Color color) {
     if (c < 32 || c > 126) return;
 
     int index = c*5;
@@ -201,8 +201,8 @@ void Graphics::drawChar(int x, int y, char c, Color color) {
             if((line >> row) & 1){
                 // display->drawPixel(x + col * 2, y + row * 2, color);
                 this->fillRect(
-                    x + col * 2,
-                    y + row * 2,
+                    x + col + charSize,
+                    y + row + charSize,
                     2,
                     2,
                     color
@@ -212,13 +212,13 @@ void Graphics::drawChar(int x, int y, char c, Color color) {
     }
 }
 
-void Graphics::drawText(int x, int y, const char* text, Color color){
+void Graphics::drawText(int x, int y, const char* text, int fontSize, Color color){
     int index = 0;
     int cursorx = x;
     while(text[index] != '\0'){
-        drawChar(cursorx, y, text[index], color);
+        drawChar(cursorx, y, text[index], fontSize, color);
         index++;
-        cursorx += 6*2;
+        cursorx += fontSize;
     }
 }
 

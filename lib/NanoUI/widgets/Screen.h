@@ -7,7 +7,6 @@
 class Screen: public Widget {
     private:
     Display *display;
-    SizeMetrics *size_metrics;
     Theme *theme;
 
     public:
@@ -25,6 +24,5 @@ class Screen: public Widget {
     bool _dirtyCheck();
 
     void setTheme(Theme *theme);
-    void setSizeMetrics(SizeMetrics *size_metrics);
 };
 

@@ -18,6 +18,7 @@ void Label::draw(Graphics &gfx, Theme* theme, int offsetX, int offsetY){
         drawX,
         drawY,
         labelText,
+        this->size_metrics->font_size,
         textColor
     );
 }
@@ -41,3 +42,4 @@ void Label::setColor(Color _color){
 const char* Label::text(){
     return labelText;
 }
+

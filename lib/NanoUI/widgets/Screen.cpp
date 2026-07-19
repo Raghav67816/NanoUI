@@ -50,16 +50,13 @@ void Screen::setTitle(Graphics *gfx, const char* title, Color titleColor){
         (display->getWidth() - gfx->getTextWidth(title)) / 2,
         (this->size_metrics->title_bar_height - 7)/2,
         title,
+        this->size_metrics->font_size,
         titleColor
     );
 }
 
 void Screen::setTheme(Theme* theme){
     this->theme = theme;
-}
-
-void Screen::setSizeMetrics(SizeMetrics* size_metrics){
-    this->size_metrics = size_metrics;
 }
 
 

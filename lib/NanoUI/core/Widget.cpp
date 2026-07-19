@@ -13,6 +13,7 @@ void Widget::addChild(Widget *child){
 
     children.push_back(child);
     child->parent = this;
+    child->setSizeMetrics(this->size_metrics);
 }
 
 void Widget::removeChild(Widget *child){
@@ -55,4 +56,8 @@ void Widget::debugTree(int depth){
             child->debugTree(depth + 1);
         }
     }
+}
+
+void Widget::setSizeMetrics(SizeMetrics* size_metrics){
+    this->size_metrics = size_metrics;
 }

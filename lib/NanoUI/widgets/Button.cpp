@@ -19,6 +19,7 @@ void Button::draw(Graphics &gfx, Theme* theme, int offsetX, int offsetY){
         textX - offsetX,
         textY - offsetY,
         labelText,
+        18,
         textColor
     );
 }

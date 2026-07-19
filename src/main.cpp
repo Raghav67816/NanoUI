@@ -8,6 +8,9 @@
 #include "core/TFTDisplay.h"
 
 #include "widgets/Screen.h"
+#include "widgets/Button.h"
+
+#include "layouts/Column.h"
 
 
 #define TFT_SCK 4
@@ -125,7 +128,13 @@ Screen home_screen(
     "SYSTEM STATUS"
 );
 
+Column root(
+    0, size_policy.title_bar_height,
+    tft_display.getWidth(),
+    tft_display.getHeight() - size_policy.title_bar_height
+);
 
+Button btn(120, 60, "Click Me", cyan, appTheme.selectionText);
 
 void setup()
 {
@@ -139,7 +148,13 @@ void setup()
     tft.init();
     tft.setRotation(1);
 
+    btn.setSizeMetrics(&size_policy);
+
     app.addScreen(home_screen);
+
+    root.addChild(&btn);
+    home_screen.addChild(&root);
+
     tft_display.clear();
 
     app.goTo(

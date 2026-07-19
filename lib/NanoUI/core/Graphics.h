@@ -5,7 +5,7 @@
 class Graphics{
     private:
     Display *display;
-    void drawChar(int x, int y, char c, Color color);
+    void drawChar(int x, int y, char c, int charSize, Color color);
     
     
     
@@ -21,6 +21,6 @@ class Graphics{
     void fillRect(int x, int y, int w, int h, Color color);
     void fillCircle(int x, int y, int radius, Color color);
     
-    void drawText(int x, int y, const char* text, Color color);
+    void drawText(int x, int y, const char* text, int fontSize, Color color);
     int getTextWidth(const char* text);
 };

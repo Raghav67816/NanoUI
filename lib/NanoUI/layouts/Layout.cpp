@@ -18,4 +18,6 @@ void Layout::setSpacing(int _spacing){
     spacing = _spacing;
 }
 
+
 void Layout::measureGeo(Graphics &gfx){}
+void Layout::processInput(InputTypes inputType, Cordinates points){}
