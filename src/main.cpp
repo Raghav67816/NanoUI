@@ -89,7 +89,7 @@ Color grey       = {120, 120, 120};
 SizeMetrics size_policy = {
     .button_height = 60,
     .title_bar_height = 48,
-    .font_size = 14,
+    .font_scale_factor = 2,
 };
 
 
@@ -113,7 +113,7 @@ TFTDisplay tft_display(
 );
 
 
-Graphics gfx(&tft_display);
+Graphics gfx(&tft_display, &size_policy);
 
 Stack app(
     tft_display,
@@ -134,14 +134,18 @@ Column root(
     tft_display.getHeight() - size_policy.title_bar_height
 );
 
-Button btn(120, 60, "Click Me", cyan, appTheme.selectionText);
+Button btn(120, 40, "Click Me", cyan, appTheme.selectionText);
 
 void setup()
 {
     Serial.begin(115200);
+
     delay(500);
 
     Serial.println("BOOT");
+    Serial.println(btn.y);
+    Serial.println(root.y);
+    Serial.println(size_policy.title_bar_height);
 
 
     // TFT

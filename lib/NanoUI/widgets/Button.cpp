@@ -7,19 +7,18 @@ void Button::draw(Graphics &gfx, Theme* theme, int offsetX, int offsetY){
     int drawX = this->x - offsetX;
     int drawY = this->y - offsetY;
 
-    if(!gfx.boundCheck(drawX, drawX + w, drawY, drawY + h)) return;
+    if(!gfx.boundCheck(drawX, drawY + w, drawY, drawY + h)) return;
 
     int textLen = gfx.getTextWidth(labelText);
 
     int textX = x + (w - textLen) / 2;
     int textY = y + (h - 7) / 2;
     
-    gfx.fillRect(drawX, drawX, w, h, bgColor);
+    gfx.fillRect(drawX, drawY, w, h, bgColor);
     gfx.drawText(
         textX - offsetX,
         textY - offsetY,
         labelText,
-        18,
         textColor
     );
 }

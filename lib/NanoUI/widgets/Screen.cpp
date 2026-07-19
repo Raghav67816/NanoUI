@@ -2,8 +2,6 @@
 
 #include "widgets/Button.h"
 
-#define TITLE_BAR_HEIGHT 10
-
 void Screen::draw(Graphics &gfx, Theme* theme, int offsetX, int offsetY){
 
     gfx.fillRect(
@@ -50,7 +48,6 @@ void Screen::setTitle(Graphics *gfx, const char* title, Color titleColor){
         (display->getWidth() - gfx->getTextWidth(title)) / 2,
         (this->size_metrics->title_bar_height - 7)/2,
         title,
-        this->size_metrics->font_size,
         titleColor
     );
 }

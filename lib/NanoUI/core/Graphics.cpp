@@ -190,7 +190,7 @@ void Graphics::fillRect(int x, int y, int w, int h, Color color){
     }
 }
 
-void Graphics::drawChar(int x, int y, char c, int charSize, Color color) {
+void Graphics::drawChar(int x, int y, char c, Color color) {
     if (c < 32 || c > 126) return;
 
     int index = c*5;
@@ -201,10 +201,10 @@ void Graphics::drawChar(int x, int y, char c, int charSize, Color color) {
             if((line >> row) & 1){
                 // display->drawPixel(x + col * 2, y + row * 2, color);
                 this->fillRect(
-                    x + col + charSize,
-                    y + row + charSize,
-                    2,
-                    2,
+                    x + col * _size_metrics->font_scale_factor,
+                    y + row * _size_metrics->font_scale_factor,
+                    _size_metrics->font_scale_factor,
+                    _size_metrics->font_scale_factor,
                     color
                 );
             }
@@ -212,13 +212,13 @@ void Graphics::drawChar(int x, int y, char c, int charSize, Color color) {
     }
 }
 
-void Graphics::drawText(int x, int y, const char* text, int fontSize, Color color){
+void Graphics::drawText(int x, int y, const char* text, Color color){
     int index = 0;
     int cursorx = x;
     while(text[index] != '\0'){
-        drawChar(cursorx, y, text[index], fontSize, color);
+        drawChar(cursorx, y, text[index], color);
         index++;
-        cursorx += fontSize;
+        cursorx += 6 * _size_metrics->font_scale_factor;
     }
 }
 
@@ -227,7 +227,7 @@ int Graphics::getTextWidth(const char *text){
     while(text[index] != '\0'){
         index++;
     }
-    return index*6*2;
+    return index * 6 * _size_metrics->font_scale_factor;
 }
 
 void Graphics::drawCircle(int x, int y, int radius, Color color){

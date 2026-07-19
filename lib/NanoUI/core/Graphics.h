@@ -1,16 +1,18 @@
 #pragma once
 
 #include "Display.h"
+#include "types.h"
 
 class Graphics{
     private:
     Display *display;
-    void drawChar(int x, int y, char c, int charSize, Color color);
-    
+    SizeMetrics *_size_metrics;
+
+    void drawChar(int x, int y, char c, Color color);
     
     
     public:
-    Graphics(Display *display): display(display){}
+    Graphics(Display *display, SizeMetrics* size_metrics): display(display), _size_metrics(size_metrics){}
     
     bool boundCheck(int x1, int x2, int y1, int y2);
     
@@ -21,6 +23,6 @@ class Graphics{
     void fillRect(int x, int y, int w, int h, Color color);
     void fillCircle(int x, int y, int radius, Color color);
     
-    void drawText(int x, int y, const char* text, int fontSize, Color color);
+    void drawText(int x, int y, const char* text, Color color);
     int getTextWidth(const char* text);
 };

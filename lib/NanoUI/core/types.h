@@ -28,5 +28,5 @@ Define sizes once, use everywhere.
 struct SizeMetrics{
     int button_height;
     int title_bar_height;
-    int font_size;
+    int font_scale_factor;
 };
