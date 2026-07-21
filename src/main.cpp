@@ -6,6 +6,7 @@
 #include "core/Theme.h"
 #include "core/Graphics.h"
 #include "core/TFTDisplay.h"
+#include "core/FileManager.h"
 
 #include "widgets/Screen.h"
 #include "widgets/Button.h"
@@ -104,6 +105,7 @@ Theme appTheme = {
     .disabled = grey
 };
 
+FileManager file_manager;
 
 LGFX tft;
 TFTDisplay tft_display(
@@ -125,7 +127,7 @@ Stack app(
 
 Screen home_screen(
     &tft_display,
-    "SYSTEM STATUS"
+    "# SYSTEM STATUS #"
 );
 
 Column root(
@@ -141,6 +143,8 @@ void setup()
     Serial.begin(115200);
 
     delay(500);
+
+    file_manager.begin();
 
     Serial.println("BOOT");
     Serial.println(btn.y);
