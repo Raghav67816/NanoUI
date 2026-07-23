@@ -2,7 +2,7 @@
 #include <SPI.h>
 
 #include "core/Color.h"
-#include "core/Stack.h"
+#include "core/App.h"
 #include "core/Theme.h"
 #include "core/Graphics.h"
 #include "core/TFTDisplay.h"
@@ -10,15 +10,14 @@
 
 #include "widgets/Screen.h"
 #include "widgets/Button.h"
+#include "widgets/Label.h"
 
 #include "layouts/Column.h"
-
 
 #define TFT_SCK 4
 #define TFT_MOSI 6
 #define TFT_MISO 5
 #define TFT_CS 0
-
 
 class LGFX : public lgfx::LGFX_Device
 {
@@ -26,7 +25,6 @@ class LGFX : public lgfx::LGFX_Device
     lgfx::Bus_SPI _bus;
 
 public:
-
     LGFX()
     {
         {
@@ -36,7 +34,7 @@ public:
             cfg.spi_mode = 0;
 
             cfg.freq_write = 40000000;
-            cfg.freq_read  = 16000000;
+            cfg.freq_read = 16000000;
 
             cfg.pin_sclk = TFT_SCK;
             cfg.pin_mosi = TFT_MOSI;
@@ -50,18 +48,17 @@ public:
             _panel.setBus(&_bus);
         }
 
-
         {
             auto cfg = _panel.config();
 
-            cfg.pin_cs  = TFT_CS;
+            cfg.pin_cs = TFT_CS;
             cfg.pin_rst = 10;
             cfg.pin_busy = -1;
 
-            cfg.memory_width  = 320;
+            cfg.memory_width = 320;
             cfg.memory_height = 480;
 
-            cfg.panel_width  = 320;
+            cfg.panel_width = 320;
             cfg.panel_height = 480;
 
             cfg.offset_x = 0;
@@ -77,22 +74,20 @@ public:
     }
 };
 
+Color white = {255, 255, 255};
+Color black = {0, 0, 0};
 
-Color white      = {255, 255, 255};
-Color black      = {0, 0, 0};
-
-Color bg         = {30, 30, 30};
-Color surface    = {45, 45, 48};
-Color blue       = {0, 120, 215};
-Color cyan       = {0, 170, 255};
-Color grey       = {120, 120, 120};
+Color bg = {30, 30, 30};
+Color surface = {45, 45, 48};
+Color blue = {0, 120, 215};
+Color cyan = {0, 170, 255};
+Color grey = {120, 120, 120};
 
 SizeMetrics size_policy = {
     .button_height = 60,
     .title_bar_height = 48,
     .font_scale_factor = 2,
 };
-
 
 Theme appTheme = {
     .background = bg,
@@ -102,8 +97,7 @@ Theme appTheme = {
     .accent = cyan,
     .selection = {70, 110, 180},
     .selectionText = white,
-    .disabled = grey
-};
+    .disabled = grey};
 
 FileManager file_manager;
 
@@ -111,32 +105,29 @@ LGFX tft;
 TFTDisplay tft_display(
     480,
     320,
-    &tft
-);
-
+    &tft);
 
 Graphics gfx(&tft_display, &size_policy);
 
-Stack app(
+App app(
     tft_display,
     gfx,
     &appTheme,
-    &size_policy
-);
-
+    &size_policy);
 
 Screen home_screen(
     &tft_display,
-    "# SYSTEM STATUS #"
-);
+    "# SYSTEM STATUS #");
 
 Column root(
     0, size_policy.title_bar_height,
     tft_display.getWidth(),
-    tft_display.getHeight() - size_policy.title_bar_height
-);
+    tft_display.getHeight() - size_policy.title_bar_height);
 
 Button btn(120, 40, "Click Me", cyan, appTheme.selectionText);
+Label label(120, 40, "Waiting for data", white);
+
+int x = 0;
 
 void setup()
 {
@@ -151,7 +142,6 @@ void setup()
     Serial.println(root.y);
     Serial.println(size_policy.title_bar_height);
 
-
     // TFT
     tft.init();
     tft.setRotation(1);
@@ -160,6 +150,7 @@ void setup()
 
     app.addScreen(home_screen);
 
+    root.addChild(&label);
     root.addChild(&btn);
     home_screen.addChild(&root);
 
@@ -168,20 +159,24 @@ void setup()
     app.goTo(
         tft_display,
         home_screen,
-        gfx
-    );
+        gfx);
 
     tft_display.flush();
-
 
     Serial.println("READY");
 }
 
-
-
 void loop()
 {
-    app.renderApp(gfx);
+    if (Serial.available())
+    {
+        uint8_t cmd = Serial.read();
 
-    tft_display.flush();
+        Serial.println("got something");
+        static char text[5];
+        snprintf(text, sizeof(text), "%02X", cmd);
+
+        label.setText(text);
+    }
+    app.renderApp(gfx);
 }

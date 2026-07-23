@@ -21,7 +21,7 @@ class Label: public Widget{
     void setText(char* text);
     void setColor(Color color);
 
-    void processInput(InputTypes inputType, Cordinates points);
+    void processInput(InputTypes inputType, Cordinates points) override;
 
     const char* text();
 };

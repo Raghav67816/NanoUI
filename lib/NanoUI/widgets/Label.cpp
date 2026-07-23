@@ -29,16 +29,16 @@ void Label::measureGeo(Graphics &gfx){
 
 void Label::setText(char* _text){
     labelText = _text;
-    invalidate();
 }
 
 void Label::setColor(Color _color){
     color = _color;
     hasCustomColor = true;
-    invalidate();
 }
 
 const char* Label::text(){
     return labelText;
 }
+
+void Label::processInput(InputTypes inputType, Cordinates points){}
 

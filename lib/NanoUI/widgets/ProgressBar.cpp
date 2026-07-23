@@ -33,7 +33,6 @@ int ProgressBar::getProgress()
 void ProgressBar::setProgress(int value)
 {
     progress = value;
-    invalidate();
 }
 
 void ProgressBar::measureGeo(Graphics &gfx){

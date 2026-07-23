@@ -9,7 +9,7 @@
 
 #include "widgets/Screen.h"
 
-class Stack{
+class App{
     private:
     int screenIndex = 0;
 
@@ -27,7 +27,7 @@ class Stack{
 
     Event<Screen*> onScreenChanged;
 
-    Stack(Display &display, Graphics &gfx, Theme* theme, SizeMetrics* size_metrics_):display(display), gfx(gfx), _theme(theme), size_metrics(size_metrics_){}
+    App(Display &display, Graphics &gfx, Theme* theme, SizeMetrics* size_metrics_):display(display), gfx(gfx), _theme(theme), size_metrics(size_metrics_){}
 
     void addScreen(Screen &screen);
     void removeScreen(Screen &screen);

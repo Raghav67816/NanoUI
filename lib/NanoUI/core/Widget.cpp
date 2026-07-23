@@ -28,34 +28,9 @@ void Widget::removeChild(Widget *child){
     }
 }
 
-void Widget::invalidate(){
-    isDirty = true;
-    Widget *currentWidget = parent;
-
-    while(currentWidget != nullptr){
-        currentWidget->isDirty = true;
-        currentWidget = currentWidget->parent;
-    }
-}
-
-void Widget::debugTree(int depth){
-    for(int i=0; i < depth; i++){
-        // Serial.print(" ");
-    }
-
-    // Serial.printf(
-    //     "(%d,%d %dx%d)\n",
-    //     x,
-    //     y,
-    //     w,
-    //     h
-    // );
-
-    for(Widget *child: children){
-        if(child != nullptr){
-            child->debugTree(depth + 1);
-        }
-    }
+Region Widget::getBounds(){
+    Region region = {this->x, this->y, this->w, this->h};
+    return region;
 }
 
 void Widget::setSizeMetrics(SizeMetrics* size_metrics){

@@ -43,6 +43,7 @@ class Widget
     bool enabled;
 
     std::vector<Widget *> children;
+    std::vector<Region> regions;
     Widget *parent = nullptr;
 
     SizeMetrics *size_metrics;
@@ -102,10 +103,33 @@ class Widget
 
     virtual void processInput(InputTypes inputType, Cordinates points) = 0;
 
+    /*
+    void setSizeMetrics
+
+    This method sets size metric for the widget
+    */
     virtual void setSizeMetrics(SizeMetrics *size_metrics);
 
+    /*
+    void addRedrawRegion
 
-    void invalidate();
+    Adds a damaged region to the widget's vector
+    */
+    void addRedrawRegion(const Region& region);
 
-    void debugTree(int depth);
+    /*
+    void removeRedrawRegion
+
+    Removes a damaged region once it's repainted
+    */
+    void removeRedrawRegion(const Region& region);
+
+    /*
+    Region getBounds()
+
+    returns a Region(int x, int y, int w, int h)
+
+    see Region in types.h
+    */
+    Region getBounds();
 };

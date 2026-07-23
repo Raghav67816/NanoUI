@@ -1,7 +1,6 @@
 #pragma once
 
 #include <stdint.h>
-#include <string>
 
 /*
 Cordinates
@@ -32,24 +31,30 @@ struct SizeMetrics{
     int font_scale_factor;
 };
 
-
-struct FileInfo{
-    String filename;
-    size_t file_size;
+/*
+General packet types
+*/
+enum PacketType{
+    START,
+    END,
+    ERROR,
+    FILE_INFO
 };
 
 struct PacketHeader{
-    uint16_t packetId;
-    uint8_t type;
+    uint16_t packet_id;
+    PacketType packet_type;
     uint16_t length;
 };
 
-enum FileM_PacketType: uint8_t{
-    LIST_START,
-    LIST_END,
-    FILE_INFO,
-    UPLOAD_FILE,
-    DELETE_FILE,
-    FORMAT_FLASH,
-    ERROR
+struct FileInfo{
+    char filename[32];
+    size_t filesize;  
+};
+
+struct Region{
+    int x;
+    int y;
+    int w;
+    int h;
 };

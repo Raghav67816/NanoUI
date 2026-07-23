@@ -1,12 +1,12 @@
-#include "Stack.h"
+#include "App.h"
 
-void Stack::addScreen(Screen &screen){
+void App::addScreen(Screen &screen){
     screen.setTheme(this->_theme);
     screen.setSizeMetrics(this->size_metrics);
     screens.push_back(&screen);
 };
 
-void Stack::removeScreen(Screen &screen){
+void App::removeScreen(Screen &screen){
     for(int i=0; i<screens.size(); i++){
         if(screens[i] == &screen){
             screens[i] = screens.back();
@@ -16,7 +16,7 @@ void Stack::removeScreen(Screen &screen){
     }
 }
 
-void Stack::goTo(Display &display, Screen &screen, Graphics &gfx){
+void App::goTo(Display &display, Screen &screen, Graphics &gfx){
     for(int i=0; i<screens.size(); i++){
         if(screens[i] == &screen){
             screenIndex = i;
@@ -27,7 +27,7 @@ void Stack::goTo(Display &display, Screen &screen, Graphics &gfx){
     }
 }
 
-void Stack::forward(){
+void App::forward(){
     if(screenIndex + 1 > screens.size()){
         return;
     }
@@ -38,7 +38,7 @@ void Stack::forward(){
     goTo(display, *_screen, gfx);
 }
 
-void Stack::back(){
+void App::back(){
     if(screenIndex - 1 < 0){
         return;
     }
@@ -48,7 +48,7 @@ void Stack::back(){
     goTo(display, *_screen, gfx);
 }
 
-void Stack::onCurrentScreenChanged(Display &display, Graphics &gfx){
+void App::onCurrentScreenChanged(Display &display, Graphics &gfx){
     Color black = {0, 0, 0};
 
     activeScreen->measureGeo(gfx);
@@ -58,11 +58,11 @@ void Stack::onCurrentScreenChanged(Display &display, Graphics &gfx){
 
 }
 
-Screen* Stack::getActiveScreen(){
+Screen* App::getActiveScreen(){
     return activeScreen;
 }
 
-void Stack::renderApp(Graphics &gfx){
+void App::renderApp(Graphics &gfx){
 
     if (activeScreen == nullptr) {
         this->screenIndex = 0;
@@ -72,14 +72,15 @@ void Stack::renderApp(Graphics &gfx){
     if(activeScreen->_dirtyCheck()){
         display.clear();
         activeScreen->draw(gfx, this->_theme);
+        activeScreen->clearDirty();
         display.flush();   
     }
 }
 
-void Stack::setTheme(Theme* theme){
+void App::setTheme(Theme* theme){
     this->_theme = theme;
 }
 
-void Stack::setSizes(SizeMetrics *size_metrics){
+void App::setSizes(SizeMetrics *size_metrics){
     this->size_metrics = size_metrics;
 }

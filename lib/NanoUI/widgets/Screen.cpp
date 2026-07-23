@@ -35,6 +35,12 @@ bool Screen::_dirtyCheck(){
     return false;
 }
 
+void Screen::clearDirty(){
+    for(Widget* child: children){
+        child->isDirty = false;
+    }
+}
+
 
 void Screen::setTitle(Graphics *gfx, const char* title, Color titleColor){
     gfx->fillRect(

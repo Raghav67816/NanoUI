@@ -1,90 +1,75 @@
+#include <LittleFS.h>
 #include "FileManager.h"
-#include "types.h"
 
 void FileManager::begin()
 {
     if (!LittleFS.begin(true))
     {
-        Serial.println("Failed to attach file manager.");
+        Serial.println("Failed to mount file system");
         return;
     }
 
-    Serial.println("File manager attached.");
+    Serial.println("LittleFS started successfully");
 }
 
-void FileManager::list(uint16_t packetId)
+void FileManager::list(uint16_t packet_id)
 {
-    send_packet(
-        packetId,
-        FileM_PacketType::LIST_START,
+    this->sendPakcet(
+        packet_id,
+        PacketType::START,
         0,
-        nullptr
-    );
+        nullptr);
 
     File root = LittleFS.open("/");
-
     if (!root || !root.isDirectory())
     {
-        send_packet(
-            packetId,
-            FileM_PacketType::ERROR,
+        this->sendPakcet(
+            packet_id,
+            PacketType::ERROR,
             0,
-            nullptr
-        );
-
+            nullptr);
         return;
     }
 
-    File file = root.openNextFile();
-
-    while (file)
-    {
+    File file_ = root.openNextFile();
+    while(file_){
         FileInfo info;
 
-        info.filename = file.name();
-        info.file_size = file.size();
+        strncpy(info.filename, file_.name(), sizeof(info.filename) - 1);
+        info.filesize = file_.size();
 
-        send_packet(
-            packetId,
-            FileM_PacketType::FILE_INFO,
+        sendPakcet(
+            packet_id,
+            PacketType::FILE_INFO,
             sizeof(info),
             &info
         );
 
-        file = root.openNextFile();
+        file_ = file_.openNextFile();
     }
 
-    send_packet(
-        packetId,
-        FileM_PacketType::LIST_END,
+    sendPakcet(
+        packet_id,
+        PacketType::END,
         0,
         nullptr
     );
 }
 
-void FileManager::send_packet(
-    uint16_t packetId,
-    uint8_t FileM_PacketType,
-    uint16_t payloadLength,
+void FileManager::sendPakcet(
+    uint16_t packet_id,
+    PacketType packet_type,
+    uint16_t length,
     const void* payload
-)
-{
-    PacketHeader header;
-
-    header.packetId = packetId;
-    header.type = FileM_PacketType;
-    header.length = payloadLength;
-
+){
+    PacketHeader header = {packet_id, packet_type, length};
     Serial.write(
         reinterpret_cast<uint8_t*>(&header),
         sizeof(PacketHeader)
     );
 
-    if (payload != nullptr && payloadLength > 0)
-    {
-        Serial.write(
-            reinterpret_cast<const uint8_t*>(payload),
-            payloadLength
-        );
-    }
+    if(payload != nullptr && length > 0){
+        Serial.write(reinterpret_cast<const uint8_t*>(payload),
+        sizeof(payload));
+    };
 }

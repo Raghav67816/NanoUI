@@ -6,11 +6,10 @@
 
 class Screen: public Widget {
     private:
-    Display *display;
+         Display *display;
     Theme *theme;
 
     public:
-
     const char* title;
 
     Screen(Display *display, const char* title): Widget(0, 0, display->getWidth(), display->getHeight()){
@@ -22,6 +21,7 @@ class Screen: public Widget {
     void setTitle(Graphics *gfx, const char* title, Color color);
     void processInput(InputTypes inputType, Cordinates points) override;
     bool _dirtyCheck();
+    void clearDirty();
 
     void setTheme(Theme *theme);
 };
