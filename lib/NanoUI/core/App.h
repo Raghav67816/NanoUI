@@ -21,6 +21,7 @@ class App{
     Theme* _theme;
     SizeMetrics *size_metrics;
 
+    void repaintDamaged();
     void onCurrentScreenChanged(Display &display, Graphics &gfx);
 
     public:

@@ -150,18 +150,17 @@ void setup()
 
     app.addScreen(home_screen);
 
+    root.setSpacing(10);
+    root.setContentSpacing(10);
+
     root.addChild(&label);
     root.addChild(&btn);
     home_screen.addChild(&root);
-
-    tft_display.clear();
 
     app.goTo(
         tft_display,
         home_screen,
         gfx);
-
-    tft_display.flush();
 
     Serial.println("READY");
 }
@@ -175,6 +174,7 @@ void loop()
         Serial.println("got something");
         static char text[5];
         snprintf(text, sizeof(text), "%02X", cmd);
+        label.setText("hello babe");
     }
     app.renderApp(gfx);
 }

@@ -39,12 +39,12 @@ void Widget::setSizeMetrics(SizeMetrics* size_metrics){
 }
 
 Widget* Widget::getTopLevelParent(){
-    Widget* _screen = this->parent;
-    while(this->parent != nullptr){
-        _screen = _screen->parent;
+    Widget* current = this;
+    while(current->parent != nullptr){
+        current = current->parent;
     }
 
-    return _screen;
+    return current;
 }
 
 void Widget::invalidate(Screen* screen, Widget* widget){

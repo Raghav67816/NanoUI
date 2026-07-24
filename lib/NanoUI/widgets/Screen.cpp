@@ -83,4 +83,12 @@ void Screen::removeDamagedWidget(Widget* widget){
     }
 }
 
+bool Screen::hasDamagedWidgets(){
+    bool dw = false;
+    if(this->damagedWidgets.size() > 0){
+        dw = true;
+    }
+    return dw;
+}
+
 void Screen::processInput(InputTypes inputType, Cordinates points) {}

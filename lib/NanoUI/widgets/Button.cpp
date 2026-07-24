@@ -41,7 +41,7 @@ void Button::setText(Graphics &gfx, char* text){
     labelText = text;
     Widget* tParent = this->getTopLevelParent();
     Screen* tScreen = static_cast<Screen*>(tParent);
-    this->invalidate(tScreen, this->getBounds());
+    this->invalidate(tScreen, this);
 }
 
 char* Button::text(){

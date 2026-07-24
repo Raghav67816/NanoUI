@@ -34,7 +34,7 @@ void Label::setText(char* _text){
     labelText = _text;
     Widget* tParent = this->getTopLevelParent();
     Screen* tScreen = static_cast<Screen*>(tParent);
-    this->invalidate(tScreen, this->getBounds());
+    this->invalidate(tScreen, this);
 }
 
 void Label::setColor(Color _color){

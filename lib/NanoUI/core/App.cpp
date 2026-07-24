@@ -1,5 +1,7 @@
 #include "App.h"
 
+#include <Arduino.h>
+
 void App::addScreen(Screen &screen){
     screen.setTheme(this->_theme);
     screen.setSizeMetrics(this->size_metrics);
@@ -69,12 +71,18 @@ void App::renderApp(Graphics &gfx){
         this->activeScreen = screens.at(this->screenIndex);
     }
 
-    if(activeScreen->_dirtyCheck()){
-        display.clear();
-        activeScreen->draw(gfx, this->_theme);
-        activeScreen->clearDirty();
-        display.flush();   
+    if(activeScreen->hasDamagedWidgets()){
+        this->repaintDamaged();
     }
+}
+
+void App::repaintDamaged(){
+    for(Widget* damagedWidget: this->activeScreen->damagedWidgets){
+        damagedWidget->draw(gfx, this->_theme);
+        this->activeScreen->removeDamagedWidget(damagedWidget);
+    }
+
+    display.flush();
 }
 
 void App::setTheme(Theme* theme){

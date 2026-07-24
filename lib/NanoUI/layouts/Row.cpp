@@ -6,6 +6,6 @@ void Row::layout(Graphics &gfx){
         child->x = currentX;
         child->y = y + spacing;
 
-        currentX += child->w + spacing;
+        currentX += child->w + spacing + contentSpacing;
     }
 }
