@@ -11,6 +11,7 @@
 #include "widgets/Screen.h"
 #include "widgets/Button.h"
 #include "widgets/Label.h"
+#include "widgets/ProgressBar.h"
 
 #include "layouts/Column.h"
 
@@ -127,6 +128,8 @@ Column root(
 Button btn(120, 40, "Click Me", cyan, appTheme.selectionText);
 Label label(120, 40, "Waiting for data", white);
 
+ProgressBar prog_bar(200, 40);
+
 int x = 0;
 
 void setup()
@@ -154,6 +157,7 @@ void setup()
     root.setContentSpacing(10);
 
     root.addChild(&label);
+    root.addChild(&prog_bar);
     root.addChild(&btn);
     home_screen.addChild(&root);
 
@@ -173,8 +177,10 @@ void loop()
 
         Serial.println("got something");
         static char text[5];
+ 
         snprintf(text, sizeof(text), "%02X", cmd);
-        label.setText("hello babe");
+        // btn.setText("12");
+        prog_bar.setProgress(prog_bar.getProgress() + 10);
     }
     app.renderApp(gfx);
 }

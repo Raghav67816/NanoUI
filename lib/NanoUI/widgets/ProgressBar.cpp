@@ -1,3 +1,4 @@
+#include "Screen.h"
 #include "ProgressBar.h"
 
 void ProgressBar::draw(Graphics &gfx, Theme* theme, int offsetX, int offsetY)
@@ -33,6 +34,9 @@ int ProgressBar::getProgress()
 void ProgressBar::setProgress(int value)
 {
     progress = value;
+    Widget* tParent = this->getTopLevelParent();
+    Screen* tScreen = static_cast<Screen*>(tParent);
+    this->invalidate(tScreen, this);
 }
 
 void ProgressBar::measureGeo(Graphics &gfx){
@@ -41,3 +45,4 @@ void ProgressBar::measureGeo(Graphics &gfx){
     }
 }
 
+void ProgressBar::processInput(InputTypes inputType, Cordinates point){}

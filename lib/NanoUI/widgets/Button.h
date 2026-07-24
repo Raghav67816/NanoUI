@@ -30,6 +30,6 @@ class Button: public Widget{
 
     void processInput(InputTypes inputType, Cordinates point) override;
 
-    void setText(Graphics &gfx, char *text);
+    void setText(char *text);
     char* text();
 };

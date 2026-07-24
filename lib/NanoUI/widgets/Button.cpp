@@ -37,7 +37,7 @@ void Button::measureGeo(Graphics &gfx){
     }
 }
 
-void Button::setText(Graphics &gfx, char* text){
+void Button::setText(char* text){
     labelText = text;
     Widget* tParent = this->getTopLevelParent();
     Screen* tScreen = static_cast<Screen*>(tParent);
