@@ -175,8 +175,6 @@ void loop()
         Serial.println("got something");
         static char text[5];
         snprintf(text, sizeof(text), "%02X", cmd);
-
-        label.setText(text);
     }
     app.renderApp(gfx);
 }

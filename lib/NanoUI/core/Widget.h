@@ -29,6 +29,8 @@ not supported currently
 
 */
 
+class Screen;
+
 class Widget
 {
     public:
@@ -111,20 +113,6 @@ class Widget
     virtual void setSizeMetrics(SizeMetrics *size_metrics);
 
     /*
-    void addRedrawRegion
-
-    Adds a damaged region to the widget's vector
-    */
-    void addRedrawRegion(const Region& region);
-
-    /*
-    void removeRedrawRegion
-
-    Removes a damaged region once it's repainted
-    */
-    void removeRedrawRegion(const Region& region);
-
-    /*
     Region getBounds()
 
     returns a Region(int x, int y, int w, int h)
@@ -132,4 +120,18 @@ class Widget
     see Region in types.h
     */
     Region getBounds();
+
+    /*
+    Screen* getTopLevelParent()
+
+    returns the top level parent i.e the screen.
+    */
+   Widget* getTopLevelParent();
+
+   /*
+   void invalidate
+
+   marks the region as damaged and adds to redraw queue.
+   */
+   void invalidate(Screen* screen, Widget* widget);
 };

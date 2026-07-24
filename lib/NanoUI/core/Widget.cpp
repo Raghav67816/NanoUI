@@ -1,4 +1,5 @@
 #include "Widget.h"
+#include "widgets/Screen.h"
 
 void Widget::addChild(Widget *child){
     for(Widget *_child: children){
@@ -36,3 +37,17 @@ Region Widget::getBounds(){
 void Widget::setSizeMetrics(SizeMetrics* size_metrics){
     this->size_metrics = size_metrics;
 }
+
+Widget* Widget::getTopLevelParent(){
+    Widget* _screen = this->parent;
+    while(this->parent != nullptr){
+        _screen = _screen->parent;
+    }
+
+    return _screen;
+}
+
+void Widget::invalidate(Screen* screen, Widget* widget){
+    screen->addDamagedWidget(widget);
+}
+

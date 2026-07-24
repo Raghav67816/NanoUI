@@ -17,7 +17,8 @@ struct Cordinates
 /*
 EXPERIMENTAL
 */
-enum InputTypes{
+enum InputTypes
+{
     TOUCH,
     HOVER
 };
@@ -25,7 +26,8 @@ enum InputTypes{
 /*
 Define sizes once, use everywhere.
 */
-struct SizeMetrics{
+struct SizeMetrics
+{
     int button_height;
     int title_bar_height;
     int font_scale_factor;
@@ -34,27 +36,39 @@ struct SizeMetrics{
 /*
 General packet types
 */
-enum PacketType{
+enum PacketType
+{
     START,
     END,
     ERROR,
     FILE_INFO
 };
 
-struct PacketHeader{
+struct PacketHeader
+{
     uint16_t packet_id;
     PacketType packet_type;
     uint16_t length;
 };
 
-struct FileInfo{
+struct FileInfo
+{
     char filename[32];
-    size_t filesize;  
+    size_t filesize;
 };
 
-struct Region{
+struct Region
+{
     int x;
     int y;
     int w;
     int h;
+
+    bool operator==(const Region &other) const
+    {
+        return x == other.x &&
+               y == other.y &&
+               w == other.w &&
+               h == other.h;
+    }
 };

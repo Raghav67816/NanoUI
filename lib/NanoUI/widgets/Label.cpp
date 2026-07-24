@@ -1,4 +1,7 @@
 #include "Label.h"
+#include "Screen.h"
+
+#include <Arduino.h>
 
 void Label::draw(Graphics &gfx, Theme* theme, int offsetX, int offsetY){
 
@@ -29,6 +32,9 @@ void Label::measureGeo(Graphics &gfx){
 
 void Label::setText(char* _text){
     labelText = _text;
+    Widget* tParent = this->getTopLevelParent();
+    Screen* tScreen = static_cast<Screen*>(tParent);
+    this->invalidate(tScreen, this->getBounds());
 }
 
 void Label::setColor(Color _color){

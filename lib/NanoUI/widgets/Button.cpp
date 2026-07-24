@@ -1,4 +1,5 @@
 #include "Button.h"
+#include "Screen.h"
 
 #define PADDING 2
 
@@ -38,6 +39,9 @@ void Button::measureGeo(Graphics &gfx){
 
 void Button::setText(Graphics &gfx, char* text){
     labelText = text;
+    Widget* tParent = this->getTopLevelParent();
+    Screen* tScreen = static_cast<Screen*>(tParent);
+    this->invalidate(tScreen, this->getBounds());
 }
 
 char* Button::text(){

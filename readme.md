@@ -25,3 +25,12 @@ Nano UI is a user-interface framework for micro-controllers and edge devices. It
 You can even make custom widgets !!!!!
 
 **Please note that the project is still under development. However, API design will remain consistant more widgets and fixes will pushed regularly.**
+
+## Installation / Usage
+
+It is recommended to use PlatformIO 
+
+ - Download the latest source code.
+ - Unzip and move the folder to your lib folder of your PlatformIO project folder.
+ - Write your code
+ - Flash your firmware to your board.
