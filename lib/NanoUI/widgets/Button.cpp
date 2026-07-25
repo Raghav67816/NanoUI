@@ -14,13 +14,15 @@ void Button::draw(Graphics &gfx, Theme* theme, int offsetX, int offsetY){
 
     int textX = x + (w - textLen) / 2;
     int textY = y + (h - 7) / 2;
+
+    bgColor = theme->primary;
     
     gfx.fillRect(drawX, drawY, w, h, bgColor);
     gfx.drawText(
         textX - offsetX,
         textY - offsetY,
-        labelText,
-        textColor
+        this->labelText,
+        theme->selectionText
     );
 }
 

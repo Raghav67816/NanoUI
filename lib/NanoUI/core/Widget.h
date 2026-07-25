@@ -48,6 +48,8 @@ class Widget
     std::vector<Region> regions;
     Widget *parent = nullptr;
 
+    Color bgColor;
+
     SizeMetrics *size_metrics;
 
     /*
@@ -134,4 +136,6 @@ class Widget
    marks the region as damaged and adds to redraw queue.
    */
    void invalidate(Screen* screen, Widget* widget);
+
+   void clear(Graphics &gfx, Color color);
 };

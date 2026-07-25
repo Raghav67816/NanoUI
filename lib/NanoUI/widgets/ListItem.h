@@ -21,7 +21,7 @@ class ListItem: public Label{
 
 
     public:
-    ListItem(const char* text): Label(20, 10, text, {0, 0, 0}){
+    ListItem(const char* text): Label(20, 10, text){
         Color white = {255, 255, 255};
         Label::setColor(white);
         text = _text;

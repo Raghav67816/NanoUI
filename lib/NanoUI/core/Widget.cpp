@@ -51,3 +51,7 @@ void Widget::invalidate(Screen* screen, Widget* widget){
     screen->addDamagedWidget(widget);
 }
 
+void Widget::clear(Graphics& gfx, Color bgColor){
+    Region r = this->getBounds();
+    gfx.fillRect(r.x, r.y, r.w, r.h, bgColor);
+}

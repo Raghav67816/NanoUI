@@ -5,6 +5,8 @@
 void Screen::draw(Graphics &gfx, Theme *theme, int offsetX, int offsetY)
 {
 
+    this->bgColor = this->theme->background;
+
     gfx.fillRect(
         0, 0,
         this->display->getWidth(),

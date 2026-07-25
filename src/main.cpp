@@ -125,8 +125,8 @@ Column root(
     tft_display.getWidth(),
     tft_display.getHeight() - size_policy.title_bar_height);
 
-Button btn(120, 40, "Click Me", cyan, appTheme.selectionText);
-Label label(120, 40, "Waiting for data", white);
+Button btn(120, 40, "Click Me");
+Label label(120, 40, "Waiting for data");
 
 ProgressBar prog_bar(200, 40);
 
@@ -161,6 +161,8 @@ void setup()
     root.addChild(&btn);
     home_screen.addChild(&root);
 
+    prog_bar.setProgress(50);
+
     app.goTo(
         tft_display,
         home_screen,
@@ -180,7 +182,8 @@ void loop()
  
         snprintf(text, sizeof(text), "%02X", cmd);
         // btn.setText("12");
-        prog_bar.setProgress(prog_bar.getProgress() + 10);
+        prog_bar.setProgress(prog_bar.getProgress() - 10);
+        label.setText("Hi");
     }
     app.renderApp(gfx);
 }

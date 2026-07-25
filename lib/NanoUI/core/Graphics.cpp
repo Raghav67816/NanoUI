@@ -230,6 +230,10 @@ int Graphics::getTextWidth(const char *text){
     return index * 6 * _size_metrics->font_scale_factor;
 }
 
+int Graphics::getTextHeight(){
+    return 7 * this->_size_metrics->font_scale_factor;
+}
+
 void Graphics::drawCircle(int x, int y, int radius, Color color){
 
 }

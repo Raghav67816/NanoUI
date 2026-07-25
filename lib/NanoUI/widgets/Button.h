@@ -17,12 +17,10 @@ class Button: public Widget{
     Color bgColor;
     Color textColor;
     
-    Button(int w, int h, char* labelText, Color bgColor, Color textColor): Widget(0, 0, w, h){
+    Button(int w, int h, char* labelText): Widget(0, 0, w, h){
         this->w = w;
         this->h = h;
         this->labelText = labelText;
-        this->bgColor = bgColor;
-        this->textColor = textColor;
     }
     
     void draw(Graphics &gfx, Theme* theme, int offsetX = 0, int offsetY = 0) override;

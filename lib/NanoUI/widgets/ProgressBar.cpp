@@ -10,6 +10,10 @@ void ProgressBar::draw(Graphics &gfx, Theme* theme, int offsetX, int offsetY)
 
     Color white = {255, 255, 255};
 
+    if(this->parent != nullptr){
+        this->bgColor = this->parent->bgColor;
+    }
+
     gfx.drawRect(drawX, drawY, w, h, theme->accent);
 
     if (progress > 0 && progress <= maxValue)

@@ -25,4 +25,5 @@ class Graphics{
     
     void drawText(int x, int y, const char* text, Color color);
     int getTextWidth(const char* text);
+    int getTextHeight();
 };

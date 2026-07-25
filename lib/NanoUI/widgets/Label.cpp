@@ -8,6 +8,10 @@ void Label::draw(Graphics &gfx, Theme* theme, int offsetX, int offsetY){
     int drawX = this->x - offsetX;
     int drawY = this->y - offsetY;
 
+    if(this->parent != nullptr){
+        this->bgColor = this->parent->bgColor;
+    }
+
     Color textColor = {0, 0, 0};
     if(this->hasCustomColor){
         textColor = color;
@@ -27,7 +31,7 @@ void Label::draw(Graphics &gfx, Theme* theme, int offsetX, int offsetY){
 
 void Label::measureGeo(Graphics &gfx){
     this->w = gfx.getTextWidth(labelText);
-    h = 10;
+    this->h = gfx.getTextHeight();
 }
 
 void Label::setText(char* _text){
