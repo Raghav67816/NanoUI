@@ -17,7 +17,7 @@ class Layout: public Widget{
     void setSpacing(int spacing);
     void setContentSpacing(int spacing);
     
-    void draw(Graphics &gfx, Theme* theme, int offsetX = 0, int offsetY = 0);
+    void draw(Graphics &gfx, Theme& theme, int offsetX = 0, int offsetY = 0);
 
     void measureGeo(Graphics &gfx) override;
     void processInput(InputTypes inputType, Cordinates points) override;

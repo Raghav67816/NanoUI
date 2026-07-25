@@ -3,7 +3,7 @@
 
 #define PADDING 2
 
-void Button::draw(Graphics &gfx, Theme* theme, int offsetX, int offsetY){
+void Button::draw(Graphics &gfx, Theme& theme, int offsetX, int offsetY){
 
     int drawX = this->x - offsetX;
     int drawY = this->y - offsetY;
@@ -15,14 +15,14 @@ void Button::draw(Graphics &gfx, Theme* theme, int offsetX, int offsetY){
     int textX = x + (w - textLen) / 2;
     int textY = y + (h - 7) / 2;
 
-    bgColor = theme->primary;
+    bgColor = theme.primary;
     
     gfx.fillRect(drawX, drawY, w, h, bgColor);
     gfx.drawText(
         textX - offsetX,
         textY - offsetY,
         this->labelText,
-        theme->selectionText
+        theme.selectionText
     );
 }
 

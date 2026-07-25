@@ -1,7 +1,7 @@
 #include "Screen.h"
 #include "ProgressBar.h"
 
-void ProgressBar::draw(Graphics &gfx, Theme* theme, int offsetX, int offsetY)
+void ProgressBar::draw(Graphics &gfx, Theme& theme, int offsetX, int offsetY)
 {
     int drawX = this->x - offsetX;
     int drawY = this->y - offsetY;
@@ -14,14 +14,14 @@ void ProgressBar::draw(Graphics &gfx, Theme* theme, int offsetX, int offsetY)
         this->bgColor = this->parent->bgColor;
     }
 
-    gfx.drawRect(drawX, drawY, w, h, theme->accent);
+    gfx.drawRect(drawX, drawY, w, h, theme.accent);
 
     if (progress > 0 && progress <= maxValue)
     {
         int clamped_prog = (progress > 100) ? 100 : progress;
         int _prog = (w * progress) / 100;
         if (_prog > 0){
-            gfx.fillRect(drawX, drawY, _prog, h, theme->foreground);
+            gfx.fillRect(drawX, drawY, _prog, h, theme.foreground);
         }
     }
 

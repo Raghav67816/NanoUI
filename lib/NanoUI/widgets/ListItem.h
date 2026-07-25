@@ -27,7 +27,7 @@ class ListItem: public Label{
         text = _text;
     }
 
-    void draw(Graphics &gfx, Theme* theme, int offsetX = 0, int offsetY = 0) override;
+    void draw(Graphics &gfx, Theme& theme, int offsetX = 0, int offsetY = 0) override;
     void setFocused(bool isFocused);
     void processInput(InputTypes inputType, Cordinates point) override;
 };

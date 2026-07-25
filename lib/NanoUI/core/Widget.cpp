@@ -14,7 +14,7 @@ void Widget::addChild(Widget *child){
 
     children.push_back(child);
     child->parent = this;
-    child->setSizeMetrics(this->size_metrics);
+    child->setSizeMetrics(*this->size_metrics);
 }
 
 void Widget::removeChild(Widget *child){
@@ -34,8 +34,8 @@ Region Widget::getBounds(){
     return region;
 }
 
-void Widget::setSizeMetrics(SizeMetrics* size_metrics){
-    this->size_metrics = size_metrics;
+void Widget::setSizeMetrics(SizeMetrics& size_metrics){
+    this->size_metrics = &size_metrics;
 }
 
 Widget* Widget::getTopLevelParent(){

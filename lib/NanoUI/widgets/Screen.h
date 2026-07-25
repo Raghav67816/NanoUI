@@ -19,13 +19,10 @@ class Screen: public Widget {
         this->title = title;
     }
     
-    void setTheme(Theme *theme);
-    void draw(Graphics &gfx, Theme*  theme, int offsetX = 0, int offsetY = 0) override;
+    void setTheme(Theme &theme);
+    void draw(Graphics &gfx, Theme& theme, int offsetX = 0, int offsetY = 0) override;
     void setTitle(Graphics *gfx, const char* title, Color color);
     
-    // Soon to be removed
-    bool _dirtyCheck();
-    void clearDirty();
     void processInput(InputTypes inputType, Cordinates points) override;
 
     bool hasDamagedWidgets();

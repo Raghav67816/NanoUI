@@ -18,8 +18,8 @@ class App{
 
     Graphics &gfx;
     Display &display;
-    Theme* _theme;
-    SizeMetrics *size_metrics;
+    Theme _theme;
+    SizeMetrics size_metrics;
 
     void repaintDamaged();
     void onCurrentScreenChanged(Display &display, Graphics &gfx);
@@ -28,7 +28,7 @@ class App{
 
     Event<Screen*> onScreenChanged;
 
-    App(Display &display, Graphics &gfx, Theme* theme, SizeMetrics* size_metrics_):display(display), gfx(gfx), _theme(theme), size_metrics(size_metrics_){}
+    App(Display &display, Graphics &gfx, Theme& theme, SizeMetrics& size_metrics_):display(display), gfx(gfx), _theme(theme), size_metrics(size_metrics_){}
 
     void addScreen(Screen &screen);
     void removeScreen(Screen &screen);
@@ -39,8 +39,8 @@ class App{
     void goTo(Display &display, Screen &screen, Graphics &gfx);
     Screen* getActiveScreen();
 
-    void setTheme(Theme* theme);
-    void setSizes(SizeMetrics *size_metrics);
+    void setTheme(Theme& theme);
+    void setSizes(SizeMetrics& size_metrics);
 
     void renderApp(Graphics &gfx);
 };

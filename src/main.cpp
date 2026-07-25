@@ -113,8 +113,9 @@ Graphics gfx(&tft_display, &size_policy);
 App app(
     tft_display,
     gfx,
-    &appTheme,
-    &size_policy);
+    appTheme,
+    size_policy
+);
 
 Screen home_screen(
     &tft_display,
@@ -149,7 +150,7 @@ void setup()
     tft.init();
     tft.setRotation(1);
 
-    btn.setSizeMetrics(&size_policy);
+    btn.setSizeMetrics(size_policy);
 
     app.addScreen(home_screen);
 

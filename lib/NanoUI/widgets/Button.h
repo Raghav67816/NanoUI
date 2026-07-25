@@ -23,7 +23,7 @@ class Button: public Widget{
         this->labelText = labelText;
     }
     
-    void draw(Graphics &gfx, Theme* theme, int offsetX = 0, int offsetY = 0) override;
+    void draw(Graphics &gfx, Theme& theme, int offsetX = 0, int offsetY = 0) override;
     void measureGeo(Graphics &gfx) override;
 
     void processInput(InputTypes inputType, Cordinates point) override;

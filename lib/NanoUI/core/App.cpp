@@ -105,12 +105,12 @@ void App::repaintDamaged()
     display.flush();
 }
 
-void App::setTheme(Theme *theme)
+void App::setTheme(Theme& theme)
 {
     this->_theme = theme;
 }
 
-void App::setSizes(SizeMetrics *size_metrics)
+void App::setSizes(SizeMetrics& size_metrics)
 {
     this->size_metrics = size_metrics;
 }

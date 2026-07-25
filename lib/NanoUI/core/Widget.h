@@ -50,7 +50,7 @@ class Widget
 
     Color bgColor;
 
-    SizeMetrics *size_metrics;
+    SizeMetrics* size_metrics;
 
     /*
     Every widget must define basic geometry.
@@ -71,7 +71,7 @@ class Widget
     This method is ONLY respondsible for drawing primitives that 
     together form the desired widget
     */
-    virtual void draw(Graphics &gfx, Theme* theme, int offsetX = 0, int offsetY = 0) = 0;
+    virtual void draw(Graphics &gfx, Theme& theme, int offsetX = 0, int offsetY = 0) = 0;
     
     /*
     Every widget must use the default Widget::addChild method 
@@ -112,7 +112,7 @@ class Widget
 
     This method sets size metric for the widget
     */
-    virtual void setSizeMetrics(SizeMetrics *size_metrics);
+    virtual void setSizeMetrics(SizeMetrics& size_metrics);
 
     /*
     Region getBounds()

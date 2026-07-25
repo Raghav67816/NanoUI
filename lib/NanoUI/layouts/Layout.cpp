@@ -1,6 +1,6 @@
 #include "Layout.h"
 
-void Layout::draw(Graphics &gfx, Theme* theme, int offsetX, int offsetY){
+void Layout::draw(Graphics &gfx, Theme& theme, int offsetX, int offsetY){
 
     for(Widget *child: children){
         child->measureGeo(gfx);

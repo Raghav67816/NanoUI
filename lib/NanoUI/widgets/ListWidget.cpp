@@ -1,6 +1,6 @@
 #include "ListWidget.h"
 
-void ListWidget::draw(Graphics &gfx, Theme* theme, int offsetX, int offsetY){
+void ListWidget::draw(Graphics &gfx, Theme& theme, int offsetX, int offsetY){
     Column::draw(gfx, theme, 0, this->local_offsetY);
 }
 

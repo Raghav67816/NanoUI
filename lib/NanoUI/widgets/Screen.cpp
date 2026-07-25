@@ -2,7 +2,7 @@
 
 #include "widgets/Button.h"
 
-void Screen::draw(Graphics &gfx, Theme *theme, int offsetX, int offsetY)
+void Screen::draw(Graphics &gfx, Theme& theme, int offsetX, int offsetY)
 {
 
     this->bgColor = this->theme->background;
@@ -27,27 +27,6 @@ void Screen::draw(Graphics &gfx, Theme *theme, int offsetX, int offsetY)
     }
 }
 
-bool Screen::_dirtyCheck()
-{
-    for (Widget *child : children)
-    {
-        if (child->isDirty)
-        {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-void Screen::clearDirty()
-{
-    for (Widget *child : children)
-    {
-        child->isDirty = false;
-    }
-}
-
 void Screen::setTitle(Graphics *gfx, const char *title, Color titleColor)
 {
     gfx->fillRect(
@@ -63,9 +42,9 @@ void Screen::setTitle(Graphics *gfx, const char *title, Color titleColor)
         titleColor);
 }
 
-void Screen::setTheme(Theme *theme)
+void Screen::setTheme(Theme& theme)
 {
-    this->theme = theme;
+    this->theme = &theme;
 }
 
 void Screen::addDamagedWidget(Widget* widget)

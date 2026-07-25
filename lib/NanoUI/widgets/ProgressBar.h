@@ -13,7 +13,7 @@ class ProgressBar: public Widget{
 
     ProgressBar(int w, int h): Widget(0, 0, w, h){}
 
-    void draw(Graphics &gfx, Theme* theme, int offsetX = 0, int offsetY = 0) override;
+    void draw(Graphics &gfx, Theme& theme, int offsetX = 0, int offsetY = 0) override;
     void processInput(InputTypes inputType, Cordinates point) override;
     void measureGeo(Graphics &gfx) override;
 
