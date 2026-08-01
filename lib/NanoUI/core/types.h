@@ -33,30 +33,6 @@ struct SizeMetrics
     int font_scale_factor;
 };
 
-/*
-General packet types
-*/
-enum PacketType
-{
-    START,
-    END,
-    ERROR,
-    FILE_INFO
-};
-
-struct PacketHeader
-{
-    uint16_t packet_id;
-    PacketType packet_type;
-    uint16_t length;
-};
-
-struct FileInfo
-{
-    char filename[32];
-    size_t filesize;
-};
-
 struct Region
 {
     int x;
@@ -71,4 +47,8 @@ struct Region
                w == other.w &&
                h == other.h;
     }
+};
+
+struct Header{
+    int x;
 };

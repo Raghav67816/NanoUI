@@ -139,12 +139,12 @@ void setup()
 
     delay(500);
 
-    file_manager.begin();
-
     Serial.println("BOOT");
     Serial.println(btn.y);
     Serial.println(root.y);
     Serial.println(size_policy.title_bar_height);
+
+    file_manager.begin("image.bin");
 
     // TFT
     tft.init();
@@ -174,17 +174,24 @@ void setup()
 
 void loop()
 {
+    static int bufferIndex = 0;
+    static char text[32];
+
     if (Serial.available())
     {
-        uint8_t cmd = Serial.read();
+        char cmd = Serial.read();
 
-        Serial.println("got something");
-        static char text[5];
- 
-        snprintf(text, sizeof(text), "%02X", cmd);
-        // btn.setText("12");
-        prog_bar.setProgress(prog_bar.getProgress() - 10);
-        label.setText("Hi");
+        if(cmd == '\n' || sizeof(bufferIndex) >= sizeof(text) - 1){
+            text[bufferIndex] = '\0';
+            Serial.println(text);
+
+            bufferIndex++;
+        }
+
+        else if(text != "\r"){
+            text[bufferIndex] = cmd;
+            bufferIndex++;
+        }
     }
     app.renderApp(gfx);
 }
