@@ -49,6 +49,11 @@ struct Region
     }
 };
 
-struct Header{
-    int x;
+struct __attribute__((packed)) AssetHeader{
+    char magic[4];
+    uint16_t version;
+    uint16_t flags;
+    uint16_t table_size;
+    uint16_t table_offset;
+    uint32_t reserved;
 };

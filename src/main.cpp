@@ -144,8 +144,6 @@ void setup()
     Serial.println(root.y);
     Serial.println(size_policy.title_bar_height);
 
-    file_manager.begin("image.bin");
-
     // TFT
     tft.init();
     tft.setRotation(1);
@@ -170,6 +168,7 @@ void setup()
         gfx);
 
     Serial.println("READY");
+    file_manager.begin("/out.bin");
 }
 
 void loop()

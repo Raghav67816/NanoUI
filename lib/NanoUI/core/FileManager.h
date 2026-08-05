@@ -1,12 +1,14 @@
-#pragma once
-
-#include <stdint.h>
-#include "types.h"
+#include <LittleFS.h>
 
 
 class FileManager{
-  
-  public:
-  bool begin(const char* image_name);
-  void list();
+
+    private:
+    File asset_pack;
+
+    void read_table();
+
+    public:
+
+    void begin(const String &asset_path);
 };
