@@ -51,9 +51,15 @@ struct Region
 
 struct __attribute__((packed)) AssetHeader{
     char magic[4];
-    uint16_t version;
-    uint16_t flags;
-    uint16_t table_size;
-    uint16_t table_offset;
+    uint32_t version;
+    uint32_t count;
+    uint32_t table_offset;
+    uint32_t data_offset;
     uint32_t reserved;
+};
+
+struct __attribute__((packed)) AssetEntry{
+    char filename[32];
+    uint32_t offset;
+    uint32_t size;
 };

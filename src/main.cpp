@@ -168,7 +168,8 @@ void setup()
         gfx);
 
     Serial.println("READY");
-    file_manager.begin("/out.bin");
+    file_manager.begin("/assets.npack");
+    file_manager.load_asset("somefile");
 }
 
 void loop()

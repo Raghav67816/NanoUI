@@ -1,14 +1,15 @@
 #include <LittleFS.h>
 
+#define ENTRY_SIZE 40
 
 class FileManager{
 
     private:
     File asset_pack;
-
-    void read_table();
+    AssetHeader header;
 
     public:
 
     void begin(const String &asset_path);
+    void load_asset(String filename);
 };

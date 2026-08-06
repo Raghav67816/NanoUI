@@ -19,9 +19,8 @@ void FileManager::begin(const String &asset_path){
 
     this->asset_pack.seek(0);
 
-    AssetHeader header;
     size_t bytesRead = this->asset_pack.read(
-        (uint8_t*)&header, sizeof(AssetHeader)
+        (uint8_t*)&this->header, sizeof(AssetHeader)
     );
 
     if(bytesRead != sizeof(AssetHeader)){
@@ -32,10 +31,21 @@ void FileManager::begin(const String &asset_path){
     for(int i=0; i<4; i++){
         Serial.print(header.magic[i]);
     }
+
+    if(memcmp(header.magic, "NPAK", 4) != 0){
+        Serial.println("Id does not match.");
+        return;
+    }
+
     Serial.println();
-    Serial.println(header.table_size);
 }
 
-void FileManager::read_table(){
-    
+void FileManager::load_asset(String filename){
+    if(!this->asset_pack){
+        Serial.println("Asset pack not loaded.");
+        return;
+    }
+
+    Serial.print("files count: ");
+    Serial.println(this->header.count);
 }
