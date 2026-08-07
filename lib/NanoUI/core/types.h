@@ -63,3 +63,22 @@ struct __attribute__((packed)) AssetEntry{
     uint32_t offset;
     uint32_t size;
 };
+
+struct __attribute__((packed)) FontHeader{
+    char magic[4];
+    uint16_t version;
+    uint16_t len;
+    uint16_t font_size;
+    uint16_t flags;
+    uint16_t reserverd;
+};
+
+
+struct __attribute__((packed)) FontData{
+    uint32_t offset;
+    uint8_t width;
+    uint8_t height;
+    int8_t x_offset;
+    int8_t y_offset;
+    uint16_t advance;
+};

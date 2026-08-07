@@ -169,7 +169,7 @@ void setup()
 
     Serial.println("READY");
     file_manager.begin("/assets.npack");
-    file_manager.load_asset("somefile");
+    file_manager.load_asset("font.bin");
 }
 
 void loop()

@@ -46,6 +46,29 @@ void FileManager::load_asset(String filename){
         return;
     }
 
-    Serial.print("files count: ");
-    Serial.println(this->header.count);
+    for(int i=0; i<(int)this->header.count; i++){
+        AssetEntry entry;
+        this->asset_pack.seek(sizeof(this->header) + (sizeof(AssetEntry) * i));
+        uint8_t bytesRead = this->asset_pack.read(
+            (uint8_t*)&entry, sizeof(AssetEntry)
+        );
+
+        if(bytesRead != sizeof(AssetEntry)){
+            Serial.println("Invalid size, cannot read asset table.");
+        }
+
+        this->asset_pack.seek(entry.offset);
+
+        FontHeader fHeader;
+        uint8_t fBytesRead = this->asset_pack.read(
+            (uint8_t*)&fHeader, sizeof(FontHeader)
+        );
+
+        if(fBytesRead != sizeof(FontHeader)){
+            Serial.println("Invalid asset header size, cannot load asset");
+            return;
+        }
+
+        Serial.println(fHeader.version);
+    }
 }
