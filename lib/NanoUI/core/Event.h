@@ -1,13 +1,13 @@
 #pragma once
 
-#include <vector>
+#include <etl/vector.h>
 #include <functional>
 
 template<typename... Args>
 class Event {
 
 private:
-    std::vector<std::function<void(Args...)>> listeners;
+    etl::vector<std::function<void(Args...)>, 3> listeners;
 
 public:
 

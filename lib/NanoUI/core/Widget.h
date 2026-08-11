@@ -1,7 +1,9 @@
 #pragma once
 
-#include <vector>
+
 #include <functional>
+
+#include <etl/vector.h>
 
 #include "Theme.h"
 #include "Graphics.h"
@@ -44,8 +46,8 @@ class Widget
     bool visible;
     bool enabled;
 
-    std::vector<Widget *> children;
-    std::vector<Region> regions;
+    etl::vector<Widget *, 10> children;
+    etl::vector<Region, 10> regions;
     Widget *parent = nullptr;
 
     Color bgColor;

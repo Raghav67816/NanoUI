@@ -5,7 +5,7 @@
 
 
 void FileManager::begin(const String &asset_path){
-    if(!LittleFS.begin(true)){
+    if(!LittleFS.begin(false)){
         Serial.println("Failed to mount LittleFS. File manager will not work");
         return;
     }
@@ -46,29 +46,11 @@ void FileManager::load_asset(String filename){
         return;
     }
 
-    for(int i=0; i<(int)this->header.count; i++){
-        AssetEntry entry;
-        this->asset_pack.seek(sizeof(this->header) + (sizeof(AssetEntry) * i));
-        uint8_t bytesRead = this->asset_pack.read(
-            (uint8_t*)&entry, sizeof(AssetEntry)
-        );
+    // for(int i=0; i < (int)this->header.count; i++){
+    //     AssetEntry entry;
 
-        if(bytesRead != sizeof(AssetEntry)){
-            Serial.println("Invalid size, cannot read asset table.");
-        }
+    //     // size_t 
 
-        this->asset_pack.seek(entry.offset);
-
-        FontHeader fHeader;
-        uint8_t fBytesRead = this->asset_pack.read(
-            (uint8_t*)&fHeader, sizeof(FontHeader)
-        );
-
-        if(fBytesRead != sizeof(FontHeader)){
-            Serial.println("Invalid asset header size, cannot load asset");
-            return;
-        }
-
-        Serial.println(fHeader.version);
-    }
+    //     // uint8_t bytesRead = this->asset_pack.read();
+    // }
 }

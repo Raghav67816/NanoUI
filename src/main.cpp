@@ -136,13 +136,7 @@ int x = 0;
 void setup()
 {
     Serial.begin(115200);
-
     delay(500);
-
-    Serial.println("BOOT");
-    Serial.println(btn.y);
-    Serial.println(root.y);
-    Serial.println(size_policy.title_bar_height);
 
     // TFT
     tft.init();
@@ -167,7 +161,6 @@ void setup()
         home_screen,
         gfx);
 
-    Serial.println("READY");
     file_manager.begin("/assets.npack");
     file_manager.load_asset("font.bin");
 }
@@ -195,3 +188,4 @@ void loop()
     }
     app.renderApp(gfx);
 }
+

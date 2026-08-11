@@ -1,6 +1,6 @@
 #pragma once
 
-#include <vector>
+#include <etl/vector.h>
 
 #include "Theme.h"
 
@@ -14,7 +14,7 @@ class App{
     int screenIndex = 0;
 
     Screen* activeScreen = nullptr;
-    std::vector<Screen*> screens = {};
+    etl::vector<Screen*, 10> screens = {};
 
     Graphics &gfx;
     Display &display;

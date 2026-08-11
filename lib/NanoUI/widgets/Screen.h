@@ -1,7 +1,7 @@
 #pragma once
 
-#include <vector>
 #include <functional>
+#include <etl/vector.h>
 
 #include "core/Widget.h"
 
@@ -12,7 +12,7 @@ class Screen: public Widget {
     
     public:
     const char* title;
-    std::vector<Widget*> damagedWidgets = {};
+    etl::vector<Widget*, 10> damagedWidgets = {};
     
     Screen(Display *display, const char* title): Widget(0, 0, display->getWidth(), display->getHeight()){
         this->display = display;

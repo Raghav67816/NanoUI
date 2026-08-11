@@ -1,6 +1,7 @@
 #include <LittleFS.h>
-#include <vector>
+#include <etl/vector.h>
 
+#define HEADER_SIZE 20
 #define ENTRY_SIZE 40
 
 class FileManager{
@@ -8,7 +9,7 @@ class FileManager{
     private:
     File asset_pack;
     AssetHeader header;
-    std::vector<uint32_t> data_pos;
+    etl::vector<uint32_t, 5> data_pos;
 
     
     public:
