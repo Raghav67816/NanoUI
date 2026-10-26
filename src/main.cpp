@@ -100,8 +100,6 @@ Theme appTheme = {
     .selectionText = white,
     .disabled = grey};
 
-FileManager file_manager;
-
 LGFX tft;
 TFTDisplay tft_display(
     480,
@@ -119,7 +117,7 @@ App app(
 
 Screen home_screen(
     &tft_display,
-    "# SYSTEM STATUS #");
+    "HOME");
 
 Column root(
     0, size_policy.title_bar_height,
@@ -130,6 +128,8 @@ Button btn(120, 40, "Click Me");
 Label label(120, 40, "Waiting for data");
 
 ProgressBar prog_bar(200, 40);
+
+FileManager file_manager;
 
 int x = 0;
 
@@ -159,33 +159,15 @@ void setup()
     app.goTo(
         tft_display,
         home_screen,
-        gfx);
+        gfx
+    );
 
     file_manager.begin("/assets.npack");
-    file_manager.load_asset("font.bin");
+    Serial.println(file_manager.get_filesize("font.bin"));
 }
 
 void loop()
 {
-    static int bufferIndex = 0;
-    static char text[32];
-
-    if (Serial.available())
-    {
-        char cmd = Serial.read();
-
-        if(cmd == '\n' || sizeof(bufferIndex) >= sizeof(text) - 1){
-            text[bufferIndex] = '\0';
-            Serial.println(text);
-
-            bufferIndex++;
-        }
-
-        else if(text != "\r"){
-            text[bufferIndex] = cmd;
-            bufferIndex++;
-        }
-    }
     app.renderApp(gfx);
 }
 

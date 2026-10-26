@@ -15,5 +15,9 @@ class FileManager{
     public:
     
     void begin(const String &asset_path);
-    void load_asset(String filename);
+    void load(const char* filename, uint32_t filesize);
+    
+    uint32_t get_filesize(String filename);
+
+    int count();
 };

@@ -52,7 +52,7 @@ struct Region
 struct __attribute__((packed)) AssetHeader{
     char magic[4];
     uint16_t version;
-    uint16_t count;
+    uint16_t count = 0;
     uint32_t table_offset;
     uint32_t data_offset;
     uint32_t reserved;
